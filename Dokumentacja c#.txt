@@ -1,0 +1,28 @@
+﻿Projekt RPG Helper
+Założenia:
+
+2 etapy programu:
+
+I. Utworzenie bazy danych w oparciu o operacje użytkownika
+
+II. Zarządzanie utworzoną bazą danych
+
+Użytkownik może utworzyć nową bazę danych w oparciu o kontrolkę umożliwiającą wprowadzenie tytułu oraz typu kolumny, a także zarządzanie zakładkami(w bazie reprezentowane przez tabelę).
+
+Może takżę wczytać gotowy preset bazy danych i go edytować.
+
+Po utworzeniu bazy, może nią zarządzać przechodząc międy zakładkami(tabelami) i edytując odpowiednie pozycje.
+
+Uzytkownik będzie mógł utworzyć tabelę w dwóch trybach: właściwości gracza gdzie zawartę będą jego statystyki, ekwipunek itd, oraz przedmioty które będą mogły być podzielone na kategorię z odpowiednimi statystykami.
+
+Struktura programu:
+
+Program skałada się z:
+1. Menu głównego umożliwiającego rozpoczęcie nowej sesji, kontynuację poprzedniej oraz wyjście z programu. - Konrad
+
+2. Część odpowiadająca za tworzenie nowej sesji (SessionCreator) będzie się składała z 2 zakładek: Player i Items umożliwiającymi dodawanie nowych tabel do bazy danych przy pomocy kontrolek(ColumnCreator) - Kamil
+
+3. Część odpowiadająca za obsługę sesji - zmiany encjach oraz obsługa obliczeń zdefiniowanych przez użytkownika. - Konrad
+
+
+Bazy danych stworzone w programie będą miały prefiks: RPGH(Nazwa) np. Neuroshima -> RPGHNeuroshima i przy odczycie możliwych baz danych do załadowania ma się wyświetlać Neuroshima
