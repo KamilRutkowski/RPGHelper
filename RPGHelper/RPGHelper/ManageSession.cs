@@ -26,6 +26,7 @@ namespace RPGHelper
         public ManageSession(myActionDelegate endSession ,string databaseName)
         {
             InitializeComponent();
+            registerEndSession = endSession;
         }
 
         private void ManageSession_Load(object sender, EventArgs e)

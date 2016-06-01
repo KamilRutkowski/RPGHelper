@@ -58,8 +58,17 @@ namespace RPGHelper
         private void databaseWasCreated(string database)
         {
             activeControl.Dispose();
-            activeControl = new ManageSession(endSession, database);
-            Controls.Add(activeControl);
+            if (database == "")
+            {
+                activeControl = new MainMenuControl(CreateSession, LoadSession, Exit);
+                Controls.Add(activeControl);
+            }
+            else
+            {
+                activeControl = new ManageSession(endSession, database);
+                Controls.Add(activeControl);
+            }            
+            
         }
 
         private void endSession()

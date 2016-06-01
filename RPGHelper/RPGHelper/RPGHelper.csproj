@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColumnCreator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColumnCreator.Designer.cs">
+      <DependentUpon>ColumnCreator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseRelationsCreator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DatabaseRelationsCreator.Designer.cs">
+      <DependentUpon>DatabaseRelationsCreator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseTablesCreator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DatabaseTablesCreator.Designer.cs">
+      <DependentUpon>DatabaseTablesCreator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +90,22 @@
     <Compile Include="SessionCreator.Designer.cs">
       <DependentUpon>SessionCreator.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseNameCreator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DatabaseNameCreator.Designer.cs">
+      <DependentUpon>DatabaseNameCreator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Table.cs" />
+    <EmbeddedResource Include="ColumnCreator.resx">
+      <DependentUpon>ColumnCreator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseRelationsCreator.resx">
+      <DependentUpon>DatabaseRelationsCreator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseTablesCreator.resx">
+      <DependentUpon>DatabaseTablesCreator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SessionCreator.resx">
       <DependentUpon>SessionCreator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseNameCreator.resx">
+      <DependentUpon>DatabaseNameCreator.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
