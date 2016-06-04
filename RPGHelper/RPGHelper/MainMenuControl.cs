@@ -14,17 +14,26 @@ namespace RPGHelper
     {
         #region Properties
 
-        public myActionDelegate registerStartNewSession
+        /// <summary>
+        /// Register a callback delegate for starting new session
+        /// </summary>
+        private myActionDelegate registerStartNewSession
         {
             get; set;
         }
 
-        public myActionDelegate registerLoadSession
+        /// <summary>
+        /// Register a callback delegate for loading existing session
+        /// </summary>
+        private myActionDelegate registerLoadSession
         {
             get; set;
         }
 
-        public myActionDelegate registerExit
+        /// <summary>
+        /// Register a callback for exiting program
+        /// </summary>
+        private myActionDelegate registerExit
         {
             get; set;
         }
@@ -33,6 +42,12 @@ namespace RPGHelper
 
         public delegate void myActionDelegate();
 
+        /// <summary>
+        /// Main menu control for a first layer of controling program.
+        /// </summary>
+        /// <param name="start">Delegate for starting new session</param>
+        /// <param name="load">Delegate for loading existing session</param>
+        /// <param name="exit">Delegate for exiting program</param>
         public MainMenuControl(myActionDelegate start, myActionDelegate load, myActionDelegate exit)
         {
             InitializeComponent();

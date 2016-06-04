@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.buttonReturnToNameCreation = new System.Windows.Forms.Button();
+            this.buttonReturnToTablesCreation = new System.Windows.Forms.Button();
             this.buttonCreateDatabase = new System.Windows.Forms.Button();
             this.buttonStopCreation = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -50,23 +50,23 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.buttonReturnToNameCreation);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonReturnToTablesCreation);
             this.splitContainer1.Panel2.Controls.Add(this.buttonCreateDatabase);
             this.splitContainer1.Panel2.Controls.Add(this.buttonStopCreation);
             this.splitContainer1.Size = new System.Drawing.Size(500, 600);
             this.splitContainer1.SplitterDistance = 533;
             this.splitContainer1.TabIndex = 0;
             // 
-            // buttonReturnToNameCreation
+            // buttonReturnToTablesCreation
             // 
-            this.buttonReturnToNameCreation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonReturnToNameCreation.Location = new System.Drawing.Point(3, 14);
-            this.buttonReturnToNameCreation.Name = "buttonReturnToNameCreation";
-            this.buttonReturnToNameCreation.Size = new System.Drawing.Size(142, 35);
-            this.buttonReturnToNameCreation.TabIndex = 15;
-            this.buttonReturnToNameCreation.Text = "Poprzedni krok";
-            this.buttonReturnToNameCreation.UseVisualStyleBackColor = true;
-            this.buttonReturnToNameCreation.Click += new System.EventHandler(this.buttonReturnToNameCreation_Click);
+            this.buttonReturnToTablesCreation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonReturnToTablesCreation.Location = new System.Drawing.Point(3, 14);
+            this.buttonReturnToTablesCreation.Name = "buttonReturnToTablesCreation";
+            this.buttonReturnToTablesCreation.Size = new System.Drawing.Size(142, 35);
+            this.buttonReturnToTablesCreation.TabIndex = 15;
+            this.buttonReturnToTablesCreation.Text = "Poprzedni krok";
+            this.buttonReturnToTablesCreation.UseVisualStyleBackColor = true;
+            this.buttonReturnToTablesCreation.Click += new System.EventHandler(this.buttonReturnToTablesCreation_Click);
             // 
             // buttonCreateDatabase
             // 
@@ -109,7 +109,7 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button buttonReturnToNameCreation;
+        private System.Windows.Forms.Button buttonReturnToTablesCreation;
         private System.Windows.Forms.Button buttonCreateDatabase;
         private System.Windows.Forms.Button buttonStopCreation;
     }

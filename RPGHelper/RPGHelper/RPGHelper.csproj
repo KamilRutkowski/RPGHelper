@@ -52,6 +52,8 @@
     <Compile Include="ColumnCreator.Designer.cs">
       <DependentUpon>ColumnCreator.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConnectionsInTables.cs" />
+    <Compile Include="DBCreator.cs" />
     <Compile Include="DatabaseRelationsCreator.cs">
       <SubType>UserControl</SubType>
     </Compile>

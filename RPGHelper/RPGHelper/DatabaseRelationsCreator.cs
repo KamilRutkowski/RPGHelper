@@ -14,17 +14,26 @@ namespace RPGHelper
     {
         #region Properties
 
-        public myDelegate registerExit
+        /// <summary>
+        /// Register a callback delegate for ExitButton.Click event
+        /// </summary>
+        private myDelegate registerExit
         {
             get; set;
         }
 
-        public myDelegate registerPreviousStep
+        /// <summary>
+        /// Register a callback delegate for previous step button
+        /// </summary>
+        private myDelegate registerPreviousStep
         {
             get; set;
         }
 
-        public myDelegateCreateDatabase registerCreateDatabase
+        /// <summary>
+        /// Register a callback delegate for end of database creation
+        /// </summary>
+        private myDelegateCreateDatabase registerCreateDatabase
         {
             get; set;
         }
@@ -32,19 +41,26 @@ namespace RPGHelper
         #endregion
 
         public delegate void myDelegate();
-        public delegate void myDelegateCreateDatabase(List<Table> tables);
-        List<Table> tablesToCreate;
+        public delegate void myDelegateCreateDatabase(List<ConnectionsInTables> connections);
+        List<ConnectionsInTables> connectionsToCreate;
 
-        public DatabaseRelationsCreator(myDelegate exit, myDelegate previousStep, myDelegateCreateDatabase createDatabase, List<Table> tables)
+        /// <summary>
+        /// Creator of relations between tables. It can create an connection between two tables
+        /// </summary>
+        /// <param name="exit"> Delegate for exit of database creation</param>
+        /// <param name="previousStep"> Delegate to go back by one step in creation</param>
+        /// <param name="createDatabase"> Delegate for finishing creation of relations and send it to sql creation of database </param>
+        /// <param name="connections"> Connections between Player and Items tables to be edited</param>
+        public DatabaseRelationsCreator(myDelegate exit, myDelegate previousStep, myDelegateCreateDatabase createDatabase, List<ConnectionsInTables> connections)
         {
             InitializeComponent();
             registerExit = exit;
             registerPreviousStep = previousStep;
             registerCreateDatabase = createDatabase;
-            tablesToCreate = tables;
+            connectionsToCreate = connections;
         }
 
-        private void buttonReturnToNameCreation_Click(object sender, EventArgs e)
+        private void buttonReturnToTablesCreation_Click(object sender, EventArgs e)
         {
             registerPreviousStep();
         }
@@ -57,12 +73,12 @@ namespace RPGHelper
         private void buttonCreateDatabase_Click(object sender, EventArgs e)
         {
             makeRelations();
-            registerCreateDatabase(tablesToCreate);
+            registerCreateDatabase(connectionsToCreate);
         }
 
         private void makeRelations()
         {
-
+            throw new NotImplementedException();
         }
     }
 }

@@ -14,7 +14,10 @@ namespace RPGHelper
     {
         #region Properties
 
-        public myActionDelegate registerdatabaseCreated
+        /// <summary>
+        /// Register a callback delegate for an event when process of database creation has ended
+        /// </summary>
+        private myActionDelegate registerdatabaseCreated
         {
             get; set;
         }
@@ -23,14 +26,20 @@ namespace RPGHelper
 
         string databaseName;
         List<Table> tablesInDatabase;
+        List<ConnectionsInTables> connectionsBetweenTables;
         Control activeContorl;
 
         public delegate void myActionDelegate(string database);
 
+        /// <summary>
+        /// Control for a process of creating database for RPG session
+        /// </summary>
+        /// <param name="databaseCreated">Delegate for completion of creation process</param>
         public SessionCreator(myActionDelegate databaseCreated)
         {
             InitializeComponent();
             tablesInDatabase = new List<Table>();
+            connectionsBetweenTables = new List<ConnectionsInTables>();
             databaseName = "";
             registerdatabaseCreated = databaseCreated;
             activeContorl = new DatabaseNameCreator(stopCreation, gotNameCreateTables);
@@ -64,10 +73,10 @@ namespace RPGHelper
             Controls.Add(activeContorl);
         }
 
-        private void goToRelations(List<Table> tables)
+        private void goToRelations(List<Table> tables, List<ConnectionsInTables> takeValuesFromItemsTables)
         {
             activeContorl.Dispose();
-            activeContorl = new DatabaseRelationsCreator(stopCreation, goBackToCreatingTables, createDatabase, tablesInDatabase);
+            activeContorl = new DatabaseRelationsCreator(stopCreation, goBackToCreatingTables, createDatabase, connectionsBetweenTables);
             Controls.Add(activeContorl);
         }
         
@@ -75,11 +84,11 @@ namespace RPGHelper
         private void goBackToCreatingTables()
         {
             activeContorl.Dispose();
-            activeContorl = new DatabaseTablesCreator(stopCreation, goToNaming, goToRelations, tablesInDatabase);
+            activeContorl = new DatabaseTablesCreator(stopCreation, goToNaming, goToRelations, tablesInDatabase, connectionsBetweenTables);
             Controls.Add(activeContorl);
         }
 
-        private void createDatabase(List<Table> tables)
+        private void createDatabase(List<ConnectionsInTables> connections)
         {
             //Creating database
 

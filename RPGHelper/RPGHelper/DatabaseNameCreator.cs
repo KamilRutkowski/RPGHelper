@@ -13,12 +13,18 @@ namespace RPGHelper
     public partial class DatabaseNameCreator : UserControl
     {
         #region Propeties
-        public myActionDelegate registerExitCreation
+        /// <summary>
+        /// Register a callback delegate for ExitButton.Click event 
+        /// </summary>
+        private myActionDelegate registerExitCreation
         {
             get; set;
         }
 
-        public myActionDelegateWithDatabaseName registerNextStepCreation
+        /// <summary>
+        /// Register a callback delegate for next step of creation button
+        /// </summary>
+        private myActionDelegateWithDatabaseName registerNextStepCreation
         {
             get; set;
         }
@@ -29,7 +35,12 @@ namespace RPGHelper
         public delegate void myActionDelegate();
         public delegate void myActionDelegateWithDatabaseName(string databaseName);
 
-
+        /// <summary>
+        /// Control which role is to make get a database name for newly created session
+        /// </summary>
+        /// <param name="exit">Delegate for exiting creation</param>
+        /// <param name="nextStep">Delegate for next step of creation</param>
+        /// <param name="startingName">Starting value for session name, default: ""</param>
         public DatabaseNameCreator(myActionDelegate exit, myActionDelegateWithDatabaseName nextStep, string startingName = "")
         {
             InitializeComponent();

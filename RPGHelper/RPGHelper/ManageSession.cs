@@ -14,7 +14,10 @@ namespace RPGHelper
     {
         #region Properties
 
-        public myActionDelegate registerEndSession
+        /// <summary>
+        /// Register a callback delegate for exiting current session
+        /// </summary>
+        private myActionDelegate registerEndSession
         {
             get; set;
         }
@@ -23,7 +26,12 @@ namespace RPGHelper
 
         public delegate void myActionDelegate();
 
-        public ManageSession(myActionDelegate endSession ,string databaseName)
+        /// <summary>
+        /// Manager of existing session
+        /// </summary>
+        /// <param name="endSession">Delegate of ending session</param>
+        /// <param name="databaseName">Name of database to open</param>
+        public ManageSession(myActionDelegate endSession, string databaseName)
         {
             InitializeComponent();
             registerEndSession = endSession;

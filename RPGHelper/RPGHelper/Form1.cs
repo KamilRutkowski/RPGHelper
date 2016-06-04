@@ -25,6 +25,7 @@ namespace RPGHelper
 
         private void RPGHelperMainWindow_Load(object sender, EventArgs e)
         {
+            //Creation of first state of program -> main menu
             activeControl = new MainMenuControl(CreateSession,LoadSession,Exit);
             Controls.Add(activeControl);
         }
@@ -34,6 +35,9 @@ namespace RPGHelper
             Close();
         }
 
+        /// <summary>
+        /// Creating session process
+        /// </summary>
         private void CreateSession()
         {
             var response = MessageBox.Show("Czy chcesz skorzystać z szablonu sesji?", "Użyć szablonu?", MessageBoxButtons.YesNoCancel);
@@ -50,11 +54,19 @@ namespace RPGHelper
             }
         }
 
+
+        /// <summary>
+        /// Loading session from xml preset
+        /// </summary>
         private void LoadSession()
         {
-            //Loading session from XML preset
+            
         }
 
+        /// <summary>
+        /// Callback for event of database creation process
+        /// </summary>
+        /// <param name="database">Name of database, if database == "" then user exited the process of database creation</param>
         private void databaseWasCreated(string database)
         {
             activeControl.Dispose();
@@ -71,6 +83,9 @@ namespace RPGHelper
             
         }
 
+        /// <summary>
+        /// Callback for ending session in session manager process
+        /// </summary>
         private void endSession()
         {
             activeControl.Dispose();
