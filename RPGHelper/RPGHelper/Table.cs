@@ -8,5 +8,10 @@ namespace RPGHelper
 {
     public class Table
     {
+        #region Properties
+
+
+
+        #endregion
     }
 }

@@ -42,7 +42,7 @@ namespace RPGHelper
 
         public delegate void myDelegate();
         public delegate void myDelegateCreateDatabase(List<ConnectionsInTables> connections);
-        List<ConnectionsInTables> connectionsToCreate;
+        private List<ConnectionsInTables> connectionsToCreate;
 
         /// <summary>
         /// Creator of relations between tables. It can create an connection between two tables

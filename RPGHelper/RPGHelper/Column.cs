@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGHelper
 {
-    public class DBConnector
+    class Column
     {
-
     }
 }
