@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace RPGHelper
 {
-    class Column
+    public abstract class Column
     {
+        #region Properties
+
+        public string columnName{ get; set; }
+        
+        public ColumnType type { get; set; }
+
+        #endregion
+        public enum ColumnType
+        { Number, Text, Enum }
+
+        public abstract string createMySQLColumn();
     }
 }
