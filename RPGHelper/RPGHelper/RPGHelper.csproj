@@ -66,6 +66,8 @@
     <Compile Include="DatabaseTablesCreator.Designer.cs">
       <DependentUpon>DatabaseTablesCreator.cs</DependentUpon>
     </Compile>
+    <Compile Include="DBManage.cs" />
+    <Compile Include="DBReader.cs" />
     <Compile Include="MainProgramWindow.cs">
       <SubType>Form</SubType>
     </Compile>
