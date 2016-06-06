@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Column.cs" />
     <Compile Include="ColumnCreator.cs">
       <SubType>UserControl</SubType>
     </Compile>
