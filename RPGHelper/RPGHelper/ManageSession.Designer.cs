@@ -28,115 +28,103 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonSaveSession = new System.Windows.Forms.Button();
-            this.labelSelectedEntity = new System.Windows.Forms.Label();
-            this.menuStripManage = new System.Windows.Forms.MenuStrip();
-            this.playerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBoxSelectedPlayer = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.buttonLeftArrow = new System.Windows.Forms.Button();
-            this.buttonRightArrow = new System.Windows.Forms.Button();
-            this.menuStripManage.SuspendLayout();
+            this.dataGridColumns = new System.Windows.Forms.DataGridView();
+            this.columnPlaceHolder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonLoadSession = new System.Windows.Forms.Button();
+            this.buttonEditEntity = new System.Windows.Forms.Button();
+            this.listBoxSubEntities = new System.Windows.Forms.ListBox();
+            this.comboBoxEntities = new System.Windows.Forms.ComboBox();
+            this.labelSelectEntity = new System.Windows.Forms.Label();
+            this.labelSelectSubEntities = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridColumns)).BeginInit();
             this.SuspendLayout();
             // 
-            // buttonSaveSession
+            // dataGridColumns
             // 
-            this.buttonSaveSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonSaveSession.Location = new System.Drawing.Point(392, 459);
-            this.buttonSaveSession.Name = "buttonSaveSession";
-            this.buttonSaveSession.Size = new System.Drawing.Size(127, 43);
-            this.buttonSaveSession.TabIndex = 1;
-            this.buttonSaveSession.Text = "Save Session";
-            this.buttonSaveSession.UseVisualStyleBackColor = true;
+            this.dataGridColumns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridColumns.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.columnPlaceHolder});
+            this.dataGridColumns.Location = new System.Drawing.Point(15, 408);
+            this.dataGridColumns.Name = "dataGridColumns";
+            this.dataGridColumns.Size = new System.Drawing.Size(502, 150);
+            this.dataGridColumns.TabIndex = 0;
             // 
-            // labelSelectedEntity
+            // columnPlaceHolder
             // 
-            this.labelSelectedEntity.AutoSize = true;
-            this.labelSelectedEntity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.labelSelectedEntity.Location = new System.Drawing.Point(297, 63);
-            this.labelSelectedEntity.Name = "labelSelectedEntity";
-            this.labelSelectedEntity.Size = new System.Drawing.Size(116, 20);
-            this.labelSelectedEntity.TabIndex = 5;
-            this.labelSelectedEntity.Text = "Selected Entity";
+            this.columnPlaceHolder.HeaderText = "Place Holder";
+            this.columnPlaceHolder.Name = "columnPlaceHolder";
             // 
-            // menuStripManage
+            // buttonLoadSession
             // 
-            this.menuStripManage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.menuStripManage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.playerToolStripMenuItem,
-            this.itemsToolStripMenuItem});
-            this.menuStripManage.Location = new System.Drawing.Point(0, 0);
-            this.menuStripManage.Name = "menuStripManage";
-            this.menuStripManage.Size = new System.Drawing.Size(531, 28);
-            this.menuStripManage.TabIndex = 6;
-            this.menuStripManage.Text = "menuStrip1";
+            this.buttonLoadSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonLoadSession.Location = new System.Drawing.Point(15, 13);
+            this.buttonLoadSession.Name = "buttonLoadSession";
+            this.buttonLoadSession.Size = new System.Drawing.Size(188, 43);
+            this.buttonLoadSession.TabIndex = 1;
+            this.buttonLoadSession.Text = "Load Another Session";
+            this.buttonLoadSession.UseVisualStyleBackColor = true;
             // 
-            // playerToolStripMenuItem
+            // buttonEditEntity
             // 
-            this.playerToolStripMenuItem.Name = "playerToolStripMenuItem";
-            this.playerToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
-            this.playerToolStripMenuItem.Text = "Player";
+            this.buttonEditEntity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonEditEntity.Location = new System.Drawing.Point(200, 359);
+            this.buttonEditEntity.Name = "buttonEditEntity";
+            this.buttonEditEntity.Size = new System.Drawing.Size(97, 43);
+            this.buttonEditEntity.TabIndex = 2;
+            this.buttonEditEntity.Text = "Edit Entity";
+            this.buttonEditEntity.UseVisualStyleBackColor = true;
             // 
-            // itemsToolStripMenuItem
+            // listBoxSubEntities
             // 
-            this.itemsToolStripMenuItem.Name = "itemsToolStripMenuItem";
-            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(61, 24);
-            this.itemsToolStripMenuItem.Text = "Items";
+            this.listBoxSubEntities.FormattingEnabled = true;
+            this.listBoxSubEntities.Location = new System.Drawing.Point(200, 95);
+            this.listBoxSubEntities.Name = "listBoxSubEntities";
+            this.listBoxSubEntities.Size = new System.Drawing.Size(145, 251);
+            this.listBoxSubEntities.TabIndex = 3;
             // 
-            // textBoxSelectedPlayer
+            // comboBoxEntities
             // 
-            this.textBoxSelectedPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBoxSelectedPlayer.Location = new System.Drawing.Point(392, 2);
-            this.textBoxSelectedPlayer.Name = "textBoxSelectedPlayer";
-            this.textBoxSelectedPlayer.Size = new System.Drawing.Size(100, 26);
-            this.textBoxSelectedPlayer.TabIndex = 7;
-            this.textBoxSelectedPlayer.Text = "Player";
+            this.comboBoxEntities.FormattingEnabled = true;
+            this.comboBoxEntities.Location = new System.Drawing.Point(15, 100);
+            this.comboBoxEntities.Name = "comboBoxEntities";
+            this.comboBoxEntities.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxEntities.TabIndex = 4;
             // 
-            // textBox1
+            // labelSelectEntity
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textBox1.Location = new System.Drawing.Point(419, 60);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 26);
-            this.textBox1.TabIndex = 8;
+            this.labelSelectEntity.AutoSize = true;
+            this.labelSelectEntity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labelSelectEntity.Location = new System.Drawing.Point(11, 77);
+            this.labelSelectEntity.Name = "labelSelectEntity";
+            this.labelSelectEntity.Size = new System.Drawing.Size(98, 20);
+            this.labelSelectEntity.TabIndex = 5;
+            this.labelSelectEntity.Text = "Select Entity";
             // 
-            // buttonLeftArrow
+            // labelSelectSubEntities
             // 
-            this.buttonLeftArrow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonLeftArrow.Location = new System.Drawing.Point(360, 3);
-            this.buttonLeftArrow.Name = "buttonLeftArrow";
-            this.buttonLeftArrow.Size = new System.Drawing.Size(26, 25);
-            this.buttonLeftArrow.TabIndex = 9;
-            this.buttonLeftArrow.Text = "<";
-            this.buttonLeftArrow.UseVisualStyleBackColor = true;
-            // 
-            // buttonRightArrow
-            // 
-            this.buttonRightArrow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonRightArrow.Location = new System.Drawing.Point(498, 3);
-            this.buttonRightArrow.Name = "buttonRightArrow";
-            this.buttonRightArrow.Size = new System.Drawing.Size(26, 25);
-            this.buttonRightArrow.TabIndex = 10;
-            this.buttonRightArrow.Text = ">";
-            this.buttonRightArrow.UseVisualStyleBackColor = true;
+            this.labelSelectSubEntities.AutoSize = true;
+            this.labelSelectSubEntities.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labelSelectSubEntities.Location = new System.Drawing.Point(196, 72);
+            this.labelSelectSubEntities.Name = "labelSelectSubEntities";
+            this.labelSelectSubEntities.Size = new System.Drawing.Size(132, 20);
+            this.labelSelectSubEntities.TabIndex = 6;
+            this.labelSelectSubEntities.Text = "Select Sub-Entity";
             // 
             // ManageSession
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonRightArrow);
-            this.Controls.Add(this.buttonLeftArrow);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBoxSelectedPlayer);
-            this.Controls.Add(this.labelSelectedEntity);
-            this.Controls.Add(this.buttonSaveSession);
-            this.Controls.Add(this.menuStripManage);
+            this.Controls.Add(this.labelSelectSubEntities);
+            this.Controls.Add(this.labelSelectEntity);
+            this.Controls.Add(this.comboBoxEntities);
+            this.Controls.Add(this.listBoxSubEntities);
+            this.Controls.Add(this.buttonEditEntity);
+            this.Controls.Add(this.buttonLoadSession);
+            this.Controls.Add(this.dataGridColumns);
             this.Name = "ManageSession";
-            this.Size = new System.Drawing.Size(531, 511);
+            this.Size = new System.Drawing.Size(531, 575);
             this.Load += new System.EventHandler(this.ManageSession_Load);
-            this.menuStripManage.ResumeLayout(false);
-            this.menuStripManage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridColumns)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,14 +132,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonSaveSession;
-        private System.Windows.Forms.Label labelSelectedEntity;
-        private System.Windows.Forms.MenuStrip menuStripManage;
-        private System.Windows.Forms.ToolStripMenuItem playerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem itemsToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBoxSelectedPlayer;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button buttonLeftArrow;
-        private System.Windows.Forms.Button buttonRightArrow;
+        private System.Windows.Forms.DataGridView dataGridColumns;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnPlaceHolder;
+        private System.Windows.Forms.Button buttonLoadSession;
+        private System.Windows.Forms.Button buttonEditEntity;
+        private System.Windows.Forms.ListBox listBoxSubEntities;
+        private System.Windows.Forms.ComboBox comboBoxEntities;
+        private System.Windows.Forms.Label labelSelectEntity;
+        private System.Windows.Forms.Label labelSelectSubEntities;
     }
 }
