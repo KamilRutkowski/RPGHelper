@@ -34,10 +34,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 661);
+            this.ClientSize = new System.Drawing.Size(534, 661);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(600, 700);
-            this.MinimumSize = new System.Drawing.Size(600, 700);
+            this.MaximumSize = new System.Drawing.Size(550, 700);
+            this.MinimumSize = new System.Drawing.Size(550, 700);
             this.Name = "RPGHelperMainWindow";
             this.Text = "RPGHelper";
             this.Load += new System.EventHandler(this.RPGHelperMainWindow_Load);

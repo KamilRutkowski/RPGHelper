@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Status: completed
+
 namespace RPGHelper
 {
     public partial class ColumnCreator : UserControl
@@ -16,12 +18,20 @@ namespace RPGHelper
         /// <summary>
         /// Name of column to create
         /// </summary>
-        public string columnName { get; set; }
+        public string columnName
+        {
+            get { return textBoxName.Text; }
+            set { textBoxName.Text = value; }
+        }
 
         /// <summary>
         /// Type of column to create
         /// </summary>
-        public Column.ColumnType type { get; set; }
+        public Column.ColumnType type
+        {
+            get { return (Column.ColumnType)Enum.Parse(typeof(Column.ColumnType), comboBoxTypeOfColumn.Text); }
+            set { comboBoxTypeOfColumn.Text = Enum.GetName(typeof(Column.ColumnType), value); }
+        }
 
         /// <summary>
         /// Values in enum, empty when type is not enum
@@ -30,15 +40,24 @@ namespace RPGHelper
 
         #endregion
 
+        #region Callbacks
 
+        private myDelegate deleteMe { get; set; }
 
-        public ColumnCreator()
+        #endregion
+
+        public delegate void myDelegate(Control sender);
+
+        public ColumnCreator(myDelegate deleteCallback)
         {
             InitializeComponent();
             //Adding enum options
-            comboBoxTypeOfColumn.Items.Add(Column.ColumnType.Number.ToString());
-            comboBoxTypeOfColumn.Items.Add(Column.ColumnType.Text.ToString());
-            comboBoxTypeOfColumn.Items.Add(Column.ColumnType.Enum.ToString());
+            foreach(Column.ColumnType a in Enum.GetValues(typeof(Column.ColumnType)))
+            {
+                comboBoxTypeOfColumn.Items.Add(a);
+            }
+            comboBoxTypeOfColumn.SelectedItem = comboBoxTypeOfColumn.Items[0];
+            deleteMe = deleteCallback;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -82,7 +101,8 @@ namespace RPGHelper
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show("Do you want to remove column " + textBoxName.Text + "?", "Removing column", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                deleteMe(this);
         }
     }
 }

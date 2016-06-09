@@ -14,6 +14,14 @@ namespace RPGHelper
     {
         #region Properties
 
+        private string actualTableName { get; set; }
+
+        private bool isPlayerType { get; set; }
+
+        #endregion
+
+        #region Callbacks
+
         /// <summary>
         /// Register a callback delegate for ExitButton.Click event
         /// </summary>
@@ -63,23 +71,65 @@ namespace RPGHelper
             playerTablesToCreate = playerTables;
             itemsTablesToCreate = itemsTables;
             connectionsToCreate = conn;
-            showCreatedTables();
+            if(playerTables.Count == 0)
+            {
+                Table PlayerTable = new Table();
+                PlayerTable.tableName = "Players";
+                playerTablesToCreate.Add(PlayerTable);
+            }
+            actualTableName = "Players";
+            isPlayerType = true;
+            showCreatedTable();
+            rearangeColums();
         }
         /// <summary>
         /// This method will draw the current table
         /// </summary>
-        private void showCreatedTables()
+        private void showCreatedTable()
         {
-
-        }
-
-        private void splitter1_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-
+            if(isPlayerType)
+            {
+                foreach(Table tab in playerTablesToCreate)
+                {
+                    if(tab.tableName == actualTableName)
+                    {
+                        foreach(Column col in tab.columnsInTable)
+                        {
+                            ColumnCreator colCreator = new ColumnCreator(removeColumn);
+                            colCreator.columnName = col.columnName;
+                            colCreator.type = col.type;
+                            if (col.type == Column.ColumnType.Enum)
+                                colCreator.enumValues = col.possibleEnumOptions;
+                            splitContainer1.Panel1.Controls.Add(colCreator);
+                        }
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                foreach (Table tab in itemsTablesToCreate)
+                {
+                    if (tab.tableName == actualTableName)
+                    {
+                        foreach (Column col in tab.columnsInTable)
+                        {
+                            ColumnCreator colCreator = new ColumnCreator(removeColumn);
+                            colCreator.columnName = col.columnName;
+                            colCreator.type = col.type;
+                            if (col.type == Column.ColumnType.Enum)
+                                colCreator.enumValues = col.possibleEnumOptions;
+                            splitContainer1.Panel1.Controls.Add(colCreator);
+                        }
+                        break;
+                    }
+                }
+            }
         }
 
         private void buttonReturnToNameCreation_Click(object sender, EventArgs e)
         {
+            saveCurrentColumsInCurrentTable();
             registerPreviousStep();
         }
 
@@ -90,7 +140,65 @@ namespace RPGHelper
 
         private void buttonNextStep_Click(object sender, EventArgs e)
         {
+            saveCurrentColumsInCurrentTable();
             registerNextStep(playerTablesToCreate, connectionsToCreate);
+        }
+        
+        private void buttonAddColumn_Click(object sender, EventArgs e)
+        {
+            ColumnCreator col = new ColumnCreator(removeColumn);
+            splitContainer1.Panel1.Controls.Add(col);
+            rearangeColums();
+        }
+
+        private void removeColumn(Control sender)
+        {
+            Controls.Remove(sender);
+            sender.Dispose();
+            rearangeColums();
+        }
+
+        private void rearangeColums()
+        {
+            int basePositionY = 27;
+            foreach(Control col in splitContainer1.Panel1.Controls)
+            {
+                if (col is ColumnCreator)
+                {
+                    col.Location = new Point(col.Location.X, basePositionY);
+                    basePositionY += 40; //ColumnCreator Height + 10 for space between
+                    col.Visible = true;
+                }
+            }
+            buttonAddColumn.Location = new Point(buttonAddColumn.Location.X, basePositionY);
+        }
+
+        private void saveCurrentColumsInCurrentTable()
+        {
+            Table currentTable = getCurrentTable();
+            foreach(Control control in splitContainer1.Panel1.Controls)
+            {
+                if(control is ColumnCreator)
+                {
+                    Column col = ((ColumnCreator)control).createColumn();
+                    currentTable.columnsInTable.Add(col);
+                }
+            }
+        }
+
+        private Table getCurrentTable()
+        {
+            if(isPlayerType)
+            {
+                foreach (Table tab in playerTablesToCreate)
+                    if (tab.tableName == actualTableName) return tab;
+            }
+            else
+            {
+                foreach (Table tab in itemsTablesToCreate)
+                    if (tab.tableName == actualTableName) return tab;
+            }
+            throw new Exception(actualTableName + " : not such table exists! Was playerType? "+isPlayerType.ToString());
         }
     }
 }

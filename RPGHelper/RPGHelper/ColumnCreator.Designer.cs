@@ -38,6 +38,7 @@
             // 
             // comboBoxTypeOfColumn
             // 
+            this.comboBoxTypeOfColumn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTypeOfColumn.FormattingEnabled = true;
             this.comboBoxTypeOfColumn.Location = new System.Drawing.Point(196, 3);
             this.comboBoxTypeOfColumn.Name = "comboBoxTypeOfColumn";

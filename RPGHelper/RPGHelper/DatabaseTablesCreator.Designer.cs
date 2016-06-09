@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DatabaseTablesCreator));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.buttonAddColumn = new System.Windows.Forms.Button();
+            this.buttonReturnToNameCreation = new System.Windows.Forms.Button();
+            this.buttonNextStep = new System.Windows.Forms.Button();
+            this.buttonStopCreation = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.playerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,10 +43,6 @@
             this.removeTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playerTablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemsTablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonReturnToNameCreation = new System.Windows.Forms.Button();
-            this.buttonNextStep = new System.Windows.Forms.Button();
-            this.buttonStopCreation = new System.Windows.Forms.Button();
-            this.columnCreator1 = new RPGHelper.ColumnCreator();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -54,6 +52,7 @@
             // 
             // splitContainer1
             // 
+            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -61,27 +60,61 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
-            this.splitContainer1.Panel1.Controls.Add(this.columnCreator1);
+            this.splitContainer1.Panel1.AutoScrollMinSize = new System.Drawing.Size(10, 0);
             this.splitContainer1.Panel1.Controls.Add(this.buttonAddColumn);
-            this.splitContainer1.Panel1.Controls.Add(this.menuStrip1);
+            this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(10);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.buttonReturnToNameCreation);
             this.splitContainer1.Panel2.Controls.Add(this.buttonNextStep);
             this.splitContainer1.Panel2.Controls.Add(this.buttonStopCreation);
-            this.splitContainer1.Size = new System.Drawing.Size(500, 600);
+            this.splitContainer1.Size = new System.Drawing.Size(550, 600);
             this.splitContainer1.SplitterDistance = 536;
             this.splitContainer1.TabIndex = 9;
             // 
             // buttonAddColumn
             // 
-            this.buttonAddColumn.Location = new System.Drawing.Point(53, 63);
+            this.buttonAddColumn.Location = new System.Drawing.Point(3, 27);
             this.buttonAddColumn.Name = "buttonAddColumn";
             this.buttonAddColumn.Size = new System.Drawing.Size(100, 23);
             this.buttonAddColumn.TabIndex = 2;
             this.buttonAddColumn.Text = "Add Column";
             this.buttonAddColumn.UseVisualStyleBackColor = true;
+            this.buttonAddColumn.Click += new System.EventHandler(this.buttonAddColumn_Click);
+            // 
+            // buttonReturnToNameCreation
+            // 
+            this.buttonReturnToNameCreation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonReturnToNameCreation.Location = new System.Drawing.Point(28, 13);
+            this.buttonReturnToNameCreation.Name = "buttonReturnToNameCreation";
+            this.buttonReturnToNameCreation.Size = new System.Drawing.Size(142, 35);
+            this.buttonReturnToNameCreation.TabIndex = 14;
+            this.buttonReturnToNameCreation.Text = "Previous step";
+            this.buttonReturnToNameCreation.UseVisualStyleBackColor = true;
+            this.buttonReturnToNameCreation.Click += new System.EventHandler(this.buttonReturnToNameCreation_Click);
+            // 
+            // buttonNextStep
+            // 
+            this.buttonNextStep.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonNextStep.Location = new System.Drawing.Point(380, 13);
+            this.buttonNextStep.Name = "buttonNextStep";
+            this.buttonNextStep.Size = new System.Drawing.Size(142, 35);
+            this.buttonNextStep.TabIndex = 13;
+            this.buttonNextStep.Text = "Next step";
+            this.buttonNextStep.UseVisualStyleBackColor = true;
+            this.buttonNextStep.Click += new System.EventHandler(this.buttonNextStep_Click);
+            // 
+            // buttonStopCreation
+            // 
+            this.buttonStopCreation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonStopCreation.Location = new System.Drawing.Point(205, 13);
+            this.buttonStopCreation.Name = "buttonStopCreation";
+            this.buttonStopCreation.Size = new System.Drawing.Size(142, 35);
+            this.buttonStopCreation.TabIndex = 12;
+            this.buttonStopCreation.Text = "Stop creation";
+            this.buttonStopCreation.UseVisualStyleBackColor = true;
+            this.buttonStopCreation.Click += new System.EventHandler(this.buttonStopCreation_Click);
             // 
             // menuStrip1
             // 
@@ -91,8 +124,8 @@
             this.tablesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(500, 24);
-            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Size = new System.Drawing.Size(550, 24);
+            this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // playerToolStripMenuItem
@@ -158,68 +191,24 @@
             this.itemsTablesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.itemsTablesToolStripMenuItem.Text = "Items tables";
             // 
-            // buttonReturnToNameCreation
-            // 
-            this.buttonReturnToNameCreation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonReturnToNameCreation.Location = new System.Drawing.Point(3, 13);
-            this.buttonReturnToNameCreation.Name = "buttonReturnToNameCreation";
-            this.buttonReturnToNameCreation.Size = new System.Drawing.Size(142, 35);
-            this.buttonReturnToNameCreation.TabIndex = 14;
-            this.buttonReturnToNameCreation.Text = "Poprzedni krok";
-            this.buttonReturnToNameCreation.UseVisualStyleBackColor = true;
-            this.buttonReturnToNameCreation.Click += new System.EventHandler(this.buttonReturnToNameCreation_Click);
-            // 
-            // buttonNextStep
-            // 
-            this.buttonNextStep.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonNextStep.Location = new System.Drawing.Point(355, 13);
-            this.buttonNextStep.Name = "buttonNextStep";
-            this.buttonNextStep.Size = new System.Drawing.Size(142, 35);
-            this.buttonNextStep.TabIndex = 13;
-            this.buttonNextStep.Text = "Następny krok";
-            this.buttonNextStep.UseVisualStyleBackColor = true;
-            this.buttonNextStep.Click += new System.EventHandler(this.buttonNextStep_Click);
-            // 
-            // buttonStopCreation
-            // 
-            this.buttonStopCreation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonStopCreation.Location = new System.Drawing.Point(180, 13);
-            this.buttonStopCreation.Name = "buttonStopCreation";
-            this.buttonStopCreation.Size = new System.Drawing.Size(142, 35);
-            this.buttonStopCreation.TabIndex = 12;
-            this.buttonStopCreation.Text = "Przerwij kreację";
-            this.buttonStopCreation.UseVisualStyleBackColor = true;
-            this.buttonStopCreation.Click += new System.EventHandler(this.buttonStopCreation_Click);
-            // 
-            // columnCreator1
-            // 
-            this.columnCreator1.columnName = null;
-            this.columnCreator1.enumValues = ((System.Collections.Generic.List<string>)(resources.GetObject("columnCreator1.enumValues")));
-            this.columnCreator1.Location = new System.Drawing.Point(3, 27);
-            this.columnCreator1.MaximumSize = new System.Drawing.Size(380, 30);
-            this.columnCreator1.MinimumSize = new System.Drawing.Size(380, 30);
-            this.columnCreator1.Name = "columnCreator1";
-            this.columnCreator1.Size = new System.Drawing.Size(380, 30);
-            this.columnCreator1.TabIndex = 3;
-            this.columnCreator1.type = RPGHelper.Column.ColumnType.Number;
-            // 
             // DatabaseTablesCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.splitContainer1);
-            this.MaximumSize = new System.Drawing.Size(500, 600);
-            this.MinimumSize = new System.Drawing.Size(500, 600);
+            this.MaximumSize = new System.Drawing.Size(550, 600);
+            this.MinimumSize = new System.Drawing.Size(550, 600);
             this.Name = "DatabaseTablesCreator";
-            this.Size = new System.Drawing.Size(500, 600);
+            this.Size = new System.Drawing.Size(550, 600);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -229,6 +218,7 @@
         private System.Windows.Forms.Button buttonReturnToNameCreation;
         private System.Windows.Forms.Button buttonNextStep;
         private System.Windows.Forms.Button buttonStopCreation;
+        private System.Windows.Forms.Button buttonAddColumn;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem playerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemsToolStripMenuItem;
@@ -239,7 +229,5 @@
         private System.Windows.Forms.ToolStripMenuItem removeTableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem playerTablesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemsTablesToolStripMenuItem;
-        private System.Windows.Forms.Button buttonAddColumn;
-        private ColumnCreator columnCreator1;
     }
 }

@@ -21,6 +21,8 @@ namespace RPGHelper
         { Number, Text, Enum }
 
         public Column()
-        { }
+        {
+            possibleEnumOptions = new List<string>();
+        }
     }
 }

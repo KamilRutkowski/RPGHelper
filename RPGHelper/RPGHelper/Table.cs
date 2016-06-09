@@ -10,8 +10,15 @@ namespace RPGHelper
     {
         #region Properties
 
+        public string tableName { get; set; }
 
+        public List<Column> columnsInTable { get; set; }
 
         #endregion
+
+        public Table()
+        {
+            columnsInTable = new List<Column>();
+        }
     }
 }

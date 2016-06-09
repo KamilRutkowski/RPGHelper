@@ -61,6 +61,11 @@ namespace RPGHelper
 
         private void buttonNextStep_Click(object sender, EventArgs e)
         {
+            if(textBoxDatabaseName.Text.Trim()=="")
+            {
+                MessageBox.Show("Session name can not be blank!", "Invalid session name", MessageBoxButtons.OK);
+                return;
+            }
             registerNextStepCreation(textBoxDatabaseName.Text);
         }
     }
