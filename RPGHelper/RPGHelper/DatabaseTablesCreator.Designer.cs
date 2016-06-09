@@ -155,20 +155,22 @@
             this.playerTableToolStripMenuItem,
             this.itemsTableToolStripMenuItem});
             this.createTableToolStripMenuItem.Name = "createTableToolStripMenuItem";
-            this.createTableToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.createTableToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.createTableToolStripMenuItem.Text = "Create table";
             // 
             // playerTableToolStripMenuItem
             // 
             this.playerTableToolStripMenuItem.Name = "playerTableToolStripMenuItem";
-            this.playerTableToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.playerTableToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.playerTableToolStripMenuItem.Text = "Player table";
+            this.playerTableToolStripMenuItem.Click += new System.EventHandler(this.playerTableToolStripMenuItem_Click);
             // 
             // itemsTableToolStripMenuItem
             // 
             this.itemsTableToolStripMenuItem.Name = "itemsTableToolStripMenuItem";
-            this.itemsTableToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.itemsTableToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.itemsTableToolStripMenuItem.Text = "Items table";
+            this.itemsTableToolStripMenuItem.Click += new System.EventHandler(this.itemsTableToolStripMenuItem_Click);
             // 
             // removeTableToolStripMenuItem
             // 
@@ -176,7 +178,7 @@
             this.playerTablesToolStripMenuItem,
             this.itemsTablesToolStripMenuItem});
             this.removeTableToolStripMenuItem.Name = "removeTableToolStripMenuItem";
-            this.removeTableToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.removeTableToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.removeTableToolStripMenuItem.Text = "Remove table";
             // 
             // playerTablesToolStripMenuItem

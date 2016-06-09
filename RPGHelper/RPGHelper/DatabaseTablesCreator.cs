@@ -8,6 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+/// <summary>
+/// TODO:
+/// Adding tables to dropdown list
+/// Removing tables
+/// Chech if table exist before creation
+/// Check for no-name colums before creation of new table/chosing other table/going to other step of creation
+/// Loading tables
+/// !!!Reminder -> ColumnCreator, changing item selected will wipe enum options
+/// </summary>
+
 namespace RPGHelper
 {
     public partial class DatabaseTablesCreator : UserControl
@@ -199,6 +210,67 @@ namespace RPGHelper
                     if (tab.tableName == actualTableName) return tab;
             }
             throw new Exception(actualTableName + " : not such table exists! Was playerType? "+isPlayerType.ToString());
+        }
+
+
+        private void addTableForPlayer(string tableName)
+        {
+            if (tableName == "")
+                return;
+            saveCurrentColumsInCurrentTable();
+            Table tab = new Table();
+            tab.tableName = tableName;
+            playerTablesToCreate.Add(tab);
+            removeAllColums();
+            actualTableName = tableName;
+            isPlayerType = true;
+            rearangeColums();
+        }
+
+        private void addTableForItems(string tableName)
+        {
+            if (tableName == "")
+                return;
+            saveCurrentColumsInCurrentTable();
+            Table tab = new Table();
+            tab.tableName = tableName;
+            itemsTablesToCreate.Add(tab);
+            removeAllColums();
+            actualTableName = tableName;
+            isPlayerType = false;
+            rearangeColums();
+        }
+
+        //Remove all 
+        private void removeAllColums()
+        {
+            Control tmp;
+            int max = splitContainer1.Panel1.Controls.Count;
+            for(int i=0; i < max;)
+            {
+                tmp = splitContainer1.Panel1.Controls[i];
+                if(tmp is ColumnCreator)
+                {
+                    tmp.Dispose();
+                    max -= 1;
+                    continue;
+                }
+                i++;
+            }
+        }
+
+        //Create table for Player
+        private void playerTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTableName addTable = new AddTableName(addTableForPlayer);
+            addTable.Show();
+        }
+
+        //Create table for Items
+        private void itemsTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTableName addTable = new AddTableName(addTableForItems);
+            addTable.Show();
         }
     }
 }

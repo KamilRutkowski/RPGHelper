@@ -12,7 +12,7 @@ namespace RPGHelper
 {
     public partial class DatabaseNameCreator : UserControl
     {
-        #region Propeties
+        #region Callbacks
         /// <summary>
         /// Register a callback delegate for ExitButton.Click event 
         /// </summary>
@@ -47,11 +47,6 @@ namespace RPGHelper
             registerExitCreation = exit;
             registerNextStepCreation = nextStep;
             textBoxDatabaseName.Text = startingName;
-        }
-
-        private void DatabaseNameCreator_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonStopCreation_Click(object sender, EventArgs e)

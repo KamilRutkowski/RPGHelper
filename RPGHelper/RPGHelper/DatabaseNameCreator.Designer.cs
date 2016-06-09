@@ -86,7 +86,6 @@
             this.MinimumSize = new System.Drawing.Size(500, 600);
             this.Name = "DatabaseNameCreator";
             this.Size = new System.Drawing.Size(500, 600);
-            this.Load += new System.EventHandler(this.DatabaseNameCreator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

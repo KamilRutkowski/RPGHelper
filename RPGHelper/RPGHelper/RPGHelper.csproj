@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddTableName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTableName.Designer.cs">
+      <DependentUpon>AddTableName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Column.cs" />
     <Compile Include="ColumnCreator.cs">
       <SubType>UserControl</SubType>
@@ -108,6 +114,9 @@
       <DependentUpon>DatabaseNameCreator.cs</DependentUpon>
     </Compile>
     <Compile Include="Table.cs" />
+    <EmbeddedResource Include="AddTableName.resx">
+      <DependentUpon>AddTableName.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ColumnCreator.resx">
       <DependentUpon>ColumnCreator.cs</DependentUpon>
     </EmbeddedResource>
