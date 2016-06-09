@@ -28,35 +28,83 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBoxTypeOfColumn = new System.Windows.Forms.ComboBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.labelName = new System.Windows.Forms.Label();
+            this.labelTypeOfColumn = new System.Windows.Forms.Label();
+            this.buttonEnum = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // comboBoxTypeOfColumn
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(109, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 0;
+            this.comboBoxTypeOfColumn.FormattingEnabled = true;
+            this.comboBoxTypeOfColumn.Location = new System.Drawing.Point(196, 3);
+            this.comboBoxTypeOfColumn.Name = "comboBoxTypeOfColumn";
+            this.comboBoxTypeOfColumn.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxTypeOfColumn.TabIndex = 0;
+            this.comboBoxTypeOfColumn.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // textBox1
+            // textBoxName
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBoxName.Location = new System.Drawing.Point(50, 3);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxName.TabIndex = 1;
+            // 
+            // labelName
+            // 
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(9, 6);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(38, 13);
+            this.labelName.TabIndex = 2;
+            this.labelName.Text = "Name:";
+            // 
+            // labelTypeOfColumn
+            // 
+            this.labelTypeOfColumn.AutoSize = true;
+            this.labelTypeOfColumn.Location = new System.Drawing.Point(156, 6);
+            this.labelTypeOfColumn.Name = "labelTypeOfColumn";
+            this.labelTypeOfColumn.Size = new System.Drawing.Size(34, 13);
+            this.labelTypeOfColumn.TabIndex = 3;
+            this.labelTypeOfColumn.Text = "Type:";
+            // 
+            // buttonEnum
+            // 
+            this.buttonEnum.Location = new System.Drawing.Point(323, 3);
+            this.buttonEnum.Name = "buttonEnum";
+            this.buttonEnum.Size = new System.Drawing.Size(75, 23);
+            this.buttonEnum.TabIndex = 4;
+            this.buttonEnum.Text = "Edit Values";
+            this.buttonEnum.UseVisualStyleBackColor = true;
+            this.buttonEnum.Click += new System.EventHandler(this.buttonEnum_Click);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(404, 4);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(93, 23);
+            this.buttonDelete.TabIndex = 5;
+            this.buttonDelete.Text = "Remove Column";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // ColumnCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
-            this.MaximumSize = new System.Drawing.Size(450, 30);
-            this.MinimumSize = new System.Drawing.Size(450, 30);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonEnum);
+            this.Controls.Add(this.labelTypeOfColumn);
+            this.Controls.Add(this.labelName);
+            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.comboBoxTypeOfColumn);
+            this.MaximumSize = new System.Drawing.Size(500, 30);
+            this.MinimumSize = new System.Drawing.Size(500, 30);
             this.Name = "ColumnCreator";
-            this.Size = new System.Drawing.Size(450, 30);
+            this.Size = new System.Drawing.Size(500, 30);
+            this.Load += new System.EventHandler(this.ColumnCreator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -64,7 +112,11 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBoxTypeOfColumn;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.Label labelTypeOfColumn;
+        private System.Windows.Forms.Button buttonEnum;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }

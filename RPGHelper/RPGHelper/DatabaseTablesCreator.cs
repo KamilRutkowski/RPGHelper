@@ -42,22 +42,9 @@ namespace RPGHelper
         public delegate void myDelegate();
         public delegate void myDelegateWithTables(List<Table> tables, List<ConnectionsInTables> takeFromItems);
 
-        private List<Table> tablesToCreate;
+        private List<Table> playerTablesToCreate;
+        private List<Table> itemsTablesToCreate;
         private List<ConnectionsInTables> connectionsToCreate;
-
-        /// <summary>
-        /// Control for creatng tables in database
-        /// </summary>
-        /// <param name="exit">Delegate for exiting a process of session creation</param>
-        /// <param name="previousStep">Delegate for previous step of database creation</param>
-        /// <param name="nextStep">Delegate for next step of database creation</param>
-        public DatabaseTablesCreator(myDelegate exit, myDelegate previousStep, myDelegateWithTables nextStep)
-        {
-            InitializeComponent();
-            registerExit = exit;
-            registerPreviousStep = previousStep;
-            registerNextStep = nextStep;
-        }
 
         /// <summary>
         /// Control for creatng tables in database with pre-existiong tables
@@ -65,15 +52,16 @@ namespace RPGHelper
         /// <param name="exit">Delegate for exiting a process of session creation</param>
         /// <param name="previousStep">Delegate for previous step of database creation</param>
         /// <param name="nextStep">Delegate for next step of database creation</param>
-        /// <param name="tables">Pre-existing tables</param>
+        /// <param name="playerTables">Pre-existing tables</param>
         /// <param name="conn">Pre-existing connections</param>
-        public DatabaseTablesCreator(myDelegate exit, myDelegate previousStep, myDelegateWithTables nextStep, List<Table> tables, List<ConnectionsInTables> conn)
+        public DatabaseTablesCreator(myDelegate exit, myDelegate previousStep, myDelegateWithTables nextStep, List<Table> playerTables, List<Table> itemsTables, List<ConnectionsInTables> conn)
         {
             InitializeComponent();
             registerExit = exit;
             registerPreviousStep = previousStep;
             registerNextStep = nextStep;
-            tablesToCreate = tables;
+            playerTablesToCreate = playerTables;
+            itemsTablesToCreate = itemsTables;
             connectionsToCreate = conn;
             showCreatedTables();
         }
@@ -102,7 +90,7 @@ namespace RPGHelper
 
         private void buttonNextStep_Click(object sender, EventArgs e)
         {
-            registerNextStep(tablesToCreate, connectionsToCreate);
+            registerNextStep(playerTablesToCreate, connectionsToCreate);
         }
     }
 }

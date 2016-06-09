@@ -25,7 +25,8 @@ namespace RPGHelper
         #endregion
 
         string databaseName;
-        List<Table> tablesInDatabase;
+        List<Table> playerTablesInDatabase;
+        List<Table> itemsTablesInDatabase;
         List<ConnectionsInTables> connectionsBetweenTables;
         Control activeContorl;
 
@@ -38,7 +39,8 @@ namespace RPGHelper
         public SessionCreator(myActionDelegate databaseCreated)
         {
             InitializeComponent();
-            tablesInDatabase = new List<Table>();
+            playerTablesInDatabase = new List<Table>();
+            itemsTablesInDatabase = new List<Table>();
             connectionsBetweenTables = new List<ConnectionsInTables>();
             databaseName = "";
             registerdatabaseCreated = databaseCreated;
@@ -61,7 +63,7 @@ namespace RPGHelper
         {
             databaseName = dataName;
             activeContorl.Dispose();
-            activeContorl = new DatabaseTablesCreator(stopCreation, goToNaming, goToRelations);
+            activeContorl = new DatabaseTablesCreator(stopCreation, goToNaming, goToRelations, playerTablesInDatabase, itemsTablesInDatabase, connectionsBetweenTables);
             Controls.Add(activeContorl);
         }
 
@@ -76,7 +78,7 @@ namespace RPGHelper
         private void goToRelations(List<Table> tables, List<ConnectionsInTables> takeValuesFromItemsTables)
         {
             activeContorl.Dispose();
-            activeContorl = new DatabaseRelationsCreator(stopCreation, goBackToCreatingTables, createDatabase, connectionsBetweenTables);
+            activeContorl = new DatabaseTablesCreator(stopCreation, goToNaming, goToRelations, playerTablesInDatabase, itemsTablesInDatabase, connectionsBetweenTables);
             Controls.Add(activeContorl);
         }
         
@@ -84,7 +86,7 @@ namespace RPGHelper
         private void goBackToCreatingTables()
         {
             activeContorl.Dispose();
-            activeContorl = new DatabaseTablesCreator(stopCreation, goToNaming, goToRelations, tablesInDatabase, connectionsBetweenTables);
+            activeContorl = new DatabaseTablesCreator(stopCreation, goToNaming, goToRelations, playerTablesInDatabase, itemsTablesInDatabase, connectionsBetweenTables);
             Controls.Add(activeContorl);
         }
 

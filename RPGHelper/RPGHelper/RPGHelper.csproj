@@ -69,6 +69,12 @@
     </Compile>
     <Compile Include="DBManage.cs" />
     <Compile Include="DBReader.cs" />
+    <Compile Include="ListOfItemsInEnum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListOfItemsInEnum.Designer.cs">
+      <DependentUpon>ListOfItemsInEnum.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainProgramWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseTablesCreator.resx">
       <DependentUpon>DatabaseTablesCreator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListOfItemsInEnum.resx">
+      <DependentUpon>ListOfItemsInEnum.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainProgramWindow.resx">
       <DependentUpon>MainProgramWindow.cs</DependentUpon>

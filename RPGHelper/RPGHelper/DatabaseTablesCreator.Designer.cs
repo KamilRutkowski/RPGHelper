@@ -28,13 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DatabaseTablesCreator));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.buttonAddColumn = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.playerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playerTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemsTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playerTablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemsTablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonReturnToNameCreation = new System.Windows.Forms.Button();
             this.buttonNextStep = new System.Windows.Forms.Button();
             this.buttonStopCreation = new System.Windows.Forms.Button();
+            this.columnCreator1 = new RPGHelper.ColumnCreator();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -46,6 +61,9 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
+            this.splitContainer1.Panel1.Controls.Add(this.columnCreator1);
+            this.splitContainer1.Panel1.Controls.Add(this.buttonAddColumn);
+            this.splitContainer1.Panel1.Controls.Add(this.menuStrip1);
             // 
             // splitContainer1.Panel2
             // 
@@ -55,6 +73,90 @@
             this.splitContainer1.Size = new System.Drawing.Size(500, 600);
             this.splitContainer1.SplitterDistance = 536;
             this.splitContainer1.TabIndex = 9;
+            // 
+            // buttonAddColumn
+            // 
+            this.buttonAddColumn.Location = new System.Drawing.Point(53, 63);
+            this.buttonAddColumn.Name = "buttonAddColumn";
+            this.buttonAddColumn.Size = new System.Drawing.Size(100, 23);
+            this.buttonAddColumn.TabIndex = 2;
+            this.buttonAddColumn.Text = "Add Column";
+            this.buttonAddColumn.UseVisualStyleBackColor = true;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.playerToolStripMenuItem,
+            this.itemsToolStripMenuItem,
+            this.tablesToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(500, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // playerToolStripMenuItem
+            // 
+            this.playerToolStripMenuItem.Name = "playerToolStripMenuItem";
+            this.playerToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.playerToolStripMenuItem.Text = "Player";
+            // 
+            // itemsToolStripMenuItem
+            // 
+            this.itemsToolStripMenuItem.Name = "itemsToolStripMenuItem";
+            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.itemsToolStripMenuItem.Text = "Items";
+            // 
+            // tablesToolStripMenuItem
+            // 
+            this.tablesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createTableToolStripMenuItem,
+            this.removeTableToolStripMenuItem});
+            this.tablesToolStripMenuItem.Name = "tablesToolStripMenuItem";
+            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.tablesToolStripMenuItem.Text = "Tables";
+            // 
+            // createTableToolStripMenuItem
+            // 
+            this.createTableToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.playerTableToolStripMenuItem,
+            this.itemsTableToolStripMenuItem});
+            this.createTableToolStripMenuItem.Name = "createTableToolStripMenuItem";
+            this.createTableToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.createTableToolStripMenuItem.Text = "Create table";
+            // 
+            // playerTableToolStripMenuItem
+            // 
+            this.playerTableToolStripMenuItem.Name = "playerTableToolStripMenuItem";
+            this.playerTableToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.playerTableToolStripMenuItem.Text = "Player table";
+            // 
+            // itemsTableToolStripMenuItem
+            // 
+            this.itemsTableToolStripMenuItem.Name = "itemsTableToolStripMenuItem";
+            this.itemsTableToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.itemsTableToolStripMenuItem.Text = "Items table";
+            // 
+            // removeTableToolStripMenuItem
+            // 
+            this.removeTableToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.playerTablesToolStripMenuItem,
+            this.itemsTablesToolStripMenuItem});
+            this.removeTableToolStripMenuItem.Name = "removeTableToolStripMenuItem";
+            this.removeTableToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.removeTableToolStripMenuItem.Text = "Remove table";
+            // 
+            // playerTablesToolStripMenuItem
+            // 
+            this.playerTablesToolStripMenuItem.Name = "playerTablesToolStripMenuItem";
+            this.playerTablesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.playerTablesToolStripMenuItem.Text = "Player tables";
+            // 
+            // itemsTablesToolStripMenuItem
+            // 
+            this.itemsTablesToolStripMenuItem.Name = "itemsTablesToolStripMenuItem";
+            this.itemsTablesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.itemsTablesToolStripMenuItem.Text = "Items tables";
             // 
             // buttonReturnToNameCreation
             // 
@@ -89,6 +191,18 @@
             this.buttonStopCreation.UseVisualStyleBackColor = true;
             this.buttonStopCreation.Click += new System.EventHandler(this.buttonStopCreation_Click);
             // 
+            // columnCreator1
+            // 
+            this.columnCreator1.columnName = null;
+            this.columnCreator1.enumValues = ((System.Collections.Generic.List<string>)(resources.GetObject("columnCreator1.enumValues")));
+            this.columnCreator1.Location = new System.Drawing.Point(3, 27);
+            this.columnCreator1.MaximumSize = new System.Drawing.Size(380, 30);
+            this.columnCreator1.MinimumSize = new System.Drawing.Size(380, 30);
+            this.columnCreator1.Name = "columnCreator1";
+            this.columnCreator1.Size = new System.Drawing.Size(380, 30);
+            this.columnCreator1.TabIndex = 3;
+            this.columnCreator1.type = RPGHelper.Column.ColumnType.Number;
+            // 
             // DatabaseTablesCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -98,9 +212,13 @@
             this.MinimumSize = new System.Drawing.Size(500, 600);
             this.Name = "DatabaseTablesCreator";
             this.Size = new System.Drawing.Size(500, 600);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -111,5 +229,17 @@
         private System.Windows.Forms.Button buttonReturnToNameCreation;
         private System.Windows.Forms.Button buttonNextStep;
         private System.Windows.Forms.Button buttonStopCreation;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem playerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem itemsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tablesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem createTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem playerTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem itemsTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem playerTablesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem itemsTablesToolStripMenuItem;
+        private System.Windows.Forms.Button buttonAddColumn;
+        private ColumnCreator columnCreator1;
     }
 }
