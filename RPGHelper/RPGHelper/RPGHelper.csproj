@@ -52,6 +52,12 @@
     <Compile Include="AddTableName.Designer.cs">
       <DependentUpon>AddTableName.cs</DependentUpon>
     </Compile>
+    <Compile Include="BasicRelationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BasicRelationControl.Designer.cs">
+      <DependentUpon>BasicRelationControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Column.cs" />
     <Compile Include="ColumnCreator.cs">
       <SubType>UserControl</SubType>
@@ -114,6 +120,12 @@
       <DependentUpon>DatabaseNameCreator.cs</DependentUpon>
     </Compile>
     <Compile Include="Table.cs" />
+    <Compile Include="ConnectionBetweenPlayerTables.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConnectionBetweenPlayerTables.Designer.cs">
+      <DependentUpon>ConnectionBetweenPlayerTables.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddTableName.resx">
       <DependentUpon>AddTableName.cs</DependentUpon>
     </EmbeddedResource>

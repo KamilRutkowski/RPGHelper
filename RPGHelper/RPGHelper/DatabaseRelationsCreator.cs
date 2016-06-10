@@ -52,7 +52,7 @@ namespace RPGHelper
         /// <param name="createDatabase"> Delegate for finishing creation of relations and send it to sql creation of database </param>
         /// <param name="players"></param>
         /// <param name="connections"> Connections between Player and Items tables to be edited</param>
-        public DatabaseRelationsCreator(myDelegate exit, myDelegate previousStep, myDelegateCreateDatabase createDatabase, List<Table> playerTables, List<ConnectionsInTables> connections)
+        public DatabaseRelationsCreator(myDelegate exit, myDelegate previousStep, myDelegateCreateDatabase createDatabase, List<Table> playerTables,List<Table> itemTables, List<ConnectionsInTables> connections)
         {
             InitializeComponent();
             registerExit = exit;

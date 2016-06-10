@@ -78,7 +78,7 @@ namespace RPGHelper
         private void goToRelations(List<Table> tablesOfPlayer, List<Table> tablesOfItems)
         {
             activeContorl.Dispose();
-            activeContorl = new DatabaseRelationsCreator(stopCreation,goBackToCreatingTables,createDatabase,playerTablesInDatabase,connectionsBetweenTables);
+            activeContorl = new DatabaseRelationsCreator(stopCreation,goBackToCreatingTables,createDatabase,playerTablesInDatabase,itemsTablesInDatabase,connectionsBetweenTables);
             Controls.Add(activeContorl);
         }
         
