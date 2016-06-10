@@ -60,7 +60,18 @@ namespace RPGHelper
         /// </summary>
         private void LoadSession()
         {
-            
+            var response = MessageBox.Show("Czy chcesz wczytać testową sesję?", "Wczytać testową sesję?", MessageBoxButtons.YesNoCancel);
+            if(response == DialogResult.Yes)
+            {
+                //Do testów
+                activeControl.Dispose();
+                activeControl = new ManageSession(endSession, "Test");
+                Controls.Add(activeControl);
+            }
+            if(response == DialogResult.No)
+            {
+
+            }
         }
 
         /// <summary>

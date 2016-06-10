@@ -70,5 +70,10 @@ namespace RPGHelper
         {
             registerStartNewSession();
         }
+
+        private void buttonLoadSession_Click(object sender, EventArgs e)
+        {
+            registerLoadSession();
+        }
     }
 }

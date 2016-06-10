@@ -53,6 +53,7 @@
             this.buttonLoadSession.TabIndex = 1;
             this.buttonLoadSession.Text = "Resume Session";
             this.buttonLoadSession.UseVisualStyleBackColor = true;
+            this.buttonLoadSession.Click += new System.EventHandler(this.buttonLoadSession_Click);
             // 
             // buttonExit
             // 
