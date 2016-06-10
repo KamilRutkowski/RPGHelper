@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGHelper
 {
-    class DBManage
+    public class DBManage
     {
     }
 }
