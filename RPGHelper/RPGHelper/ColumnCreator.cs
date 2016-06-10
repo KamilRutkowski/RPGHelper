@@ -72,7 +72,15 @@ namespace RPGHelper
             {
                 buttonEnum.Visible = true;
             }
+            else
+            {
+                buttonEnum.Visible = false;
+            }
             type = (Column.ColumnType)Enum.Parse(typeof(Column.ColumnType),comboBoxTypeOfColumn.SelectedItem.ToString(),true);
+            if(!buttonEnum.Visible && (enumValues.Count > 0))
+            {
+                enumValues.Clear();
+            }
         }
 
         private void buttonEnum_Click(object sender, EventArgs e)

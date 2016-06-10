@@ -63,7 +63,7 @@ namespace RPGHelper
         {
             databaseName = dataName;
             activeContorl.Dispose();
-            activeContorl = new DatabaseTablesCreator(stopCreation, goToNaming, goToRelations, playerTablesInDatabase, itemsTablesInDatabase, connectionsBetweenTables);
+            activeContorl = new DatabaseTablesCreator(stopCreation, goToNaming, goToRelations, playerTablesInDatabase, itemsTablesInDatabase);
             Controls.Add(activeContorl);
         }
 
@@ -75,7 +75,7 @@ namespace RPGHelper
             Controls.Add(activeContorl);
         }
 
-        private void goToRelations(List<Table> tables, List<ConnectionsInTables> takeValuesFromItemsTables)
+        private void goToRelations(List<Table> tablesOfPlayer, List<Table> tablesOfItems)
         {
             activeContorl.Dispose();
             activeContorl = new DatabaseRelationsCreator(stopCreation,goBackToCreatingTables,createDatabase,playerTablesInDatabase,connectionsBetweenTables);
@@ -86,7 +86,7 @@ namespace RPGHelper
         private void goBackToCreatingTables()
         {
             activeContorl.Dispose();
-            activeContorl = new DatabaseTablesCreator(stopCreation, goToNaming, goToRelations, playerTablesInDatabase, itemsTablesInDatabase, connectionsBetweenTables);
+            activeContorl = new DatabaseTablesCreator(stopCreation, goToNaming, goToRelations, playerTablesInDatabase, itemsTablesInDatabase);
             Controls.Add(activeContorl);
         }
 

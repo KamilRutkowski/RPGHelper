@@ -8,15 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-/// <summary>
-/// TODO:
-/// Chech if table exist before creation
-/// Getting the values for Player table from Items table
-/// Check for no-name colums before creation going to other step of creation
-/// !!!Reminder -> ColumnCreator, changing item selected will wipe enum options
-/// </summary>
-
 namespace RPGHelper
 {
     public partial class DatabaseTablesCreator : UserControl
@@ -57,11 +48,10 @@ namespace RPGHelper
         #endregion
 
         public delegate void myDelegate();
-        public delegate void myDelegateWithTables(List<Table> tables, List<ConnectionsInTables> takeFromItems);
+        public delegate void myDelegateWithTables(List<Table> tablesOfPlayer, List<Table> tablesOfItems);
 
         private List<Table> playerTablesToCreate;
         private List<Table> itemsTablesToCreate;
-        private List<ConnectionsInTables> connectionsToCreate;
 
         /// <summary>
         /// Control for creatng tables in database with pre-existiong tables
@@ -71,7 +61,7 @@ namespace RPGHelper
         /// <param name="nextStep">Delegate for next step of database creation</param>
         /// <param name="playerTables">Pre-existing tables</param>
         /// <param name="conn">Pre-existing connections</param>
-        public DatabaseTablesCreator(myDelegate exit, myDelegate previousStep, myDelegateWithTables nextStep, List<Table> playerTables, List<Table> itemsTables, List<ConnectionsInTables> conn)
+        public DatabaseTablesCreator(myDelegate exit, myDelegate previousStep, myDelegateWithTables nextStep, List<Table> playerTables, List<Table> itemsTables)
         {
             InitializeComponent();
             registerExit = exit;
@@ -79,7 +69,6 @@ namespace RPGHelper
             registerNextStep = nextStep;
             playerTablesToCreate = playerTables;
             itemsTablesToCreate = itemsTables;
-            connectionsToCreate = conn;
             if(playerTables.Count == 0)
             {
                 Table PlayerTable = new Table();
@@ -147,6 +136,11 @@ namespace RPGHelper
         /// <param name="e"></param>
         private void buttonReturnToNameCreation_Click(object sender, EventArgs e)
         {
+            if (!saveCurrentColumsInCurrentTable())
+            {
+                MessageBox.Show("Non titled columns detected! Remove or name them before proceding!", "Invalid column names", MessageBoxButtons.OK);
+                return;
+            }
             saveCurrentColumsInCurrentTable();
             registerPreviousStep();
         }
@@ -158,7 +152,8 @@ namespace RPGHelper
         /// <param name="e"></param>
         private void buttonStopCreation_Click(object sender, EventArgs e)
         {
-            registerExit();
+            if(DialogResult.Yes == MessageBox.Show("Do you really wish to exit creation process?","Exiting creation process",MessageBoxButtons.YesNo))
+               registerExit();
         }
 
         /// <summary>
@@ -168,8 +163,12 @@ namespace RPGHelper
         /// <param name="e"></param>
         private void buttonNextStep_Click(object sender, EventArgs e)
         {
-            saveCurrentColumsInCurrentTable();
-            registerNextStep(playerTablesToCreate, connectionsToCreate);
+            if (!saveCurrentColumsInCurrentTable())
+            {
+                MessageBox.Show("Non titled columns detected! Remove or name them before proceding!", "Invalid column names", MessageBoxButtons.OK);
+                return;
+            }
+            registerNextStep(playerTablesToCreate, itemsTablesToCreate);
         }
         
         /// <summary>
@@ -262,6 +261,14 @@ namespace RPGHelper
         {
             if (tableName == "")
                 return;
+            foreach(Table t in playerTablesToCreate)
+            {
+                if(t.tableName == tableName)
+                {
+                    MessageBox.Show("Table like that already exist!", "Same table name", MessageBoxButtons.OK);
+                    return;
+                }
+            }
             Table tab = new Table();
             tab.tableName = tableName;
             playerTablesToCreate.Add(tab);
@@ -341,6 +348,14 @@ namespace RPGHelper
         {
             if (tableName == "")
                 return;
+            foreach (Table t in itemsTablesToCreate)
+            {
+                if (t.tableName == tableName)
+                {
+                    MessageBox.Show("Table like that already exist!", "Same table name", MessageBoxButtons.OK);
+                    return;
+                }
+            }
             saveCurrentColumsInCurrentTable();
             Table tab = new Table();
             tab.tableName = tableName;
