@@ -105,7 +105,6 @@
             this.MinimumSize = new System.Drawing.Size(500, 30);
             this.Name = "ColumnCreator";
             this.Size = new System.Drawing.Size(500, 30);
-            this.Load += new System.EventHandler(this.ColumnCreator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -161,14 +161,14 @@
             // playerTableToolStripMenuItem
             // 
             this.playerTableToolStripMenuItem.Name = "playerTableToolStripMenuItem";
-            this.playerTableToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.playerTableToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.playerTableToolStripMenuItem.Text = "Player table";
             this.playerTableToolStripMenuItem.Click += new System.EventHandler(this.playerTableToolStripMenuItem_Click);
             // 
             // itemsTableToolStripMenuItem
             // 
             this.itemsTableToolStripMenuItem.Name = "itemsTableToolStripMenuItem";
-            this.itemsTableToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.itemsTableToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.itemsTableToolStripMenuItem.Text = "Items table";
             this.itemsTableToolStripMenuItem.Click += new System.EventHandler(this.itemsTableToolStripMenuItem_Click);
             // 
@@ -184,13 +184,13 @@
             // playerTablesToolStripMenuItem
             // 
             this.playerTablesToolStripMenuItem.Name = "playerTablesToolStripMenuItem";
-            this.playerTablesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.playerTablesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.playerTablesToolStripMenuItem.Text = "Player tables";
             // 
             // itemsTablesToolStripMenuItem
             // 
             this.itemsTablesToolStripMenuItem.Name = "itemsTablesToolStripMenuItem";
-            this.itemsTablesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.itemsTablesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.itemsTablesToolStripMenuItem.Text = "Items tables";
             // 
             // DatabaseTablesCreator

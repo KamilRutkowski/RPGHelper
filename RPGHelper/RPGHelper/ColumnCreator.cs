@@ -30,7 +30,11 @@ namespace RPGHelper
         public Column.ColumnType type
         {
             get { return (Column.ColumnType)Enum.Parse(typeof(Column.ColumnType), comboBoxTypeOfColumn.Text); }
-            set { comboBoxTypeOfColumn.Text = Enum.GetName(typeof(Column.ColumnType), value); }
+            set
+            {
+                comboBoxTypeOfColumn.Text = Enum.GetName(typeof(Column.ColumnType), value);
+                if (value == Column.ColumnType.Enum) buttonEnum.Visible = true;
+            }
         }
 
         /// <summary>
@@ -51,8 +55,10 @@ namespace RPGHelper
         public ColumnCreator(myDelegate deleteCallback)
         {
             InitializeComponent();
+            buttonEnum.Visible = false;
+            enumValues = new List<string>();
             //Adding enum options
-            foreach(Column.ColumnType a in Enum.GetValues(typeof(Column.ColumnType)))
+            foreach (Column.ColumnType a in Enum.GetValues(typeof(Column.ColumnType)))
             {
                 comboBoxTypeOfColumn.Items.Add(a);
             }
@@ -91,12 +97,6 @@ namespace RPGHelper
             createdColumn.type = type;
             if (type == Column.ColumnType.Enum) createdColumn.possibleEnumOptions = enumValues;
             return createdColumn;
-        }
-
-        private void ColumnCreator_Load(object sender, EventArgs e)
-        {
-            buttonEnum.Visible = false;
-            enumValues = new List<string>();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
