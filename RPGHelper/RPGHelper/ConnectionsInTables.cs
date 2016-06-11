@@ -44,7 +44,7 @@ namespace RPGHelper
             /// </summary>
             GA };
 
-        ConnectionsInTables(Table src, Table trg, ConnectionType typeOfConnection)
+        public ConnectionsInTables(Table src, Table trg, ConnectionType typeOfConnection)
         {
             sourceTable = src;
             targetTable = trg;

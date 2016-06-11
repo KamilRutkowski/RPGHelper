@@ -83,9 +83,10 @@ namespace RPGHelper
         }
         
         //For DatabaseRelationsCreator
-        private void goBackToCreatingTables()
+        private void goBackToCreatingTables(List<ConnectionsInTables> connections)
         {
             activeContorl.Dispose();
+            connectionsBetweenTables = connections;
             activeContorl = new DatabaseTablesCreator(stopCreation, goToNaming, goToRelations, playerTablesInDatabase, itemsTablesInDatabase);
             Controls.Add(activeContorl);
         }
@@ -93,7 +94,7 @@ namespace RPGHelper
         private void createDatabase(List<ConnectionsInTables> connections)
         {
             //Creating database
-
+            connectionsBetweenTables = connections;
             registerdatabaseCreated(databaseName);
         }
     }

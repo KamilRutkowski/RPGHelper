@@ -29,10 +29,13 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.buttonAddConnectionToItems = new System.Windows.Forms.Button();
+            this.buttonAddPlayerTables = new System.Windows.Forms.Button();
             this.buttonReturnToTablesCreation = new System.Windows.Forms.Button();
             this.buttonCreateDatabase = new System.Windows.Forms.Button();
             this.buttonStopCreation = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
@@ -47,15 +50,37 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
+            this.splitContainer1.Panel1.Controls.Add(this.buttonAddConnectionToItems);
+            this.splitContainer1.Panel1.Controls.Add(this.buttonAddPlayerTables);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.buttonReturnToTablesCreation);
             this.splitContainer1.Panel2.Controls.Add(this.buttonCreateDatabase);
             this.splitContainer1.Panel2.Controls.Add(this.buttonStopCreation);
-            this.splitContainer1.Size = new System.Drawing.Size(500, 600);
+            this.splitContainer1.Size = new System.Drawing.Size(550, 600);
             this.splitContainer1.SplitterDistance = 533;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // buttonAddConnectionToItems
+            // 
+            this.buttonAddConnectionToItems.Location = new System.Drawing.Point(306, 3);
+            this.buttonAddConnectionToItems.Name = "buttonAddConnectionToItems";
+            this.buttonAddConnectionToItems.Size = new System.Drawing.Size(137, 23);
+            this.buttonAddConnectionToItems.TabIndex = 1;
+            this.buttonAddConnectionToItems.Text = "Get values from item table";
+            this.buttonAddConnectionToItems.UseVisualStyleBackColor = true;
+            this.buttonAddConnectionToItems.Click += new System.EventHandler(this.buttonAddConnectionToItems_Click);
+            // 
+            // buttonAddPlayerTables
+            // 
+            this.buttonAddPlayerTables.Location = new System.Drawing.Point(36, 3);
+            this.buttonAddPlayerTables.Name = "buttonAddPlayerTables";
+            this.buttonAddPlayerTables.Size = new System.Drawing.Size(214, 23);
+            this.buttonAddPlayerTables.TabIndex = 0;
+            this.buttonAddPlayerTables.Text = "Add connection between player tables";
+            this.buttonAddPlayerTables.UseVisualStyleBackColor = true;
+            this.buttonAddPlayerTables.Click += new System.EventHandler(this.buttonAddPlayerTables_Click);
             // 
             // buttonReturnToTablesCreation
             // 
@@ -94,11 +119,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.Controls.Add(this.splitContainer1);
-            this.MaximumSize = new System.Drawing.Size(500, 600);
-            this.MinimumSize = new System.Drawing.Size(500, 600);
+            this.MaximumSize = new System.Drawing.Size(550, 600);
+            this.MinimumSize = new System.Drawing.Size(550, 600);
             this.Name = "DatabaseRelationsCreator";
-            this.Size = new System.Drawing.Size(500, 600);
+            this.Size = new System.Drawing.Size(550, 600);
+            this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -112,5 +139,7 @@
         private System.Windows.Forms.Button buttonReturnToTablesCreation;
         private System.Windows.Forms.Button buttonCreateDatabase;
         private System.Windows.Forms.Button buttonStopCreation;
+        private System.Windows.Forms.Button buttonAddConnectionToItems;
+        private System.Windows.Forms.Button buttonAddPlayerTables;
     }
 }

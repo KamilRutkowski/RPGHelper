@@ -10,16 +10,146 @@ using System.Windows.Forms;
 
 namespace RPGHelper
 {
-    public partial class ConnectionBetweenPlayerTables : BasicRelationControl
+    public partial class ConnectionBetweenPlayerTables : UserControl, BasicConnectionInterface
     {
-        public ConnectionBetweenPlayerTables()
+        #region Properties
+
+        public string firstConnectionCount
         {
-            InitializeComponent();
+            set
+            {
+                if (comboBoxFirstTableConnectionCount.Items.Contains(value))
+                    comboBoxFirstTableConnectionCount.SelectedItem = value;
+            }
+            get
+            {
+                return comboBoxFirstTableConnectionCount.SelectedItem.ToString();
+            }
         }
 
-        public override ConnectionsInTables getConnection()
+        public string secondConnectionCount
         {
-            throw new NotImplementedException();
+            set
+            {
+                if (comboBoxSecondTableConnectionCount.Items.Contains(value))
+                    comboBoxSecondTableConnectionCount.SelectedItem = value;
+            }
+            get
+            {
+                return comboBoxSecondTableConnectionCount.SelectedItem.ToString();
+            }
+        }
+
+        public Table firstTable
+        {
+            get; set;
+        }
+
+        public Table secondTable
+        {
+            get; set;
+        }
+
+        #endregion
+
+        #region Callbacks
+
+        public event EventHandler deleteMe;
+
+        #endregion
+
+        private List<Table> playerTablesToConnect;
+
+        public ConnectionBetweenPlayerTables(List<Table> playerTables, EventHandler DeleteMeCallback)
+        {
+            InitializeComponent();
+            playerTablesToConnect = playerTables;
+            deleteMe = DeleteMeCallback;
+            List<string> tmpList = new List<string>();
+            foreach (Table tmp in playerTables)
+            {
+                tmpList.Add(tmp.tableName);
+            }
+            //Filing first table list 
+            comboBoxFirstTable.Items.AddRange(tmpList.ToArray());
+            if(comboBoxFirstTable.Items.Count>0)
+                comboBoxFirstTable.SelectedItem = comboBoxFirstTable.Items[0];
+            //Filing second table list
+            comboBoxSecondTable.Items.AddRange(tmpList.ToArray());
+            if (comboBoxSecondTable.Items.Count > 0)
+                comboBoxSecondTable.SelectedItem = comboBoxSecondTable.Items[1];
+            comboBoxFirstTableConnectionCount.SelectedItem = comboBoxFirstTableConnectionCount.Items[0];
+            comboBoxSecondTableConnectionCount.SelectedItem = comboBoxSecondTableConnectionCount.Items[0];
+        }
+
+        public ConnectionsInTables getConnection()
+        {
+            if(firstConnectionCount == "1")
+            {
+                if(secondConnectionCount == "1")
+                {
+                    return new ConnectionsInTables(firstTable, secondTable, ConnectionsInTables.ConnectionType.OTO);
+                }
+                else
+                {
+                    return new ConnectionsInTables(firstTable, secondTable, ConnectionsInTables.ConnectionType.OTM);
+                }
+            }
+            else
+            {
+                if (secondConnectionCount == "1")
+                {
+                    return new ConnectionsInTables(firstTable, secondTable, ConnectionsInTables.ConnectionType.MTO);
+                }
+                else
+                {
+                    return new ConnectionsInTables(firstTable, secondTable, ConnectionsInTables.ConnectionType.MTM);
+                }
+            }
+        }
+
+        public void setLocationY(int locationY)
+        {
+            Location = new Point(Location.X, locationY);
+        }
+
+        private void buttonRemoveConnection_Click(object sender, EventArgs e)
+        {
+            deleteMe(this, new EventArgs());
+        }
+
+        private void comboBoxFirstTable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (Table item in playerTablesToConnect)
+            {
+                if(item.tableName == comboBoxFirstTable.SelectedItem.ToString())
+                {
+                    firstTable = item;
+                    return;
+                }
+            }
+        }
+
+        private void comboBoxSecondTable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (Table item in playerTablesToConnect)
+            {
+                if (item.tableName == comboBoxSecondTable.SelectedItem.ToString())
+                {
+                    secondTable = item;
+                    return;
+                }
+            }
+        }
+
+        public void setTables(Table tableOne, Table tableTwo, string relationOne, string relationTwo)
+        {
+            firstConnectionCount = relationOne;
+            secondConnectionCount = relationTwo;
+            firstTable = tableOne;
+            secondTable = tableTwo;
+            comboBoxFirstTable.SelectedItem = tableOne.tableName;
+            comboBoxSecondTable.SelectedItem = tableTwo.tableName;
         }
     }
 }

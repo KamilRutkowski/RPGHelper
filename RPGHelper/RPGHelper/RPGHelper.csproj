@@ -52,18 +52,19 @@
     <Compile Include="AddTableName.Designer.cs">
       <DependentUpon>AddTableName.cs</DependentUpon>
     </Compile>
-    <Compile Include="BasicRelationControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BasicRelationControl.Designer.cs">
-      <DependentUpon>BasicRelationControl.cs</DependentUpon>
-    </Compile>
+    <Compile Include="BasicConnectionInterface.cs" />
     <Compile Include="Column.cs" />
     <Compile Include="ColumnCreator.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ColumnCreator.Designer.cs">
       <DependentUpon>ColumnCreator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectionBetweenPlayerAndItems.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConnectionBetweenPlayerAndItems.Designer.cs">
+      <DependentUpon>ConnectionBetweenPlayerAndItems.cs</DependentUpon>
     </Compile>
     <Compile Include="ConnectionsInTables.cs" />
     <Compile Include="DBCreator.cs" />
@@ -131,6 +132,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ColumnCreator.resx">
       <DependentUpon>ColumnCreator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnectionBetweenPlayerAndItems.resx">
+      <DependentUpon>ConnectionBetweenPlayerAndItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConnectionBetweenPlayerTables.resx">
+      <DependentUpon>ConnectionBetweenPlayerTables.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseRelationsCreator.resx">
       <DependentUpon>DatabaseRelationsCreator.cs</DependentUpon>
