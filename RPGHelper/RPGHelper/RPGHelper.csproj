@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>..\References\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -108,6 +111,7 @@
     <Compile Include="MainMenuControl.Designer.cs">
       <DependentUpon>MainMenuControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Query.cs" />
     <Compile Include="SessionCreator.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -127,6 +131,7 @@
     <Compile Include="ConnectionBetweenPlayerTables.Designer.cs">
       <DependentUpon>ConnectionBetweenPlayerTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="TreeOfConnections.cs" />
     <EmbeddedResource Include="AddTableName.resx">
       <DependentUpon>AddTableName.cs</DependentUpon>
     </EmbeddedResource>

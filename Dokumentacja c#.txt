@@ -39,7 +39,7 @@ Items[dowolna] - table z przedmiotami
 
 Procedury:
 ShowForPlayer[nazwa tabeli](idGracza)- wyświetla zawartości tabeli dla danego gracza np. ShowForPlayerPlayersSubStatystyki(1)
-GetItemsFor[nazwa tabeli] - wyświetla zawartość tablei items powiązaniej z daną tabelą gracza np. GetItemsForPlayersSubBronie()
+GetItemsFor[nazwa tabeli] - wyświetla nazwę tabeli items powiązaniej z daną tabelą gracza np. GetItemsForPlayersSubBronie()
 
 
 Wygląd interfejsu:

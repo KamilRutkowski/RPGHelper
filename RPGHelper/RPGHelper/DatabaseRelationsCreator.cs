@@ -17,29 +17,19 @@ namespace RPGHelper
         /// <summary>
         /// Register a callback delegate for ExitButton.Click event
         /// </summary>
-        private myDelegate registerExit
-        {
-            get; set;
-        }
+        private event myDelegate registerExit;
 
         /// <summary>
         /// Register a callback delegate for previous step button
         /// </summary>
-        private myDelegateCreateDatabase registerPreviousStep
-        {
-            get; set;
-        }
+        private event myDelegateCreateDatabase registerPreviousStep;
 
         /// <summary>
         /// Register a callback delegate for end of database creation
         /// </summary>
-        private myDelegateCreateDatabase registerCreateDatabase
-        {
-            get; set;
-        }
+        private event myDelegateCreateDatabase registerCreateDatabase;
 
         #endregion
-
 
         public delegate void myDelegate();
         public delegate void myDelegateCreateDatabase(List<ConnectionsInTables> connections);
@@ -64,6 +54,7 @@ namespace RPGHelper
             connectionsToCreate = connections;
             playerTablesToUse = playerTables;
             itemTablesToUse = itemTables;
+            
             if(playerTables.Count > 1)
             {
                 buttonAddPlayerTables.Visible = true;
@@ -98,6 +89,33 @@ namespace RPGHelper
         private void buttonCreateDatabase_Click(object sender, EventArgs e)
         {
             makeConnections();
+            Table tmp = new Table();
+            foreach(Table plTable in playerTablesToUse)
+            {
+                if(plTable.tableName == "Players")
+                {
+                    tmp = plTable;
+                    break;
+                }
+            }
+            TreeOfConnections tree = new TreeOfConnections(tmp);
+            if(!tree.setConnections(connectionsToCreate))
+            {
+                MessageBox.Show("Some of connections were not possible to create", "Creation error", MessageBoxButtons.OK);
+                return;
+            }
+            foreach (Table tab in playerTablesToUse)
+            {
+                if(!tree.isInTree(tab))
+                {
+                    MessageBox.Show("Some of player tables are not connected!", "Creation error", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            foreach (Table tab in itemTablesToUse)
+            {
+                
+            }
             registerCreateDatabase(connectionsToCreate);
         }
 

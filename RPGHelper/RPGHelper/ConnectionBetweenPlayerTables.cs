@@ -75,9 +75,11 @@ namespace RPGHelper
             if(comboBoxFirstTable.Items.Count>0)
                 comboBoxFirstTable.SelectedItem = comboBoxFirstTable.Items[0];
             //Filing second table list
+            comboBoxSecondTable.Items.Clear();
             comboBoxSecondTable.Items.AddRange(tmpList.ToArray());
+            comboBoxSecondTable.Items.Remove(comboBoxFirstTable.SelectedItem);
             if (comboBoxSecondTable.Items.Count > 0)
-                comboBoxSecondTable.SelectedItem = comboBoxSecondTable.Items[1];
+                comboBoxSecondTable.SelectedItem = comboBoxSecondTable.Items[0];
             comboBoxFirstTableConnectionCount.SelectedItem = comboBoxFirstTableConnectionCount.Items[0];
             comboBoxSecondTableConnectionCount.SelectedItem = comboBoxSecondTableConnectionCount.Items[0];
         }
@@ -125,6 +127,16 @@ namespace RPGHelper
                 if(item.tableName == comboBoxFirstTable.SelectedItem.ToString())
                 {
                     firstTable = item;
+                    List<string> tmpList = new List<string>();
+                    foreach (Table tmp in playerTablesToConnect)
+                    {
+                        tmpList.Add(tmp.tableName);
+                    }
+                    comboBoxSecondTable.Items.Clear();
+                    comboBoxSecondTable.Items.AddRange(tmpList.ToArray());
+                    comboBoxSecondTable.Items.Remove(comboBoxFirstTable.SelectedItem);
+                    if (comboBoxSecondTable.Items.Count > 0)
+                        comboBoxSecondTable.SelectedItem = comboBoxSecondTable.Items[0];
                     return;
                 }
             }

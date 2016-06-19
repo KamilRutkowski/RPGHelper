@@ -12,7 +12,7 @@ namespace RPGHelper
         void setLocationY(int locationY);
 
         #region callbacks
-
+        
         event EventHandler deleteMe;
         
         #endregion
