@@ -12,19 +12,19 @@ namespace RPGHelper
 
         public string queryName { get; set; }
 
-        public string select { get { return this.select; } set { this.select += value; } }
+        public string select { get; set; }
 
-        public string tables { get { return this.tables; } set { this.tables += value; } }
+        public string tables { get; set; }
 
-        public string wheres { get { return this.wheres; } set { this.wheres += value; } }
-
-        public string aditionalParameters { get; set; }
+        public string wheres { get; set; }
+        
+        public bool isPlayerType { get; set; }
 
         #endregion
 
-        public Query()
+        public Query(bool type)
         {
-            
+            isPlayerType = type;
         }
     }
 }

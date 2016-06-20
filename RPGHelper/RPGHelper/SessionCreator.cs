@@ -91,10 +91,10 @@ namespace RPGHelper
             Controls.Add(activeContorl);
         }
 
-        private void createDatabase(List<ConnectionsInTables> connections)
+        private void createDatabase(TreeOfConnections connections)
         {
             //Creating database
-            connectionsBetweenTables = connections;
+            DBCreator db = new DBCreator(connections, databaseName);
             registerdatabaseCreated(databaseName);
         }
     }

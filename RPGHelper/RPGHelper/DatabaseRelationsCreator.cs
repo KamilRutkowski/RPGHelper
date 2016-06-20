@@ -22,17 +22,18 @@ namespace RPGHelper
         /// <summary>
         /// Register a callback delegate for previous step button
         /// </summary>
-        private event myDelegateCreateDatabase registerPreviousStep;
+        private event myDelegateConnectionsDatabase registerPreviousStep;
 
         /// <summary>
         /// Register a callback delegate for end of database creation
         /// </summary>
-        private event myDelegateCreateDatabase registerCreateDatabase;
+        private event myDelegateTreeDatabase registerCreateDatabase;
 
         #endregion
 
         public delegate void myDelegate();
-        public delegate void myDelegateCreateDatabase(List<ConnectionsInTables> connections);
+        public delegate void myDelegateConnectionsDatabase(List<ConnectionsInTables> connections);
+        public delegate void myDelegateTreeDatabase(TreeOfConnections connections);
         private List<ConnectionsInTables> connectionsToCreate;
         private List<Table> playerTablesToUse;
         private List<Table> itemTablesToUse;
@@ -45,7 +46,7 @@ namespace RPGHelper
         /// <param name="createDatabase"> Delegate for finishing creation of relations and send it to sql creation of database </param>
         /// <param name="players"></param>
         /// <param name="connections"> Connections between Player and Items tables to be edited</param>
-        public DatabaseRelationsCreator(myDelegate exit, myDelegateCreateDatabase previousStep, myDelegateCreateDatabase createDatabase, List<Table> playerTables,List<Table> itemTables, List<ConnectionsInTables> connections)
+        public DatabaseRelationsCreator(myDelegate exit, myDelegateConnectionsDatabase previousStep, myDelegateTreeDatabase createDatabase, List<Table> playerTables,List<Table> itemTables, List<ConnectionsInTables> connections)
         {
             InitializeComponent();
             registerExit = exit;
@@ -114,9 +115,13 @@ namespace RPGHelper
             }
             foreach (Table tab in itemTablesToUse)
             {
-                
+                if (!tree.isInTree(tab))
+                {
+                    MessageBox.Show("Some of item tables are not connected!", "Creation error", MessageBoxButtons.OK);
+                    return;
+                }
             }
-            registerCreateDatabase(connectionsToCreate);
+            registerCreateDatabase(tree);
         }
 
         private void makeConnections()

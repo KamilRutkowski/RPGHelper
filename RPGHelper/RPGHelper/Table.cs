@@ -20,5 +20,21 @@ namespace RPGHelper
         {
             columnsInTable = new List<Column>();
         }
+
+        public void addColumn(Column askedColumn)
+        {
+            foreach (Column col in columnsInTable)
+            {
+                if((col.columnName == askedColumn.columnName)&&(col.type == askedColumn.type))
+                {
+                    if(col.type == Column.ColumnType.Enum)
+                    {
+                        col.possibleEnumOptions = askedColumn.possibleEnumOptions;
+                    }
+                    return;
+                }
+            }
+            columnsInTable.Add(askedColumn);
+        }
     }
 }
