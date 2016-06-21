@@ -35,6 +35,7 @@ Struktura bazy danych:
 Nazwy ważnych tabel:
 PlayersMain[dowolna] - podstawowa baza gracza - jedna!
 PlayersSub[dowolne] - tabele pomocnicze utworzone dla gracza
+Conector[tabelaDolna][tabelaGórna] - tabela dla połączenia wiele do wielu
 Items[dowolna] - table z przedmiotami
 
 Procedury:

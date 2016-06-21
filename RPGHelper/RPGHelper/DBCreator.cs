@@ -6,11 +6,6 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
 
-/// <summary>
-/// DOdać prawidłowe selecty i nazwy procedur
-/// Utworzenie procedur na podstawie queriesToDatabase
-/// Dokończenie komunikacji z bazą
-/// </summary>
 namespace RPGHelper
 {
     public class DBCreator
@@ -20,6 +15,8 @@ namespace RPGHelper
         public string databaseName { get; set; }
 
         private List<Table> AdditionalTablesToCreate { get; set; }
+
+        private MySqlConnection connectionWithDB { get; set; }
         
         #endregion
 
@@ -32,29 +29,155 @@ namespace RPGHelper
             setPrefixes(connectionsInTables);
             makeConnectionInDatabase(queriesToDatabase, connectionsInTables);
             addIDs(connectionsInTables);
-            createTables();
+            connectionWithDB.Open();
+            createTables(connectionsInTables);
             createAdditionalTables();
             createProcedures(queriesToDatabase);
+            connectionWithDB.Close();
         }
 
         private void addIDs(TreeOfConnections connectionsInTables)
         {
-            throw new NotImplementedException();
+            Column col = new Column();
+            col.columnName = "id_";
+            col.type = Column.ColumnType.Number;
+            connectionsInTables.currentBranchTable.addColumn(col);
+            foreach(TreeOfConnections con in connectionsInTables.branches)
+            {
+                addIDs(con);
+            }
         }
 
         private void createProcedures(List<Query> queriesToDatabase)
         {
-            throw new NotImplementedException();
+            foreach (Query queryToMake in queriesToDatabase)
+            {
+                if(queryToMake.isPlayerType)
+                {
+                    createMySQLProcedureForPlayer(queryToMake);
+                }
+                else
+                {
+                    createMySQLProcedureForItem(queryToMake);
+                }
+            }
+        }
+
+        private void createMySQLProcedureForItem(Query queryToMake)
+        {
+            string command = "Create procedure " + queryToMake.queryName + "() Select \"" + queryToMake.select + "\"";
+            MySqlCommand com = new MySqlCommand(command, connectionWithDB);
+            com.ExecuteNonQuery();
+        }
+
+        private void createMySQLProcedureForPlayer(Query queryToMake)
+        {
+            string command = "Create procedure " + queryToMake.queryName + "(playerID int) Select " + queryToMake.select + " from " 
+                + queryToMake.tables + " where " + queryToMake.wheres + " and PlayersMainPlayers.id_ = playerID;";
+            MySqlCommand com = new MySqlCommand(command, connectionWithDB);
+            com.ExecuteNonQuery();
         }
 
         private void createAdditionalTables()
         {
-            throw new NotImplementedException();
+            foreach(Table tab in AdditionalTablesToCreate)
+            {
+                string command = "Create table " + tab.tableName + "(";
+                foreach (Column col in tab.columnsInTable)
+                {
+                    command += col.columnName;
+                    switch(col.type)
+                    {
+                        case Column.ColumnType.Enum:
+                            {
+                                command += " enum(";
+                                foreach(string option in col.possibleEnumOptions)
+                                {
+                                    command += "\"" + option + "\"";
+                                    if (col.possibleEnumOptions.Last() != option)
+                                        command += ",";
+                                }
+                                command += ")";
+                                break;
+                            }
+                        case Column.ColumnType.Number:
+                            {
+                                command += " int";
+                                break;
+                            }
+                        case Column.ColumnType.Text:
+                            {
+                                command += " varchar(100)";
+                                break;
+                            }
+                        default:
+                            {
+                                throw new Exception("Whoops! Something went wrong!");
+                            }
+                    }
+                    if(col != tab.columnsInTable.Last())
+                    {
+                        command += ",";
+                    }
+                }
+                command += ");";
+                MySqlCommand com = new MySqlCommand(command, connectionWithDB);
+                com.ExecuteNonQuery();
+            }
         }
 
-        private void createTables()
+        private void createTables(TreeOfConnections connections)
         {
-            throw new NotImplementedException();
+            Table tab = connections.currentBranchTable;
+            string command = "Create table " + tab.tableName + "(";
+            foreach (Column col in tab.columnsInTable)
+            {
+                command += col.columnName;
+                switch (col.type)
+                {
+                    case Column.ColumnType.Enum:
+                        {
+                            command += " enum(";
+                            foreach (string option in col.possibleEnumOptions)
+                            {
+                                command += "\"" + option + "\"";
+                                if (col.possibleEnumOptions.Last() != option)
+                                    command += ",";
+                            }
+                            command += ")";
+                            break;
+                        }
+                    case Column.ColumnType.Number:
+                        {
+                            command += " int";
+                            break;
+                        }
+                    case Column.ColumnType.Text:
+                        {
+                            command += " varchar(100)";
+                            break;
+                        }
+                    default:
+                        {
+                            throw new Exception("Whoops! Something went wrong!");
+                        }
+                }
+                if(col.columnName == "id_")
+                {
+                    command += " primary key auto_increment";
+                }
+                if (col != tab.columnsInTable.Last())
+                {
+                    command += ",";
+                }
+            }
+            command += ");";
+            MySqlCommand com = new MySqlCommand(command, connectionWithDB);
+            com.ExecuteNonQuery();
+            foreach(TreeOfConnections tree in connections.branches)
+            {
+                createTables(tree);
+            }
         }
 
         /// <summary>
@@ -125,10 +248,12 @@ namespace RPGHelper
             {
                 case ConnectionsInTables.ConnectionType.OTO:
                     {
-                        currentQuery.tables += currentNode.parentNode.currentBranchTable.tableName;
+                        currentQuery.tables += currentNode.parentNode.currentBranchTable.tableName + ", " + currentNode.currentBranchTable.tableName;
                         currentQuery.wheres += 
                             currentNode.currentBranchTable.tableName + ".id_For" + currentNode.parentNode.currentBranchTable.tableName
                             + "  = " + currentNode.parentNode.currentBranchTable.tableName + ".id_For" + currentNode.currentBranchTable.tableName;
+                        currentQuery.select = currentNode.currentBranchTable.tableName + ".* ";
+                        currentQuery.queryName = "ShowForPlayer" + currentNode.currentBranchTable.tableName;
                         Column col = new Column();
                         col.columnName = "id_For" + currentNode.parentNode.currentBranchTable.tableName;
                         col.type = Column.ColumnType.Number;
@@ -141,10 +266,12 @@ namespace RPGHelper
                     }
                 case ConnectionsInTables.ConnectionType.OTM:
                     {
-                        currentQuery.tables += currentNode.parentNode.currentBranchTable.tableName;
+                        currentQuery.tables += currentNode.parentNode.currentBranchTable.tableName + ", " + currentNode.currentBranchTable.tableName;
                         currentQuery.wheres +=
                             currentNode.currentBranchTable.tableName + ".id_"
                             + "  = " + currentNode.parentNode.currentBranchTable.tableName + ".id_For" + currentNode.currentBranchTable.tableName;
+                        currentQuery.select = currentNode.currentBranchTable.tableName + ".* ";
+                        currentQuery.queryName = "ShowForPlayer" + currentNode.currentBranchTable.tableName;
                         Column col = new Column();
                         col.columnName = "id_For" + currentNode.currentBranchTable.tableName;
                         col.type = Column.ColumnType.Number;
@@ -153,10 +280,12 @@ namespace RPGHelper
                     }
                 case ConnectionsInTables.ConnectionType.MTO:
                     {
-                        currentQuery.tables += currentNode.parentNode.currentBranchTable.tableName;
+                        currentQuery.tables += currentNode.parentNode.currentBranchTable.tableName + ", " + currentNode.currentBranchTable.tableName;
                         currentQuery.wheres +=
                             currentNode.currentBranchTable.tableName + ".id_For" + currentNode.parentNode.currentBranchTable.tableName
                             + "  = " + currentNode.parentNode.currentBranchTable.tableName + ".id_";
+                        currentQuery.select = currentNode.currentBranchTable.tableName + ".* ";
+                        currentQuery.queryName = "ShowForPlayer" + currentNode.currentBranchTable.tableName;
                         Column col = new Column();
                         col.columnName = "id_For" + currentNode.parentNode.currentBranchTable.tableName;
                         col.type = Column.ColumnType.Number;
@@ -166,12 +295,14 @@ namespace RPGHelper
                 case ConnectionsInTables.ConnectionType.MTM:
                     {
                         string connectorTableName = "Connector" + currentNode.parentNode.currentBranchTable.tableName + currentNode.currentBranchTable.tableName;
-                        currentQuery.tables += currentNode.parentNode.currentBranchTable.tableName + ", " + connectorTableName;
+                        currentQuery.tables += currentNode.parentNode.currentBranchTable.tableName + ", " + connectorTableName + ", " + currentNode.currentBranchTable.tableName;
                         currentQuery.wheres += 
                             connectorTableName + ".id_For" + currentNode.parentNode.currentBranchTable.tableName + " = "
                             + currentNode.parentNode.currentBranchTable.tableName + ".id_ and " +
                             connectorTableName + ".id_For" + currentNode.currentBranchTable.tableName + " = "
                             + currentNode.currentBranchTable.tableName + ".id_";
+                        currentQuery.select = currentNode.currentBranchTable.tableName + ".* ";
+                        currentQuery.queryName = "ShowForPlayer" + currentNode.currentBranchTable.tableName;
                         Table tab = new Table();
                         tab.tableName = connectorTableName;
                         Column col = new Column();
@@ -190,6 +321,7 @@ namespace RPGHelper
                         throw new Exception("Wrong tree structure");
                     }
             }
+            
             if(currentNode.levelOfTree > 1)
             {
                 createProcedureForPlayer(currentNode.parentNode, currentQuery);
@@ -201,21 +333,10 @@ namespace RPGHelper
         {
             foreach (Column col in currentNode.currentBranchTable.columnsInTable)
             {
-                for(int i=0;i< currentNode.parentNode.currentBranchTable.columnsInTable.Count;i++)
-                {
-                    Column colInParent = currentNode.parentNode.currentBranchTable.columnsInTable[i];
-                    if ((col.columnName == colInParent.columnName)&&(col.type==colInParent.type))
-                    {
-                        if(col.type == Column.ColumnType.Enum)
-                        {
-                            colInParent.possibleEnumOptions = col.possibleEnumOptions;
-                        }
-                        continue;
-                    }
-                    currentNode.parentNode.currentBranchTable.columnsInTable.Add(col);
-                }
+                currentNode.parentNode.currentBranchTable.addColumn(col);
             }
             Query currentQuery = new Query(false);
+            currentQuery.queryName = "GetItemsFor" + currentNode.parentNode.currentBranchTable.tableName;
             if (currentNode.parentNode.currentBranchTable.tableName == "Players")
                 currentQuery.queryName = "GetItemsFor" + currentNode.parentNode.currentBranchTable.tableName;
             currentQuery.select = "" + currentNode.currentBranchTable.tableName;
@@ -224,7 +345,23 @@ namespace RPGHelper
 
         private void createDatabase(string name)
         {
-            //string 
+            string Server = "127.0.0.1";
+            string User = "root";
+            string Passwd = "";
+            uint Port = 3306;
+            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+            builder.Server = Server;
+            builder.UserID = User;
+            builder.Password = Passwd;
+            builder.Port = Port;
+            MySqlConnection conn = new MySqlConnection(builder.ConnectionString);
+            conn.Open();
+            string queryText = "Create database if not exists " + name + ";";
+            MySqlCommand command = new MySqlCommand(queryText, conn);
+            command.ExecuteReader();
+            conn.Close();
+            builder.Database = name;
+            connectionWithDB = new MySqlConnection(builder.ConnectionString);
         }
 
         private void makeConnectionInDatabase(List<Query> querries, TreeOfConnections node)
