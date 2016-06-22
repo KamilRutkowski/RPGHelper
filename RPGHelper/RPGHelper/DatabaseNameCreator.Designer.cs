@@ -41,6 +41,7 @@
             this.textBoxDatabaseName.Name = "textBoxDatabaseName";
             this.textBoxDatabaseName.Size = new System.Drawing.Size(331, 26);
             this.textBoxDatabaseName.TabIndex = 0;
+            this.textBoxDatabaseName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDatabaseName_KeyPress);
             // 
             // labelGiveDatabaseName
             // 
@@ -48,9 +49,9 @@
             this.labelGiveDatabaseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.labelGiveDatabaseName.Location = new System.Drawing.Point(178, 181);
             this.labelGiveDatabaseName.Name = "labelGiveDatabaseName";
-            this.labelGiveDatabaseName.Size = new System.Drawing.Size(139, 20);
+            this.labelGiveDatabaseName.Size = new System.Drawing.Size(113, 20);
             this.labelGiveDatabaseName.TabIndex = 1;
-            this.labelGiveDatabaseName.Text = "Nadaj sesji nazwę:";
+            this.labelGiveDatabaseName.Text = "Name session:";
             // 
             // buttonStopCreation
             // 
@@ -59,7 +60,7 @@
             this.buttonStopCreation.Name = "buttonStopCreation";
             this.buttonStopCreation.Size = new System.Drawing.Size(142, 35);
             this.buttonStopCreation.TabIndex = 2;
-            this.buttonStopCreation.Text = "Przerwij kreację";
+            this.buttonStopCreation.Text = "Abort creation";
             this.buttonStopCreation.UseVisualStyleBackColor = true;
             this.buttonStopCreation.Click += new System.EventHandler(this.buttonStopCreation_Click);
             // 
@@ -70,7 +71,7 @@
             this.buttonNextStep.Name = "buttonNextStep";
             this.buttonNextStep.Size = new System.Drawing.Size(142, 35);
             this.buttonNextStep.TabIndex = 3;
-            this.buttonNextStep.Text = "Następny krok";
+            this.buttonNextStep.Text = "Next step";
             this.buttonNextStep.UseVisualStyleBackColor = true;
             this.buttonNextStep.Click += new System.EventHandler(this.buttonNextStep_Click);
             // 

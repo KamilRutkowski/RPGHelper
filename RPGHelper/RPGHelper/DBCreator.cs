@@ -11,8 +11,6 @@ namespace RPGHelper
     public class DBCreator
     {
         #region Properties
-        
-        public string databaseName { get; set; }
 
         private List<Table> AdditionalTablesToCreate { get; set; }
 
@@ -25,11 +23,12 @@ namespace RPGHelper
         {
             List<Query> queriesToDatabase = new List<Query>();
             AdditionalTablesToCreate = new List<Table>();
+            dataName = "RPGH" + dataName;
             createDatabase(dataName);
             setPrefixes(connectionsInTables);
             makeConnectionInDatabase(queriesToDatabase, connectionsInTables);
             addIDs(connectionsInTables);
-            connectionWithDB.Open();
+            connectionWithDB.Open(); 
             createTables(connectionsInTables);
             createAdditionalTables();
             createProcedures(queriesToDatabase);

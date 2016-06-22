@@ -35,6 +35,8 @@ namespace RPGHelper
         public delegate void myActionDelegate();
         public delegate void myActionDelegateWithDatabaseName(string databaseName);
 
+        private List<char> notAllowedCharacters;
+
         /// <summary>
         /// Control which role is to make get a database name for newly created session
         /// </summary>
@@ -44,6 +46,7 @@ namespace RPGHelper
         public DatabaseNameCreator(myActionDelegate exit, myActionDelegateWithDatabaseName nextStep, string startingName = "")
         {
             InitializeComponent();
+            notAllowedCharacters = new List<char>(new char[] { ' ', '_', '*' });
             registerExitCreation = exit;
             registerNextStepCreation = nextStep;
             textBoxDatabaseName.Text = startingName;
@@ -62,6 +65,14 @@ namespace RPGHelper
                 return;
             }
             registerNextStepCreation(textBoxDatabaseName.Text);
+        }
+
+        private void textBoxDatabaseName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(notAllowedCharacters.Contains(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

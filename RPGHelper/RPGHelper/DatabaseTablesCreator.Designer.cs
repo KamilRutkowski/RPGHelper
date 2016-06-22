@@ -86,7 +86,7 @@
             // buttonReturnToNameCreation
             // 
             this.buttonReturnToNameCreation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonReturnToNameCreation.Location = new System.Drawing.Point(28, 13);
+            this.buttonReturnToNameCreation.Location = new System.Drawing.Point(22, 13);
             this.buttonReturnToNameCreation.Name = "buttonReturnToNameCreation";
             this.buttonReturnToNameCreation.Size = new System.Drawing.Size(142, 35);
             this.buttonReturnToNameCreation.TabIndex = 14;
@@ -112,7 +112,7 @@
             this.buttonStopCreation.Name = "buttonStopCreation";
             this.buttonStopCreation.Size = new System.Drawing.Size(142, 35);
             this.buttonStopCreation.TabIndex = 12;
-            this.buttonStopCreation.Text = "Stop creation";
+            this.buttonStopCreation.Text = "Abort creation";
             this.buttonStopCreation.UseVisualStyleBackColor = true;
             this.buttonStopCreation.Click += new System.EventHandler(this.buttonStopCreation_Click);
             // 
@@ -155,7 +155,7 @@
             this.playerTableToolStripMenuItem,
             this.itemsTableToolStripMenuItem});
             this.createTableToolStripMenuItem.Name = "createTableToolStripMenuItem";
-            this.createTableToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createTableToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.createTableToolStripMenuItem.Text = "Create table";
             // 
             // playerTableToolStripMenuItem
@@ -178,19 +178,19 @@
             this.playerTablesToolStripMenuItem,
             this.itemsTablesToolStripMenuItem});
             this.removeTableToolStripMenuItem.Name = "removeTableToolStripMenuItem";
-            this.removeTableToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.removeTableToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.removeTableToolStripMenuItem.Text = "Remove table";
             // 
             // playerTablesToolStripMenuItem
             // 
             this.playerTablesToolStripMenuItem.Name = "playerTablesToolStripMenuItem";
-            this.playerTablesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.playerTablesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.playerTablesToolStripMenuItem.Text = "Player tables";
             // 
             // itemsTablesToolStripMenuItem
             // 
             this.itemsTablesToolStripMenuItem.Name = "itemsTablesToolStripMenuItem";
-            this.itemsTablesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.itemsTablesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.itemsTablesToolStripMenuItem.Text = "Items tables";
             // 
             // DatabaseTablesCreator

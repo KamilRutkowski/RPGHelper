@@ -51,11 +51,13 @@ namespace RPGHelper
         #endregion
 
         public delegate void myDelegate(Control sender);
+        private List<char> notAllowedCharacters;
 
         public ColumnCreator(myDelegate deleteCallback)
         {
             InitializeComponent();
             buttonEnum.Visible = false;
+            notAllowedCharacters = new List<char>(new char[] { ' ', '_', '*' });
             enumValues = new List<string>();
             //Adding enum options
             foreach (Column.ColumnType a in Enum.GetValues(typeof(Column.ColumnType)))
@@ -111,6 +113,31 @@ namespace RPGHelper
         {
             if (MessageBox.Show("Do you want to remove column " + textBoxName.Text + "?", "Removing column", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 deleteMe(this);
+        }
+
+        private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (notAllowedCharacters.Contains(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public bool isOK()
+        {
+            if (textBoxName.Text.Length > 0)
+            {
+                if (comboBoxTypeOfColumn.SelectedItem.ToString() == "Enum")
+                {
+                    if (enumValues.Count > 0)
+                    { return true; }
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

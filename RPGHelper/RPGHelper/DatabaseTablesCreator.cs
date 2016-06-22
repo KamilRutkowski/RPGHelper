@@ -138,7 +138,7 @@ namespace RPGHelper
         {
             if (!saveCurrentColumsInCurrentTable())
             {
-                MessageBox.Show("Non titled columns detected! Remove or name them before proceding!", "Invalid column names", MessageBoxButtons.OK);
+                MessageBox.Show("Invalidly titled columns detected! Remove or name them before proceding!", "Invalid column names", MessageBoxButtons.OK);
                 return;
             }
             saveCurrentColumsInCurrentTable();
@@ -165,7 +165,7 @@ namespace RPGHelper
         {
             if (!saveCurrentColumsInCurrentTable())
             {
-                MessageBox.Show("Non titled columns detected! Remove or name them before proceding!", "Invalid column names", MessageBoxButtons.OK);
+                MessageBox.Show("Invalidly titled columns detected! Remove or name them before proceding!", "Invalid column names", MessageBoxButtons.OK);
                 return;
             }
             registerNextStep(playerTablesToCreate, itemsTablesToCreate);
@@ -226,8 +226,13 @@ namespace RPGHelper
                 if(control is ColumnCreator)
                 {
                     Column col = ((ColumnCreator)control).createColumn();
-                    if (col.columnName == "")
+                    if (((ColumnCreator)control).isOK())
                         return false;
+                    foreach(Column colAlreadyCreated in tmp)
+                    {
+                        if (colAlreadyCreated.columnName == col.columnName)
+                            return false;
+                    }
                     tmp.Add(col);
                 }
             }
@@ -300,7 +305,7 @@ namespace RPGHelper
             getCurrentTable().columnsInTable = new List<Column>();
             if(!saveCurrentColumsInCurrentTable())
             {
-                MessageBox.Show("Non titled columns detected! Remove or name them before proceding!", "Invalid column names", MessageBoxButtons.OK);
+                MessageBox.Show("Invalidly titled columns detected! Remove or name them before proceding!", "Invalid column names", MessageBoxButtons.OK);
                 return;
             }
             actualTableName=((ToolStripItem)sender).Text;
@@ -385,7 +390,7 @@ namespace RPGHelper
             getCurrentTable().columnsInTable = new List<Column>();
             if (!saveCurrentColumsInCurrentTable())
             {
-                MessageBox.Show("Non titled columns detected! Remove or name them before proceding!", "Invalid column names", MessageBoxButtons.OK);
+                MessageBox.Show("Invalidly titled columns detected! Remove or name them before proceding!", "Invalid column names", MessageBoxButtons.OK);
                 return;
             }
             setCurrentTable(((ToolStripItem)sender).Text, false);
@@ -470,7 +475,7 @@ namespace RPGHelper
         {
             if (!saveCurrentColumsInCurrentTable())
             {
-                MessageBox.Show("Non titled columns detected! Remove or name them before proceding!", "Invalid column names", MessageBoxButtons.OK);
+                MessageBox.Show("Invalidly titled columns detected! Remove or name them before proceding!", "Invalid column names", MessageBoxButtons.OK);
                 return;
             }
             AddTableName addTable = new AddTableName(addTableForItems);

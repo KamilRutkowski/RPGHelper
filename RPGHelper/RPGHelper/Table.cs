@@ -25,8 +25,9 @@ namespace RPGHelper
         {
             foreach (Column col in columnsInTable)
             {
-                if((col.columnName == askedColumn.columnName)&&(col.type == askedColumn.type))
+                if(col.columnName == askedColumn.columnName)
                 {
+                    col.type = askedColumn.type;
                     if(col.type == Column.ColumnType.Enum)
                     {
                         col.possibleEnumOptions = askedColumn.possibleEnumOptions;

@@ -94,7 +94,15 @@ namespace RPGHelper
         private void createDatabase(TreeOfConnections connections)
         {
             //Creating database
-            DBCreator db = new DBCreator(connections, databaseName);
+            try
+            {
+                DBCreator db = new DBCreator(connections, databaseName);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message, "Error while creating database", MessageBoxButtons.OK);
+                return;
+            }
             registerdatabaseCreated(databaseName);
         }
     }

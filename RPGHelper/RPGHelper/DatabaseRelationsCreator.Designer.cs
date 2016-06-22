@@ -64,7 +64,7 @@
             // 
             // buttonAddConnectionToItems
             // 
-            this.buttonAddConnectionToItems.Location = new System.Drawing.Point(306, 3);
+            this.buttonAddConnectionToItems.Location = new System.Drawing.Point(339, 3);
             this.buttonAddConnectionToItems.Name = "buttonAddConnectionToItems";
             this.buttonAddConnectionToItems.Size = new System.Drawing.Size(137, 23);
             this.buttonAddConnectionToItems.TabIndex = 1;
@@ -85,33 +85,33 @@
             // buttonReturnToTablesCreation
             // 
             this.buttonReturnToTablesCreation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonReturnToTablesCreation.Location = new System.Drawing.Point(3, 14);
+            this.buttonReturnToTablesCreation.Location = new System.Drawing.Point(23, 14);
             this.buttonReturnToTablesCreation.Name = "buttonReturnToTablesCreation";
             this.buttonReturnToTablesCreation.Size = new System.Drawing.Size(142, 35);
             this.buttonReturnToTablesCreation.TabIndex = 15;
-            this.buttonReturnToTablesCreation.Text = "Poprzedni krok";
+            this.buttonReturnToTablesCreation.Text = "Previous step";
             this.buttonReturnToTablesCreation.UseVisualStyleBackColor = true;
             this.buttonReturnToTablesCreation.Click += new System.EventHandler(this.buttonReturnToTablesCreation_Click);
             // 
             // buttonCreateDatabase
             // 
             this.buttonCreateDatabase.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonCreateDatabase.Location = new System.Drawing.Point(355, 14);
+            this.buttonCreateDatabase.Location = new System.Drawing.Point(385, 14);
             this.buttonCreateDatabase.Name = "buttonCreateDatabase";
             this.buttonCreateDatabase.Size = new System.Drawing.Size(142, 35);
             this.buttonCreateDatabase.TabIndex = 14;
-            this.buttonCreateDatabase.Text = "Zakończ kreację";
+            this.buttonCreateDatabase.Text = "Finalize creation";
             this.buttonCreateDatabase.UseVisualStyleBackColor = true;
             this.buttonCreateDatabase.Click += new System.EventHandler(this.buttonCreateDatabase_Click);
             // 
             // buttonStopCreation
             // 
             this.buttonStopCreation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonStopCreation.Location = new System.Drawing.Point(180, 14);
+            this.buttonStopCreation.Location = new System.Drawing.Point(206, 14);
             this.buttonStopCreation.Name = "buttonStopCreation";
             this.buttonStopCreation.Size = new System.Drawing.Size(142, 35);
             this.buttonStopCreation.TabIndex = 13;
-            this.buttonStopCreation.Text = "Przerwij kreację";
+            this.buttonStopCreation.Text = "Abort creation";
             this.buttonStopCreation.UseVisualStyleBackColor = true;
             this.buttonStopCreation.Click += new System.EventHandler(this.buttonStopCreation_Click);
             // 
