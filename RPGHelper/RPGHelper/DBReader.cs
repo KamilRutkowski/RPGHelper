@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace RPGHelper
 {
@@ -11,9 +12,9 @@ namespace RPGHelper
     {
         #region Properties
 
-        private List<List<Table>> selectedDatabase { get; set; }
-        private List<Table> playerTables { get; set; }
-        private List<Table> itemsTables { get; set; }
+        public List<List<Table>> selectedDatabase { get; set; }
+        public List<Table> playerTables { get; set; }
+        public List<Table> itemsTables { get; set; }
 
         public ToolStripMenuItem lowItem { get; set; }
         public ToolStripMenuItem lowerItem { get; set; }
@@ -27,114 +28,60 @@ namespace RPGHelper
             itemsTables = new List<Table>();
         }
 
-        public List<List<Table>> createTestDatabase(string tableName1P, string tableName2P, string tableName1I, string tableName2I)
+        public List<List<Table>> createTestDatabase(string tableName1P, string tableName2P, string tableName1I, string tableName2I,
+            string column1P1, string column1P2, string column2P1, string column2P2, string column1I1, string column1I2, string column2I1, string column2I2)
         {
             List<string> tablePlayerNames = new List<string> { tableName1P, tableName2P };
             List<string> tableItemsNames = new List<string> { tableName1I, tableName2I };
             
-            foreach (var name in tablePlayerNames)
-            {
-                Table newTable = new Table();
-                newTable.tableName = name;
-                newTable.columnsInTable = createTestColumns("Players", "HP", "DP");
+            Table newTable1 = new Table();
+            newTable1.tableName = tablePlayerNames[0];
+            newTable1.columnsInTable = createTestColumns(column1P1, column1P2, Column.ColumnType.Number, Column.ColumnType.Enum);
 
-                foreach (Column column in newTable.columnsInTable)
-                {
-                    List<string> valuesInColumns = new List<string> { "Salmon", "GroupBy", "OrderBy" };
-                    column.possibleEnumOptions = valuesInColumns;
-                }
+            Table newTable2 = new Table();
+            newTable2.tableName = tablePlayerNames[1];
+            newTable2.columnsInTable = createTestColumns(column2P1, column2P2, Column.ColumnType.Enum, Column.ColumnType.Text);
 
-                playerTables.Add(newTable);
-            }
+            playerTables.Add(newTable1);
+            playerTables.Add(newTable2);
 
-            foreach (var name in tableItemsNames)
-            {
-                Table newTable = new Table();
-                newTable.tableName = name;
-                newTable.columnsInTable = createTestColumns("Items", "SP", "Attack");
+            Table newTable3 = new Table();
+            newTable3.tableName = tableItemsNames[0];
+            newTable3.columnsInTable = createTestColumns(column1I1, column1I2, Column.ColumnType.Enum, Column.ColumnType.Text);
 
-                foreach (Column column in newTable.columnsInTable)
-                {
-                    List<string> valuesInColumns = new List<string> { "Magic Missle", "Scissor Blade", "Random Gun" };
-                    column.possibleEnumOptions = valuesInColumns;
-                }
+            Table newTable4 = new Table();
+            newTable4.tableName = tableItemsNames[1];
+            newTable4.columnsInTable = createTestColumns(column2I1, column2I2, Column.ColumnType.Number, Column.ColumnType.Text);
 
-                itemsTables.Add(newTable);
-            }
+            itemsTables.Add(newTable3);
+            itemsTables.Add(newTable4);
+            
             selectedDatabase.Add(playerTables);
             selectedDatabase.Add(itemsTables);
 
             return selectedDatabase;
         }
 
-        private List<Column> createTestColumns(string columnName1, string columnName2, string columnName3)
+        private List<Column> createTestColumns(string columnName1, string columnName2, Column.ColumnType type1, Column.ColumnType type2)
         {
             List<Column> columnList = new List<Column>();
-            List<string> columnNames = new List<string> { columnName1, columnName2, columnName3 };
+            List<string> columnNames = new List<string> { columnName1, columnName2 };
+            List<Column.ColumnType> columnTypes = new List<Column.ColumnType> { type1, type2 };
 
             foreach (var name in columnNames)
             {
                 Column newColumn = new Column();
                 newColumn.columnName = name;
+                newColumn.type = columnTypes[0];
+                if(newColumn.type == Column.ColumnType.Enum)
+                {
+                    List<string> testEnumOptions = new List<string> { "Test1", "Test2", "Test3", "Test 4" };
+                    newColumn.possibleEnumOptions = testEnumOptions;
+                }
+                columnTypes.RemoveAt(0);
                 columnList.Add(newColumn);
             }
             return columnList;
-        }
-
-        public void readDatabase(ToolStripMenuItem playerItem, ToolStripMenuItem itemsItem, List<List<Table>> database, EventHandler menu_Click)
-        {
-            database[0] = playerTables;
-            database[0] = itemsTables;
-
-            foreach(Table table in playerTables)
-            {
-                lowItem = new ToolStripMenuItem { Name = table.tableName, Text = table.tableName };
-                playerItem.DropDownItems.AddRange(new ToolStripItem[] { lowItem });
-
-                foreach(Column column in table.columnsInTable)
-                {
-                    lowerItem = new ToolStripMenuItem { Name = column.columnName, Text = column.columnName };
-                    lowItem.DropDownItems.AddRange(new ToolStripItem[] { lowerItem });
-
-                    foreach (string value in column.possibleEnumOptions)
-                    {
-                        lowestItem = new ToolStripMenuItem { Name = value, Text = value };
-                        lowerItem.DropDownItems.AddRange(new ToolStripItem[] { lowestItem });
-
-                        lowestItem.Click += new EventHandler(menu_Click);
-                    }
-                }
-            }
-
-            foreach (Table table in itemsTables)
-            {
-                lowItem = new ToolStripMenuItem { Name = table.tableName, Text = table.tableName };
-                itemsItem.DropDownItems.AddRange(new ToolStripItem[] { lowItem });
-
-                foreach (Column column in table.columnsInTable)
-                {
-                    lowerItem = new ToolStripMenuItem { Name = column.columnName, Text = column.columnName };
-                    lowItem.DropDownItems.AddRange(new ToolStripItem[] { lowerItem });
-
-                    foreach (string value in column.possibleEnumOptions)
-                    {
-                        lowestItem = new ToolStripMenuItem { Name = value, Text = value };
-                        lowerItem.DropDownItems.AddRange(new ToolStripItem[] { lowestItem });
-
-                        lowestItem.Click += new EventHandler(menu_Click);
-                    }
-                }
-            }
-        }
-        
-        public void readingMySqlFile()
-        {
-            OpenFileDialog openFileBox = new OpenFileDialog();
-            openFileBox.Filter = "SQL Files|*.sql";
-            if (openFileBox.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                
-            }
         }
     }
 }
