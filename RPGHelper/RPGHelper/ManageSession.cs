@@ -34,7 +34,7 @@ namespace RPGHelper
         private List<Table> playerTablesToManage;
         private List<Table> itemsTablesToManage;
         private int columnIndex = 0;
-        public ToolStripMenuItem menuItem;
+        private ToolStripMenuItem menuItem;
 
         private bool firstTimeReading;
 

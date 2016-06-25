@@ -24,11 +24,11 @@ namespace RPGHelper
 
         #endregion
 
-        string databaseName;
-        List<Table> playerTablesInDatabase;
-        List<Table> itemsTablesInDatabase;
-        List<ConnectionsInTables> connectionsBetweenTables;
-        Control activeContorl;
+        private string databaseName;
+        private List<Table> playerTablesInDatabase;
+        private List<Table> itemsTablesInDatabase;
+        private List<ConnectionsInTables> connectionsBetweenTables;
+        private Control activeContorl;
 
         public delegate void myActionDelegate(string database);
 

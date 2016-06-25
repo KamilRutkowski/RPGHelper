@@ -103,7 +103,7 @@
             this.Controls.Add(this.textBoxInput);
             this.Controls.Add(this.listBoxOptions);
             this.Name = "ListOfItemsInEnum";
-            this.Text = "ListOfItemsInEnum";
+            this.Text = "Enum options";
             this.ResumeLayout(false);
             this.PerformLayout();
 

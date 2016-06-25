@@ -398,5 +398,42 @@ namespace RPGHelper
                 setPrefixesMinor(item);
             }
         }
+
+        /// <summary>
+        /// Checks if asked database exists
+        /// </summary>
+        /// <param name="databaseName">Database name you are searching for</param>
+        /// <returns>True if it exists, otherwise false</returns>
+        public static bool doesDatabaseExists(string databaseName)
+        {
+            string Server = "127.0.0.1";
+            string User = "root";
+            string Passwd = "";
+            uint Port = 3306;
+            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+            builder.Server = Server;
+            builder.UserID = User;
+            builder.Password = Passwd;
+            builder.Port = Port;
+            MySqlConnection conn = new MySqlConnection(builder.ConnectionString);
+            conn.Open();
+            string queryText = "Show databases;";
+            MySqlCommand command = new MySqlCommand(queryText, conn);
+            MySqlDataReader databases = command.ExecuteReader();
+            databaseName = databaseName.ToLower();
+            if(databases.HasRows)
+            {
+                while (databases.Read())
+                {
+                    if (databases.GetString(0) == databaseName)
+                    {
+                        conn.Close();
+                        return true;
+                    }
+                }
+            }
+            conn.Close();
+            return false;
+        }
     }
 }

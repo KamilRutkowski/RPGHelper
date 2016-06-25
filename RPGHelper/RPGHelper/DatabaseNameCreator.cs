@@ -64,6 +64,19 @@ namespace RPGHelper
                 MessageBox.Show("Session name can not be blank!", "Invalid session name", MessageBoxButtons.OK);
                 return;
             }
+            try
+            {
+                if(DBCreator.doesDatabaseExists("RPGH"+textBoxDatabaseName.Text))
+                {
+                    MessageBox.Show("Session already exists! Use diffrent name!", "Bad session name", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error was encountered! Erron message: " + ex.Message, "Error in connecting to server", MessageBoxButtons.OK);
+                return;
+            }
             registerNextStepCreation(textBoxDatabaseName.Text);
         }
 

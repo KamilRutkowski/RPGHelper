@@ -50,14 +50,5 @@ namespace RPGHelper
             targetTable = trg;
             type = typeOfConnection;
         }
-
-        static public List<ConnectionsInTables> sortConnections(List<ConnectionsInTables> connections, string mainTableName = "Players")
-        {
-            
-
-
-
-            throw new NotImplementedException();
-        }
     }
 }

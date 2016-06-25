@@ -25,7 +25,7 @@ namespace RPGHelper
         /// </summary>
         public ConnectionsInTables.ConnectionType connectionTypeToUpperLevel { get; set; }
 
-        public List<TreeOfConnections> branches; 
+        public List<TreeOfConnections> branches { get; set; } 
 
         #endregion
 
