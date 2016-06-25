@@ -85,6 +85,12 @@
     </Compile>
     <Compile Include="DBManage.cs" />
     <Compile Include="DBReader.cs" />
+    <Compile Include="EntityManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntityManager.Designer.cs">
+      <DependentUpon>EntityManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListOfItemsInEnum.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,12 @@
       <DependentUpon>MainMenuControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Query.cs" />
+    <Compile Include="RowEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RowEditor.Designer.cs">
+      <DependentUpon>RowEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="SessionCreator.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -150,6 +162,9 @@
     <EmbeddedResource Include="DatabaseTablesCreator.resx">
       <DependentUpon>DatabaseTablesCreator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EntityManager.resx">
+      <DependentUpon>EntityManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ListOfItemsInEnum.resx">
       <DependentUpon>ListOfItemsInEnum.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +185,9 @@
     </Compile>
     <EmbeddedResource Include="MainMenuControl.resx">
       <DependentUpon>MainMenuControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RowEditor.resx">
+      <DependentUpon>RowEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SessionCreator.resx">
       <DependentUpon>SessionCreator.cs</DependentUpon>

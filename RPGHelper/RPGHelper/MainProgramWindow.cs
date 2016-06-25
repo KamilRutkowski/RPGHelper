@@ -60,12 +60,12 @@ namespace RPGHelper
         /// </summary>
         private void LoadSession()
         {
-            var response = MessageBox.Show("Czy chcesz wczytać testową sesję?", "Wczytać testową sesję?", MessageBoxButtons.YesNoCancel);
+            var response = MessageBox.Show("Do you want to load test session?", "Load test session?", MessageBoxButtons.YesNoCancel);
             if(response == DialogResult.Yes)
             {
                 //Do testów
                 activeControl.Dispose();
-                activeControl = new ManageSession(endSession, "Test");
+                activeControl = new ManageSession(endSession, "rpghsesja"); //wpisz sobie jakąś swoją nazwę bazy z dopiskiem rpgh
                 Controls.Add(activeControl);
             }
             if(response == DialogResult.No)
