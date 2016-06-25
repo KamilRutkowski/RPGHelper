@@ -125,7 +125,7 @@ namespace RPGHelper
 
         public bool isOK()
         {
-            if (textBoxName.Text.Length > 0)
+            if (textBoxName.Text.Trim().Length > 0)
             {
                 if (comboBoxTypeOfColumn.SelectedItem.ToString() == "Enum")
                 {

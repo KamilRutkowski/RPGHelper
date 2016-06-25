@@ -226,7 +226,7 @@ namespace RPGHelper
                 if(control is ColumnCreator)
                 {
                     Column col = ((ColumnCreator)control).createColumn();
-                    if (((ColumnCreator)control).isOK())
+                    if (!((ColumnCreator)control).isOK())
                         return false;
                     foreach(Column colAlreadyCreated in tmp)
                     {
