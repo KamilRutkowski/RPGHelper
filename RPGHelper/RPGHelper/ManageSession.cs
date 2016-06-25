@@ -26,14 +26,7 @@ namespace RPGHelper
         public delegate void myActionDelegate();
 
         private string DBName;
-<<<<<<< HEAD
         public ToolStripMenuItem menuItem;
-=======
-        private List<Table> playerTablesToManage;
-        private List<Table> itemsTablesToManage;
-        private int columnIndex = 0;
-        private ToolStripMenuItem menuItem;
->>>>>>> origin/master
 
         MySqlConnection connection;
         MySqlDataAdapter adapter;
