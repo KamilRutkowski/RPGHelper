@@ -71,7 +71,7 @@ namespace RPGHelper
         /// <param name="selectedTable">Name of the selected table</param>
         public static MySqlCommand commandForTheWholeTable(MySqlConnection connection, string selectedTable)
         {
-            string commandText = "select * from "+ selectedTable +";";
+            string commandText = "select * from " + selectedTable + ";";
             MySqlCommand selectDataBase = new MySqlCommand(commandText, connection);
             return selectDataBase;
         }
@@ -84,11 +84,11 @@ namespace RPGHelper
         {
             List<string> RPGHDatabases = new List<string>();
             string commandText = "show databases like 'RPGH%';";
-            
+
             MySqlCommand selectDatabases = new MySqlCommand(commandText, connection);
             MySqlDataReader reader = selectDatabases.ExecuteReader();
 
-            while(reader.Read())
+            while (reader.Read())
             {
                 RPGHDatabases.Add(reader[0].ToString());
             }
@@ -150,13 +150,13 @@ namespace RPGHelper
         {
             List<string> tables = new List<string>();
             tables.Add(selectMainPlayersTableName(connection, databaseName));
-            
+
             string commandText = "show tables from " + databaseName + " like 'PlayersSub%';";
 
             MySqlCommand selectTableNames = new MySqlCommand(commandText, connection);
             MySqlDataReader reader = selectTableNames.ExecuteReader();
 
-            while(reader.Read())
+            while (reader.Read())
             {
                 tables.Add(reader[0].ToString());
             }
@@ -178,7 +178,7 @@ namespace RPGHelper
             MySqlCommand selectTableNames = new MySqlCommand(commandText, connection);
             MySqlDataReader reader = selectTableNames.ExecuteReader();
 
-            while(reader.Read())
+            while (reader.Read())
             {
                 tables.Add(reader[0].ToString());
             }

@@ -18,6 +18,12 @@ namespace RPGHelper
             get { return textBoxValueInRow.Text; }
             set { textBoxValueInRow.Text = value; }
         }
+
+        public string labelName
+        {
+            get { return labelColumnName.Text; }
+            set { labelColumnName.Text = value; }
+        }
         #endregion
 
         /// <summary>

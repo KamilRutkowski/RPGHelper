@@ -20,12 +20,14 @@ namespace RPGHelper
         /// </summary>
         private myActionDelegate registerEndSession
         {
-            get; set;
+            get;
+            set;
         }
 
         public delegate void myActionDelegate();
 
         private string DBName;
+        private string entityName;
         public ToolStripMenuItem menuItem;
 
         MySqlConnection connection;
@@ -43,7 +45,15 @@ namespace RPGHelper
         {
             InitializeComponent();
             registerEndSession = endSession;
-            DBName = databaseName;
+            
+            if(databaseName.StartsWith("rpgh"))
+            {
+                DBName = databaseName;
+            }
+            else
+            {
+                DBName = "rpgh" + databaseName;
+            }
         }
 
         /// <summary>
@@ -53,9 +63,9 @@ namespace RPGHelper
         /// <param name="e"></param>
         private void ManageSession_Load(object sender, EventArgs e)
         {
-            textBoxSelectedDatabase.Text = DBName;
-            MessageBox.Show("New session " + DBName + " loaded!", "New database", MessageBoxButtons.OK);
-            newConnection(textBoxSelectedDatabase.Text);
+            textBoxSelectedDatabase.Text = DBName.Substring(4, DBName.Length - 4);
+            MessageBox.Show("New session " + textBoxSelectedDatabase.Text + " loaded!", "New database", MessageBoxButtons.OK);
+            newConnection(DBName);
         }
 
         /// <summary>
@@ -89,7 +99,7 @@ namespace RPGHelper
             try
             {
                 adapter = new MySqlDataAdapter();
-                adapter.SelectCommand = DBReader.commandForTheWholeTable(connection, textBoxSelectedItem.Text);
+                adapter.SelectCommand = DBReader.commandForTheWholeTable(connection, entityName);
                 dataSet = new DataTable();
                 adapter.Fill(dataSet);
                 BindingSource source = new BindingSource();
@@ -118,7 +128,7 @@ namespace RPGHelper
             try
             {
                 adapter = new MySqlDataAdapter();
-                adapter.SelectCommand = DBReader.commandForTheWholeTable(connection, textBoxSelectedItem.Text);
+                adapter.SelectCommand = DBReader.commandForTheWholeTable(connection, entityName);
                 dataSet = new DataTable();
                 adapter.Fill(dataSet);
                 BindingSource source = new BindingSource();
@@ -147,44 +157,45 @@ namespace RPGHelper
             itemsToolStripMenuItem.DropDownItems.Clear();
             connectorToolStripMenuItem.DropDownItems.Clear();
 
-            foreach (string value in DBReader.selectAllPlayersTableNames(connection, textBoxSelectedDatabase.Text))
+            foreach (string value in DBReader.selectAllPlayersTableNames(connection, DBName))
             {
-                menuItem = new ToolStripMenuItem { Name = value, Text = value };
+                string newValuePlayer = "";
+                if(value.StartsWith("playersmain"))
+                {
+                    newValuePlayer = value.Substring(11, value.Length - 11);
+                }
+                else if (value.StartsWith("playerssub"))
+                {
+                    newValuePlayer = value.Substring(10, value.Length - 10);
+                }
+                menuItem = new ToolStripMenuItem { Name = newValuePlayer, Text = newValuePlayer };
                 playerToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { menuItem });
                 menuItem.Click += new EventHandler(playerToolStripMenuItem_Click);
             }
 
-            foreach (string value in DBReader.selectAllItemsTableNames(connection, textBoxSelectedDatabase.Text))
+            foreach (string value in DBReader.selectAllItemsTableNames(connection, DBName))
             {
-                menuItem = new ToolStripMenuItem { Name = value, Text = value };
+                string newValueItems = "";
+                if (value.StartsWith("items"))
+                {
+                    newValueItems = value.Substring(5, value.Length - 5);
+                }
+                menuItem = new ToolStripMenuItem { Name = newValueItems, Text = newValueItems };
                 itemsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { menuItem });
-                menuItem.Click += new EventHandler(playerToolStripMenuItem_Click);
+                menuItem.Click += new EventHandler(itemsToolStripMenuItem_Click);
             }
 
-            foreach (string value in DBReader.selectAllConnectorTableNames(connection, textBoxSelectedDatabase.Text))
+            foreach (string value in DBReader.selectAllConnectorTableNames(connection, DBName))
             {
-                menuItem = new ToolStripMenuItem { Name = value, Text = value };
+                string newValueConnector = "";
+                if (value.StartsWith("connector"))
+                {
+                    newValueConnector = value.Substring(9, value.Length - 9);
+                }
+                menuItem = new ToolStripMenuItem { Name = newValueConnector, Text = newValueConnector };
                 connectorToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { menuItem });
-                menuItem.Click += new EventHandler(playerToolStripMenuItem_Click);
+                menuItem.Click += new EventHandler(connectorToolStripMenuItem_Click);
             }
-            
-            //TEST 
-            /*playerToolStripMenuItem.DropDownItems.Clear();
-            itemsToolStripMenuItem.DropDownItems.Clear();
-
-            foreach (string value in DBReader.selectAllTableNames(connection, textBoxSelectedDatabase.Text))
-            {
-                menuItem = new ToolStripMenuItem { Name = value, Text = value };
-                playerToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { menuItem });
-                menuItem.Click += new EventHandler(playerToolStripMenuItem_Click);
-            }
-
-            foreach (string value in DBReader.selectAllTableNames(connection, textBoxSelectedDatabase.Text))
-            {
-                menuItem = new ToolStripMenuItem { Name = value, Text = value };
-                itemsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { menuItem });
-                menuItem.Click += new EventHandler(playerToolStripMenuItem_Click);
-            }*/
         }
 
         /// <summary>
@@ -196,7 +207,52 @@ namespace RPGHelper
         {
             ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
             textBoxSelectedItem.Text = clickedItem.Text;
+            
+            if(clickedItem.Text == "players")
+            {
+                entityName = "playersmain" + clickedItem.Text;
+            }
+            else
+            {
+                entityName = "playerssub" + clickedItem.Text;
+            }
             refreshTable();
+            enableButtons();
+        }
+
+        /// <summary>
+        /// Loads values to DataGridView and enables buttons when clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void itemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
+            textBoxSelectedItem.Text = clickedItem.Text;
+            entityName = "items" + clickedItem.Text;
+            refreshTable();
+            enableButtons();
+        }
+
+        /// <summary>
+        /// Loads values to DataGridView and enables buttons when clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void connectorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
+            textBoxSelectedItem.Text = clickedItem.Text;
+            entityName = "connector" + clickedItem.Text;
+            refreshTable();
+            enableButtons();
+        }
+
+        /// <summary>
+        /// Enables buttons
+        /// </summary>
+        private void enableButtons()
+        {
             buttonRefresh.Enabled = true;
             buttonInsUp.Enabled = true;
             buttonManageRows.Enabled = true;
@@ -211,7 +267,9 @@ namespace RPGHelper
             comboBoxDBSelector.Items.Clear();
             for (int i = 0; i < DBReader.selectAllDatabaseNames(connection).Count(); i++)
             {
-                comboBoxDBSelector.Items.Add(DBReader.selectAllDatabaseNames(connection)[i]);
+                string newDatabaseName = ""; 
+                newDatabaseName = DBReader.selectAllDatabaseNames(connection)[i];
+                comboBoxDBSelector.Items.Add(newDatabaseName.Substring(4, newDatabaseName.Length - 4));
             }
         }
 
@@ -222,15 +280,15 @@ namespace RPGHelper
         /// <param name="e"></param>
         private void buttonDropTheBase_Click(object sender, EventArgs e)
         {
-            var response = MessageBox.Show("Do you want to delete " + DBName + "session" + "?", "Are you sure?", MessageBoxButtons.YesNo);
+            var response = MessageBox.Show("Do you want to delete " + textBoxSelectedDatabase.Text + " session?", "Are you sure?", MessageBoxButtons.YesNo);
             {
                 if (response == DialogResult.Yes)
                 {
                     var response2 = MessageBox.Show("Are you sure?", "Are you sure?", MessageBoxButtons.YesNo);
                     {
-                        if(response == DialogResult.Yes)
+                        if (response == DialogResult.Yes)
                         {
-                            string commandText = "drop database " + textBoxSelectedDatabase.Text + ";";
+                            string commandText = "drop database " + DBName + ";";
 
                             MySqlCommand dropCommand = new MySqlCommand(commandText, connection);
                             MySqlDataReader reader;
@@ -289,14 +347,15 @@ namespace RPGHelper
         /// <param name="e"></param>
         private void buttonManageRows_Click(object sender, EventArgs e)
         {
-            EntityManager entityForm = new EntityManager(textBoxSelectedDatabase.Text, textBoxSelectedItem.Text);
+            EntityManager entityForm = new EntityManager(DBName, entityName);
             entityForm.Show();
         }
 
         private void comboBoxDBSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBoxSelectedDatabase.Text = comboBoxDBSelector.SelectedItem.ToString();
-            newConnection(textBoxSelectedDatabase.Text);
+            DBName = "rpgh" + comboBoxDBSelector.SelectedItem.ToString();
+            newConnection(DBName);
         }
 
         /// <summary>

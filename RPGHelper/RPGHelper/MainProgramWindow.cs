@@ -65,7 +65,7 @@ namespace RPGHelper
             {
                 //Do testów
                 activeControl.Dispose();
-                activeControl = new ManageSession(endSession, "rpghsesja"); //wpisz sobie jakąś swoją nazwę bazy z dopiskiem rpgh
+                activeControl = new ManageSession(endSession, "new"); //wpisz sobie jakąś swoją nazwę bazy (już bez rpgh)
                 Controls.Add(activeControl);
             }
             if(response == DialogResult.No)

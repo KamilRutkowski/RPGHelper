@@ -57,7 +57,7 @@ namespace RPGHelper
             finally
             {
                 DBReader.connectionEnd(connection);
-            }   
+            }
         }
 
         /// <summary>
@@ -65,8 +65,23 @@ namespace RPGHelper
         /// </summary>
         private void namesToTextBoxes()
         {
-            textBoxDatabase.Text = DBName;
-            textBoxEntity.Text = tableName;
+            textBoxDatabase.Text = DBName.Substring(4, DBName.Length - 4);
+            if(tableName.StartsWith("playersmain"))
+            {
+                textBoxEntity.Text = tableName.Substring(11, tableName.Length - 11);;
+            }
+            else if (tableName.StartsWith("playerssub"))
+            {
+                textBoxEntity.Text = tableName.Substring(10, tableName.Length - 10);
+            }
+            else if (tableName.StartsWith("items"))
+            {
+                textBoxEntity.Text = tableName.Substring(5, tableName.Length - 5);
+            }
+            else if (tableName.StartsWith("connector"))
+            {
+                textBoxEntity.Text = tableName.Substring(9, tableName.Length - 9);
+            }
         }
 
         /// <summary>
@@ -74,7 +89,7 @@ namespace RPGHelper
         /// </summary>
         private void addNewRowEditor()
         {
-            List<string> allColumns = DBReader.selectAllColumnNames(connection, textBoxEntity.Text);
+            List<string> allColumns = DBReader.selectAllColumnNames(connection, tableName);
             for (int i = 0; i < allColumns.Count(); i++)
             {
                 RowEditor editor = new RowEditor(allColumns[i]);
@@ -111,7 +126,7 @@ namespace RPGHelper
             try
             {
                 DBReader.connectionOpen(connection);
-                foreach (string columnName in DBReader.selectAllColumnNames(connection, textBoxEntity.Text))
+                foreach (string columnName in DBReader.selectAllColumnNames(connection, tableName))
                 {
                     columnValuesForInsert += columnName + ", ";
                 }
@@ -132,7 +147,7 @@ namespace RPGHelper
                 DBReader.connectionEnd(connection);
             }
 
-            string commandText = "insert into " + textBoxEntity.Text + " (" + columnValuesForInsert + ") values(" + textBoxValuesForInsert + ");";
+            string commandText = "insert into " + tableName + " (" + columnValuesForInsert + ") values(" + textBoxValuesForInsert + ");";
             MySqlCommand insertCommand = new MySqlCommand(commandText, connection);
             MySqlDataReader reader;
 
@@ -166,10 +181,11 @@ namespace RPGHelper
             string columnAndTextBoxValuesForUpdate = "";
             List<RowEditor> listOfRowEditors = new List<RowEditor>();
             List<string> listOfColumns = new List<string>();
+
             try
             {
                 DBReader.connectionOpen(connection);
-                listOfColumns = DBReader.selectAllColumnNames(connection, textBoxEntity.Text);
+                listOfColumns = DBReader.selectAllColumnNames(connection, tableName);
 
                 foreach (RowEditor editorControl in splitContainer.Panel2.Controls)
                 {
@@ -178,7 +194,7 @@ namespace RPGHelper
 
                 for (int i = 0; i < listOfColumns.Count(); i++)
                 {
-                    columnAndTextBoxValuesForUpdate += DBReader.selectAllColumnNames(connection, textBoxEntity.Text)[i] + "='" + listOfRowEditors[i].valueName + "',";
+                    columnAndTextBoxValuesForUpdate += DBReader.selectAllColumnNames(connection, tableName)[i] + "='" + listOfRowEditors[i].valueName + "',";
                 }
                 columnAndTextBoxValuesForUpdate = columnAndTextBoxValuesForUpdate.Remove(columnAndTextBoxValuesForUpdate.Length - 1);
             }
@@ -191,7 +207,17 @@ namespace RPGHelper
                 DBReader.connectionEnd(connection);
             }
 
-            string commandText = "update " + textBoxEntity.Text + " set " + columnAndTextBoxValuesForUpdate + "where " + listOfColumns[0] + "='" + listOfRowEditors[0].valueName + "' ;";
+
+            string idValue = "";
+            foreach (RowEditor editorControl in listOfRowEditors)
+            {
+                if (editorControl.labelName == "id_")
+                {
+                    idValue = editorControl.valueName;
+                }
+            }
+
+            string commandText = "update " + tableName + " set " + columnAndTextBoxValuesForUpdate + " where id_ ='" + idValue + "' ;";
             MySqlCommand updateCommand = new MySqlCommand(commandText, connection);
             MySqlDataReader reader;
 
@@ -202,7 +228,7 @@ namespace RPGHelper
                 MessageBox.Show("Data was updated");
                 while (reader.Read())
                 {
-                    
+
                 }
             }
             catch (MySqlException ex)
@@ -228,7 +254,7 @@ namespace RPGHelper
             try
             {
                 DBReader.connectionOpen(connection);
-                listOfColumns = DBReader.selectAllColumnNames(connection, textBoxEntity.Text);
+                listOfColumns = DBReader.selectAllColumnNames(connection, tableName);
 
                 foreach (RowEditor editorControl in splitContainer.Panel2.Controls)
                 {
@@ -244,7 +270,16 @@ namespace RPGHelper
                 DBReader.connectionEnd(connection);
             }
 
-            string commandText = "delete from " + textBoxEntity.Text + " where " + listOfColumns[0] + "='" + listOfRowEditors[0].valueName + "' ;";
+            string idValue = "";
+            foreach (RowEditor editorControl in listOfRowEditors)
+            {
+                if (editorControl.labelName == "id_")
+                {
+                    idValue = editorControl.valueName;
+                }
+            }
+
+            string commandText = "delete from " + tableName + " where id_ ='" + idValue + "' ;";
             MySqlCommand deleteCommand = new MySqlCommand(commandText, connection);
             MySqlDataReader reader;
 
