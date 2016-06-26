@@ -144,7 +144,7 @@ namespace RPGHelper
             rearangeControls();
         }
 
-        void rearangeControls()
+        private void rearangeControls()
         {
             int startPosition = 3;
             foreach (Control con in splitContainer1.Panel1.Controls)
@@ -166,7 +166,7 @@ namespace RPGHelper
             buttonAddPlayerTables.Location = new Point(buttonAddPlayerTables.Location.X, startPosition);
         }
 
-        void showConnections()
+        private void showConnections()
         {
             Control tmp;
             List<ConnectionsInTables> toRemove = new List<ConnectionsInTables>();

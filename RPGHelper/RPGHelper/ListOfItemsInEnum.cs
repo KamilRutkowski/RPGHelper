@@ -12,9 +12,9 @@ namespace RPGHelper
 {
     public partial class ListOfItemsInEnum : Form
     {
-        #region Properties
+        #region Callbacks
 
-        private myDelegate registerEnumValuesCallback { get; set; }
+        private event myDelegate registerEnumValuesCallback;
 
         #endregion
 
