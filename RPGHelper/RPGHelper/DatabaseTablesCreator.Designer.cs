@@ -43,6 +43,7 @@
             this.removeTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playerTablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemsTablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripCurrentlySelectedTable = new System.Windows.Forms.ToolStripTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -121,23 +122,24 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.playerToolStripMenuItem,
             this.itemsToolStripMenuItem,
-            this.tablesToolStripMenuItem});
+            this.tablesToolStripMenuItem,
+            this.toolStripCurrentlySelectedTable});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(550, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(550, 27);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // playerToolStripMenuItem
             // 
             this.playerToolStripMenuItem.Name = "playerToolStripMenuItem";
-            this.playerToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.playerToolStripMenuItem.Size = new System.Drawing.Size(51, 23);
             this.playerToolStripMenuItem.Text = "Player";
             // 
             // itemsToolStripMenuItem
             // 
             this.itemsToolStripMenuItem.Name = "itemsToolStripMenuItem";
-            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(48, 23);
             this.itemsToolStripMenuItem.Text = "Items";
             // 
             // tablesToolStripMenuItem
@@ -146,7 +148,7 @@
             this.createTableToolStripMenuItem,
             this.removeTableToolStripMenuItem});
             this.tablesToolStripMenuItem.Name = "tablesToolStripMenuItem";
-            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(52, 23);
             this.tablesToolStripMenuItem.Text = "Tables";
             // 
             // createTableToolStripMenuItem
@@ -193,6 +195,13 @@
             this.itemsTablesToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.itemsTablesToolStripMenuItem.Text = "Items tables";
             // 
+            // toolStripCurrentlySelectedTable
+            // 
+            this.toolStripCurrentlySelectedTable.Name = "toolStripCurrentlySelectedTable";
+            this.toolStripCurrentlySelectedTable.ReadOnly = true;
+            this.toolStripCurrentlySelectedTable.Size = new System.Drawing.Size(370, 23);
+            this.toolStripCurrentlySelectedTable.Text = "Current table: Players in Player";
+            // 
             // DatabaseTablesCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,5 +240,6 @@
         private System.Windows.Forms.ToolStripMenuItem removeTableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem playerTablesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemsTablesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripTextBox toolStripCurrentlySelectedTable;
     }
 }

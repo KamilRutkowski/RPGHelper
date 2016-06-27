@@ -25,26 +25,17 @@ namespace RPGHelper
         /// <summary>
         /// Register a callback delegate for ExitButton.Click event
         /// </summary>
-        private myDelegate registerExit
-        {
-            get; set;
-        }
+        private event myDelegate registerExit;
 
         /// <summary>
         /// Register a callback for previous step of session creation
         /// </summary>
-        private myDelegate registerPreviousStep
-        {
-            get; set;
-        }
+        private event myDelegate registerPreviousStep;
 
         /// <summary>
         /// Register a callback delegate for next step of session creation
         /// </summary>
-        private myDelegateWithTables registerNextStep
-        {
-            get; set;
-        }
+        private event myDelegateWithTables registerNextStep;
         #endregion
 
         public delegate void myDelegate();
@@ -276,6 +267,7 @@ namespace RPGHelper
             }
             Table tab = new Table();
             tab.tableName = tableName;
+            toolStripCurrentlySelectedTable.Text = "Current table: " + tableName + " in Player";
             playerTablesToCreate.Add(tab);
             removeAllColums();
             setCurrentTable(tableName, true);
@@ -309,6 +301,7 @@ namespace RPGHelper
                 return;
             }
             actualTableName=((ToolStripItem)sender).Text;
+            toolStripCurrentlySelectedTable.Text = "Current table: " + ((ToolStripItem)sender).Text + " in Player";
             isPlayerType = true;
             removeAllColums();
             showCreatedTable();
@@ -322,6 +315,7 @@ namespace RPGHelper
             {
                 removeAllColums();
                 setCurrentTable("Players", true);
+                toolStripCurrentlySelectedTable.Text = "Current table: Players in Player";
                 showCreatedTable();
                 rearangeColums();
             }
@@ -364,6 +358,7 @@ namespace RPGHelper
             saveCurrentColumsInCurrentTable();
             Table tab = new Table();
             tab.tableName = tableName;
+            toolStripCurrentlySelectedTable.Text = "Current table: " + tableName + " in Items";
             itemsTablesToCreate.Add(tab);
             removeAllColums();
             setCurrentTable(tableName, false);
@@ -394,6 +389,7 @@ namespace RPGHelper
                 return;
             }
             setCurrentTable(((ToolStripItem)sender).Text, false);
+            toolStripCurrentlySelectedTable.Text = "Current table: " + ((ToolStripItem)sender).Text + " in Items";
             removeAllColums();
             showCreatedTable();
             rearangeColums();
@@ -406,6 +402,7 @@ namespace RPGHelper
             {
                 removeAllColums();
                 setCurrentTable("Players", true);
+                toolStripCurrentlySelectedTable.Text = "Current table: Players in Player";
                 showCreatedTable();
                 rearangeColums();
             }

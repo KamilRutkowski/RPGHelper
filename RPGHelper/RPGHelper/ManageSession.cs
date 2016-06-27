@@ -18,23 +18,20 @@ namespace RPGHelper
         /// <summary>
         /// Register a callback delegate for exiting current session
         /// </summary>
-        private myActionDelegate registerEndSession
-        {
-            get;
-            set;
-        }
+        private event myActionDelegate registerEndSession;
+
+        #endregion
 
         public delegate void myActionDelegate();
 
         private string DBName;
         private string entityName;
-        public ToolStripMenuItem menuItem;
+        private ToolStripMenuItem menuItem;
 
-        MySqlConnection connection;
-        MySqlDataAdapter adapter;
-        DataTable dataSet;
-        MySqlCommandBuilder commBuilder;
-        #endregion
+        private MySqlConnection connection;
+        private MySqlDataAdapter adapter;
+        private DataTable dataSet;
+        private MySqlCommandBuilder commBuilder;
 
         /// <summary>
         /// Manager of existing session

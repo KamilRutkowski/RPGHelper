@@ -16,18 +16,13 @@ namespace RPGHelper
         /// <summary>
         /// Register a callback delegate for ExitButton.Click event 
         /// </summary>
-        private myActionDelegate registerExitCreation
-        {
-            get; set;
-        }
+        private event myActionDelegate registerExitCreation;
 
         /// <summary>
         /// Register a callback delegate for next step of creation button
         /// </summary>
-        private myActionDelegateWithDatabaseName registerNextStepCreation
-        {
-            get; set;
-        }
+        private event myActionDelegateWithDatabaseName registerNextStepCreation;
+     
         #endregion
 
 
