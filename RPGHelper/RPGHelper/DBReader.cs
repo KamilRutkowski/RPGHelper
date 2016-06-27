@@ -219,5 +219,22 @@ namespace RPGHelper
 
             return tables;
         }
+
+        public static List<string> selectAllPlayersID(MySqlConnection connection, string databaseName)
+        {
+            List<string> playersID = new List<string>();
+            string commandText = "select id_ from PlayersMainPlayers from" + databaseName +";";
+
+            MySqlCommand selectPlayersID = new MySqlCommand(commandText, connection);
+            MySqlDataReader reader = selectPlayersID.ExecuteReader();
+
+            while (reader.Read())
+            {
+                playersID.Add(reader[0].ToString());
+            }
+            reader.Close();
+
+            return playersID;
+        }
     }
 }

@@ -28,6 +28,8 @@ namespace RPGHelper
         private string DBName;
         private string entityName;
         private ToolStripMenuItem menuItem;
+        private List<string> playersID;
+        private int currentID;
 
         MySqlConnection connection;
         MySqlDataAdapter adapter;
@@ -63,7 +65,7 @@ namespace RPGHelper
         private void ManageSession_Load(object sender, EventArgs e)
         {
             textBoxSelectedDatabase.Text = DBName.Substring(4, DBName.Length - 4);
-            MessageBox.Show("New session " + textBoxSelectedDatabase.Text + " loaded!", "New database", MessageBoxButtons.OK);
+            //MessageBox.Show("New session " + textBoxSelectedDatabase.Text + " loaded!", "New database", MessageBoxButtons.OK);
             newConnection(DBName);
         }
 
@@ -375,7 +377,42 @@ namespace RPGHelper
         /// <param name="e"></param>
         private void buttonLeftArrow_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                DBReader.connectionOpen(connection);
+                if(textBoxSelectedPlayer.Text == "For all")
+                {
+                    buttonInsUp.Enabled = false;
+                    currentID = DBReader.selectAllPlayersID(connection, DBName).Count();
+                    textBoxSelectedPlayer.Text = "Player " + currentID;
+                }
+                else if (textBoxSelectedPlayer.Text == "Player " + 1)
+                {
+                    if(textBoxSelectedItem.Text != "")
+                    {
+                        buttonInsUp.Enabled = true;
+                    }
+                    else
+                        buttonInsUp.Enabled = false;
+                    
+                    currentID = 0;
+                    textBoxSelectedPlayer.Text = "For all";
+                }
+                else if (textBoxSelectedPlayer.Text.StartsWith("Player "))
+                {
+                    buttonInsUp.Enabled = false;
+                    currentID--;
+                    textBoxSelectedPlayer.Text = "Player " + currentID;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                DBReader.connectionEnd(connection);
+            }
         }
 
         /// <summary>
@@ -385,7 +422,50 @@ namespace RPGHelper
         /// <param name="e"></param>
         private void buttonRightArrow_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DBReader.connectionOpen(connection);
+                if (textBoxSelectedPlayer.Text == "For all")
+                {
+                    buttonInsUp.Enabled = false;
+                    currentID = 1;
+                    textBoxSelectedPlayer.Text = "Player " + currentID;
+                }
+                else if (textBoxSelectedPlayer.Text == "Player " + DBReader.selectAllPlayersID(connection, DBName).Count())
+                {
+                    if (textBoxSelectedItem.Text != "")
+                    {
+                        buttonInsUp.Enabled = true;
+                    }
+                    else
+                        buttonInsUp.Enabled = false;
+                    currentID = 0;
+                    textBoxSelectedPlayer.Text = "For all";
+                }
+                else if (textBoxSelectedPlayer.Text.StartsWith("Player "))
+                {
+                    buttonInsUp.Enabled = false;
+                    currentID++;
+                    textBoxSelectedPlayer.Text = "Player " + currentID;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                DBReader.connectionEnd(connection);
+            }
+        }
 
+        private void tableEntity_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!buttonInsUp.Enabled)
+            {
+                MessageBox.Show("You can't change the values in table! Use Manage Rows option instead.", "Error!", MessageBoxButtons.OK);
+                refreshTable();
+            }
         }
 
         /// <summary>

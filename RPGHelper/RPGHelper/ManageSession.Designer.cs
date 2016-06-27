@@ -99,7 +99,7 @@
             this.textBoxSelectedPlayer.Name = "textBoxSelectedPlayer";
             this.textBoxSelectedPlayer.Size = new System.Drawing.Size(82, 26);
             this.textBoxSelectedPlayer.TabIndex = 7;
-            this.textBoxSelectedPlayer.Text = "Player";
+            this.textBoxSelectedPlayer.Text = "For all";
             // 
             // textBoxSelectedItem
             // 
@@ -170,6 +170,7 @@
             this.tableEntity.Name = "tableEntity";
             this.tableEntity.Size = new System.Drawing.Size(471, 286);
             this.tableEntity.TabIndex = 15;
+            this.tableEntity.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.tableEntity_CellValueChanged);
             // 
             // buttonRefresh
             // 
