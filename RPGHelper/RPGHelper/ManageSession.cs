@@ -28,7 +28,7 @@ namespace RPGHelper
 
         private string DBName;
         private string entityName;
-        public ToolStripMenuItem menuItem;
+        private ToolStripMenuItem menuItem;
 
         MySqlConnection connection;
         MySqlDataAdapter adapter;
