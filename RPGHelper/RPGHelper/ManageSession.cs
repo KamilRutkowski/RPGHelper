@@ -204,6 +204,8 @@ namespace RPGHelper
         /// <param name="e"></param>
         private void playerToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tableEntity.DataSource = null;
+            tableEntity.Refresh();
             ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
             textBoxSelectedItem.Text = clickedItem.Text;
             
@@ -226,6 +228,8 @@ namespace RPGHelper
         /// <param name="e"></param>
         private void itemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tableEntity.DataSource = null;
+            tableEntity.Refresh();
             ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
             textBoxSelectedItem.Text = clickedItem.Text;
             entityName = "items" + clickedItem.Text;
@@ -240,6 +244,8 @@ namespace RPGHelper
         /// <param name="e"></param>
         private void connectorToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tableEntity.DataSource = null;
+            tableEntity.Refresh();
             ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
             textBoxSelectedItem.Text = clickedItem.Text;
             entityName = "connector" + clickedItem.Text;
@@ -297,6 +303,8 @@ namespace RPGHelper
                                 DBReader.connectionOpen(connection);
                                 reader = dropCommand.ExecuteReader();
                                 MessageBox.Show("Session was dropped!");
+                                textBoxSelectedDatabase.Text = "";
+                                textBoxSelectedItem.Text = "";
                                 while (reader.Read())
                                 {
 
@@ -311,6 +319,7 @@ namespace RPGHelper
                                 DBReader.connectionEnd(connection);
                             }
                         }
+                        
                     }
                 }
             }
@@ -352,6 +361,8 @@ namespace RPGHelper
 
         private void comboBoxDBSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
+            tableEntity.DataSource = null;
+            tableEntity.Refresh();
             textBoxSelectedDatabase.Text = comboBoxDBSelector.SelectedItem.ToString();
             DBName = "rpgh" + comboBoxDBSelector.SelectedItem.ToString();
             newConnection(DBName);

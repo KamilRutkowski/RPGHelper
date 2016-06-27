@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenuControl));
             this.ButtonStartNewSession = new System.Windows.Forms.Button();
             this.buttonLoadSession = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // ButtonStartNewSession
@@ -66,10 +69,21 @@
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogo.Image")));
+            this.pictureBoxLogo.Location = new System.Drawing.Point(66, 44);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(387, 146);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLogo.TabIndex = 3;
+            this.pictureBoxLogo.TabStop = false;
+            // 
             // MainMenuControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonLoadSession);
             this.Controls.Add(this.ButtonStartNewSession);
@@ -78,6 +92,7 @@
             this.Name = "MainMenuControl";
             this.Size = new System.Drawing.Size(500, 600);
             this.Load += new System.EventHandler(this.MainMenuControl_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -87,5 +102,6 @@
         private System.Windows.Forms.Button ButtonStartNewSession;
         private System.Windows.Forms.Button buttonLoadSession;
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.PictureBox pictureBoxLogo;
     }
 }
