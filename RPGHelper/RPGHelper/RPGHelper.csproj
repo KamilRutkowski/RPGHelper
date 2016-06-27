@@ -70,6 +70,12 @@
       <DependentUpon>ConnectionBetweenPlayerAndItems.cs</DependentUpon>
     </Compile>
     <Compile Include="ConnectionsInTables.cs" />
+    <Compile Include="DataBaseNameSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataBaseNameSelector.Designer.cs">
+      <DependentUpon>DataBaseNameSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBCreator.cs" />
     <Compile Include="DatabaseRelationsCreator.cs">
       <SubType>UserControl</SubType>
@@ -136,6 +142,12 @@
     <Compile Include="DatabaseNameCreator.Designer.cs">
       <DependentUpon>DatabaseNameCreator.cs</DependentUpon>
     </Compile>
+    <Compile Include="SessionManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SessionManager.Designer.cs">
+      <DependentUpon>SessionManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Table.cs" />
     <Compile Include="ConnectionBetweenPlayerTables.cs">
       <SubType>UserControl</SubType>
@@ -155,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConnectionBetweenPlayerTables.resx">
       <DependentUpon>ConnectionBetweenPlayerTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataBaseNameSelector.resx">
+      <DependentUpon>DataBaseNameSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseRelationsCreator.resx">
       <DependentUpon>DatabaseRelationsCreator.cs</DependentUpon>
@@ -194,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseNameCreator.resx">
       <DependentUpon>DatabaseNameCreator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SessionManager.resx">
+      <DependentUpon>SessionManager.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

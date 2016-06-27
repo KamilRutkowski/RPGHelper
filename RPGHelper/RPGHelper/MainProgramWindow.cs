@@ -54,24 +54,14 @@ namespace RPGHelper
             }
         }
 
-
         /// <summary>
         /// Loading session from xml preset
         /// </summary>
         private void LoadSession()
         {
-            var response = MessageBox.Show("Do you want to load test session?", "Load test session?", MessageBoxButtons.YesNoCancel);
-            if(response == DialogResult.Yes)
-            {
-                //Do testów
-                activeControl.Dispose();
-                activeControl = new ManageSession(endSession, "new"); //wpisz sobie jakąś swoją nazwę bazy (już bez rpgh)
-                Controls.Add(activeControl);
-            }
-            if(response == DialogResult.No)
-            {
-
-            }
+            activeControl.Dispose();
+            activeControl = new SessionManager(endSession);
+            Controls.Add(activeControl);
         }
 
         /// <summary>

@@ -20,8 +20,7 @@ namespace RPGHelper
         /// </summary>
         private myActionDelegate registerEndSession
         {
-            get;
-            set;
+            get; set;
         }
 
         public delegate void myActionDelegate();

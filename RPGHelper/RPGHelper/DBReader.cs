@@ -46,6 +46,17 @@ namespace RPGHelper
             return connection;
         }
 
+        public static MySqlConnection connectionCreatorWithNoDatabase()
+        {
+            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+            builder.Server = Server;
+            builder.UserID = UserID;
+            builder.Password = Password;
+            builder.Port = Port;
+            MySqlConnection connection = new MySqlConnection(builder.ConnectionString);
+            return connection;
+        }
+
         /// <summary>
         /// Opens new MySql connection
         /// </summary>
@@ -196,26 +207,6 @@ namespace RPGHelper
         {
             List<string> tables = new List<string>();
             string commandText = "show tables from " + databaseName + " like 'Connector%';";
-
-            MySqlCommand selectTableNames = new MySqlCommand(commandText, connection);
-            MySqlDataReader reader = selectTableNames.ExecuteReader();
-
-            while (reader.Read())
-            {
-                tables.Add(reader[0].ToString());
-            }
-            reader.Close();
-
-            return tables;
-        }
-
-
-
-        //TEST
-        public static List<string> selectAllTableNames(MySqlConnection connection, string databaseName)
-        {
-            List<string> tables = new List<string>();
-            string commandText = "show tables from " + databaseName + ";";
 
             MySqlCommand selectTableNames = new MySqlCommand(commandText, connection);
             MySqlDataReader reader = selectTableNames.ExecuteReader();
