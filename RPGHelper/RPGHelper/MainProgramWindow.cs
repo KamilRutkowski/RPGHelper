@@ -91,6 +91,7 @@ namespace RPGHelper
         {
             activeControl.Dispose();
             activeControl = new MainMenuControl(CreateSession, LoadSession, Exit);
+            Controls.Add(activeControl);
 
         }
     }
