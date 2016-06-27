@@ -12,22 +12,31 @@ namespace RPGHelper
 {
     public partial class MainMenuControl : UserControl
     {
-        #region Callbacks
+        #region Properties
 
         /// <summary>
         /// Register a callback delegate for starting new session
         /// </summary>
-        private event myActionDelegate registerStartNewSession;
+        private myActionDelegate registerStartNewSession
+        {
+            get; set;
+        }
 
         /// <summary>
         /// Register a callback delegate for loading existing session
         /// </summary>
-        private event myActionDelegate registerLoadSession;
+        private myActionDelegate registerLoadSession
+        {
+            get; set;
+        }
 
         /// <summary>
         /// Register a callback for exiting program
         /// </summary>
-        private event myActionDelegate registerExit;
+        private myActionDelegate registerExit
+        {
+            get; set;
+        }
 
         #endregion
 

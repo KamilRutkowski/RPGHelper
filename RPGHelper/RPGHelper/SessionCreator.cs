@@ -17,7 +17,10 @@ namespace RPGHelper
         /// <summary>
         /// Register a callback delegate for an event when process of database creation has ended
         /// </summary>
-        private event myActionDelegate registerdatabaseCreated;
+        private myActionDelegate registerdatabaseCreated
+        {
+            get; set;
+        }
 
         #endregion
 
