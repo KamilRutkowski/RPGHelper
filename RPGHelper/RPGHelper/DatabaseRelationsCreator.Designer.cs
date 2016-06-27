@@ -88,7 +88,7 @@
             this.buttonReturnToTablesCreation.Location = new System.Drawing.Point(23, 14);
             this.buttonReturnToTablesCreation.Name = "buttonReturnToTablesCreation";
             this.buttonReturnToTablesCreation.Size = new System.Drawing.Size(142, 35);
-            this.buttonReturnToTablesCreation.TabIndex = 15;
+            this.buttonReturnToTablesCreation.TabIndex = 0;
             this.buttonReturnToTablesCreation.Text = "Previous step";
             this.buttonReturnToTablesCreation.UseVisualStyleBackColor = true;
             this.buttonReturnToTablesCreation.Click += new System.EventHandler(this.buttonReturnToTablesCreation_Click);
@@ -99,7 +99,7 @@
             this.buttonCreateDatabase.Location = new System.Drawing.Point(385, 14);
             this.buttonCreateDatabase.Name = "buttonCreateDatabase";
             this.buttonCreateDatabase.Size = new System.Drawing.Size(142, 35);
-            this.buttonCreateDatabase.TabIndex = 14;
+            this.buttonCreateDatabase.TabIndex = 2;
             this.buttonCreateDatabase.Text = "Finalize creation";
             this.buttonCreateDatabase.UseVisualStyleBackColor = true;
             this.buttonCreateDatabase.Click += new System.EventHandler(this.buttonCreateDatabase_Click);
@@ -110,7 +110,7 @@
             this.buttonStopCreation.Location = new System.Drawing.Point(206, 14);
             this.buttonStopCreation.Name = "buttonStopCreation";
             this.buttonStopCreation.Size = new System.Drawing.Size(142, 35);
-            this.buttonStopCreation.TabIndex = 13;
+            this.buttonStopCreation.TabIndex = 1;
             this.buttonStopCreation.Text = "Abort creation";
             this.buttonStopCreation.UseVisualStyleBackColor = true;
             this.buttonStopCreation.Click += new System.EventHandler(this.buttonStopCreation_Click);

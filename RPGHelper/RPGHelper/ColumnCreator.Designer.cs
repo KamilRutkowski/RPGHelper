@@ -43,7 +43,7 @@
             this.comboBoxTypeOfColumn.Location = new System.Drawing.Point(196, 3);
             this.comboBoxTypeOfColumn.Name = "comboBoxTypeOfColumn";
             this.comboBoxTypeOfColumn.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxTypeOfColumn.TabIndex = 0;
+            this.comboBoxTypeOfColumn.TabIndex = 1;
             this.comboBoxTypeOfColumn.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // textBoxName
@@ -51,7 +51,7 @@
             this.textBoxName.Location = new System.Drawing.Point(50, 3);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxName.TabIndex = 1;
+            this.textBoxName.TabIndex = 0;
             this.textBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxName_KeyPress);
             // 
             // labelName
@@ -77,7 +77,7 @@
             this.buttonEnum.Location = new System.Drawing.Point(323, 3);
             this.buttonEnum.Name = "buttonEnum";
             this.buttonEnum.Size = new System.Drawing.Size(75, 23);
-            this.buttonEnum.TabIndex = 4;
+            this.buttonEnum.TabIndex = 2;
             this.buttonEnum.Text = "Edit Values";
             this.buttonEnum.UseVisualStyleBackColor = true;
             this.buttonEnum.Click += new System.EventHandler(this.buttonEnum_Click);
@@ -87,7 +87,7 @@
             this.buttonDelete.Location = new System.Drawing.Point(404, 4);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(93, 23);
-            this.buttonDelete.TabIndex = 5;
+            this.buttonDelete.TabIndex = 3;
             this.buttonDelete.Text = "Remove Column";
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);

@@ -59,7 +59,7 @@
             this.buttonStopCreation.Location = new System.Drawing.Point(175, 427);
             this.buttonStopCreation.Name = "buttonStopCreation";
             this.buttonStopCreation.Size = new System.Drawing.Size(142, 35);
-            this.buttonStopCreation.TabIndex = 2;
+            this.buttonStopCreation.TabIndex = 1;
             this.buttonStopCreation.Text = "Abort creation";
             this.buttonStopCreation.UseVisualStyleBackColor = true;
             this.buttonStopCreation.Click += new System.EventHandler(this.buttonStopCreation_Click);
@@ -70,7 +70,7 @@
             this.buttonNextStep.Location = new System.Drawing.Point(338, 427);
             this.buttonNextStep.Name = "buttonNextStep";
             this.buttonNextStep.Size = new System.Drawing.Size(142, 35);
-            this.buttonNextStep.TabIndex = 3;
+            this.buttonNextStep.TabIndex = 2;
             this.buttonNextStep.Text = "Next step";
             this.buttonNextStep.UseVisualStyleBackColor = true;
             this.buttonNextStep.Click += new System.EventHandler(this.buttonNextStep_Click);

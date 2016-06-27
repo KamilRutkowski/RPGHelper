@@ -58,7 +58,7 @@
             this.comboBoxFirstTableConnectionCount.Location = new System.Drawing.Point(27, 6);
             this.comboBoxFirstTableConnectionCount.Name = "comboBoxFirstTableConnectionCount";
             this.comboBoxFirstTableConnectionCount.Size = new System.Drawing.Size(49, 26);
-            this.comboBoxFirstTableConnectionCount.TabIndex = 1;
+            this.comboBoxFirstTableConnectionCount.TabIndex = 0;
             // 
             // comboBoxFirstTable
             // 
@@ -67,7 +67,7 @@
             this.comboBoxFirstTable.Location = new System.Drawing.Point(201, 6);
             this.comboBoxFirstTable.Name = "comboBoxFirstTable";
             this.comboBoxFirstTable.Size = new System.Drawing.Size(124, 26);
-            this.comboBoxFirstTable.TabIndex = 2;
+            this.comboBoxFirstTable.TabIndex = 1;
             this.comboBoxFirstTable.SelectedIndexChanged += new System.EventHandler(this.comboBoxFirstTable_SelectedIndexChanged);
             // 
             // buttonRemoveConnection
@@ -76,7 +76,7 @@
             this.buttonRemoveConnection.Location = new System.Drawing.Point(343, 28);
             this.buttonRemoveConnection.Name = "buttonRemoveConnection";
             this.buttonRemoveConnection.Size = new System.Drawing.Size(154, 28);
-            this.buttonRemoveConnection.TabIndex = 3;
+            this.buttonRemoveConnection.TabIndex = 4;
             this.buttonRemoveConnection.Text = "Remove connection";
             this.buttonRemoveConnection.UseVisualStyleBackColor = true;
             this.buttonRemoveConnection.Click += new System.EventHandler(this.buttonRemoveConnection_Click);
@@ -88,7 +88,7 @@
             this.comboBoxSecondTable.Location = new System.Drawing.Point(201, 58);
             this.comboBoxSecondTable.Name = "comboBoxSecondTable";
             this.comboBoxSecondTable.Size = new System.Drawing.Size(124, 26);
-            this.comboBoxSecondTable.TabIndex = 6;
+            this.comboBoxSecondTable.TabIndex = 3;
             this.comboBoxSecondTable.SelectedIndexChanged += new System.EventHandler(this.comboBoxSecondTable_SelectedIndexChanged);
             // 
             // comboBoxSecondTableConnectionCount
@@ -101,7 +101,7 @@
             this.comboBoxSecondTableConnectionCount.Location = new System.Drawing.Point(27, 57);
             this.comboBoxSecondTableConnectionCount.Name = "comboBoxSecondTableConnectionCount";
             this.comboBoxSecondTableConnectionCount.Size = new System.Drawing.Size(49, 26);
-            this.comboBoxSecondTableConnectionCount.TabIndex = 5;
+            this.comboBoxSecondTableConnectionCount.TabIndex = 2;
             // 
             // label1
             // 

@@ -79,7 +79,7 @@
             this.buttonAddColumn.Location = new System.Drawing.Point(3, 27);
             this.buttonAddColumn.Name = "buttonAddColumn";
             this.buttonAddColumn.Size = new System.Drawing.Size(100, 23);
-            this.buttonAddColumn.TabIndex = 2;
+            this.buttonAddColumn.TabIndex = 0;
             this.buttonAddColumn.Text = "Add Column";
             this.buttonAddColumn.UseVisualStyleBackColor = true;
             this.buttonAddColumn.Click += new System.EventHandler(this.buttonAddColumn_Click);
@@ -90,7 +90,7 @@
             this.buttonReturnToNameCreation.Location = new System.Drawing.Point(22, 13);
             this.buttonReturnToNameCreation.Name = "buttonReturnToNameCreation";
             this.buttonReturnToNameCreation.Size = new System.Drawing.Size(142, 35);
-            this.buttonReturnToNameCreation.TabIndex = 14;
+            this.buttonReturnToNameCreation.TabIndex = 0;
             this.buttonReturnToNameCreation.Text = "Previous step";
             this.buttonReturnToNameCreation.UseVisualStyleBackColor = true;
             this.buttonReturnToNameCreation.Click += new System.EventHandler(this.buttonReturnToNameCreation_Click);
@@ -101,7 +101,7 @@
             this.buttonNextStep.Location = new System.Drawing.Point(380, 13);
             this.buttonNextStep.Name = "buttonNextStep";
             this.buttonNextStep.Size = new System.Drawing.Size(142, 35);
-            this.buttonNextStep.TabIndex = 13;
+            this.buttonNextStep.TabIndex = 2;
             this.buttonNextStep.Text = "Next step";
             this.buttonNextStep.UseVisualStyleBackColor = true;
             this.buttonNextStep.Click += new System.EventHandler(this.buttonNextStep_Click);
@@ -112,7 +112,7 @@
             this.buttonStopCreation.Location = new System.Drawing.Point(205, 13);
             this.buttonStopCreation.Name = "buttonStopCreation";
             this.buttonStopCreation.Size = new System.Drawing.Size(142, 35);
-            this.buttonStopCreation.TabIndex = 12;
+            this.buttonStopCreation.TabIndex = 1;
             this.buttonStopCreation.Text = "Abort creation";
             this.buttonStopCreation.UseVisualStyleBackColor = true;
             this.buttonStopCreation.Click += new System.EventHandler(this.buttonStopCreation_Click);
@@ -127,7 +127,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(550, 27);
-            this.menuStrip1.TabIndex = 10;
+            this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // playerToolStripMenuItem

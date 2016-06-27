@@ -49,14 +49,14 @@
             this.textBoxInput.Location = new System.Drawing.Point(59, 15);
             this.textBoxInput.Name = "textBoxInput";
             this.textBoxInput.Size = new System.Drawing.Size(160, 20);
-            this.textBoxInput.TabIndex = 1;
+            this.textBoxInput.TabIndex = 0;
             // 
             // buttonAdd
             // 
             this.buttonAdd.Location = new System.Drawing.Point(225, 12);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(39, 23);
-            this.buttonAdd.TabIndex = 2;
+            this.buttonAdd.TabIndex = 1;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -66,7 +66,7 @@
             this.buttonRemove.Location = new System.Drawing.Point(270, 12);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(56, 23);
-            this.buttonRemove.TabIndex = 3;
+            this.buttonRemove.TabIndex = 2;
             this.buttonRemove.Text = "Remove";
             this.buttonRemove.UseVisualStyleBackColor = true;
             this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
@@ -85,7 +85,7 @@
             this.buttonFinish.Location = new System.Drawing.Point(130, 306);
             this.buttonFinish.Name = "buttonFinish";
             this.buttonFinish.Size = new System.Drawing.Size(75, 23);
-            this.buttonFinish.TabIndex = 5;
+            this.buttonFinish.TabIndex = 3;
             this.buttonFinish.Text = "Finish";
             this.buttonFinish.UseVisualStyleBackColor = true;
             this.buttonFinish.Click += new System.EventHandler(this.buttonFinish_Click);

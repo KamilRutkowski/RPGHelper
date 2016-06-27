@@ -56,7 +56,7 @@
             this.buttonNameTable.Location = new System.Drawing.Point(67, 164);
             this.buttonNameTable.Name = "buttonNameTable";
             this.buttonNameTable.Size = new System.Drawing.Size(75, 23);
-            this.buttonNameTable.TabIndex = 2;
+            this.buttonNameTable.TabIndex = 1;
             this.buttonNameTable.Text = "Set name";
             this.buttonNameTable.UseVisualStyleBackColor = true;
             this.buttonNameTable.Click += new System.EventHandler(this.buttonNameTable_Click);
@@ -66,7 +66,7 @@
             this.buttonCancel.Location = new System.Drawing.Point(146, 164);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 3;
+            this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
