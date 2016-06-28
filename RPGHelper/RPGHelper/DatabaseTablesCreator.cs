@@ -98,6 +98,10 @@ namespace RPGHelper
         {
             actualTableName = tableName;
             isPlayerType = isFromPlayerTables;
+            if(isPlayerType)
+                toolStripCurrentlySelectedTable.Text = "Current table: " + tableName + " in Players";
+            else
+                toolStripCurrentlySelectedTable.Text = "Current table: " + tableName + " in Items";
         }
 
         /// <summary>
@@ -308,8 +312,7 @@ namespace RPGHelper
                 MessageBox.Show("Invalidly titled columns detected! Remove or name them before proceding!", "Invalid column names", MessageBoxButtons.OK);
                 return;
             }
-            actualTableName=((ToolStripItem)sender).Text;
-            isPlayerType = true;
+            setCurrentTable(((ToolStripItem)sender).Text, true);
             removeAllColums();
             showCreatedTable();
             rearangeColums();

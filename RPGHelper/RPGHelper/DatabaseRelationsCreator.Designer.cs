@@ -42,7 +42,6 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -58,8 +57,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.buttonReturnToTablesCreation);
             this.splitContainer1.Panel2.Controls.Add(this.buttonCreateDatabase);
             this.splitContainer1.Panel2.Controls.Add(this.buttonStopCreation);
-            this.splitContainer1.Size = new System.Drawing.Size(550, 600);
-            this.splitContainer1.SplitterDistance = 533;
+            this.splitContainer1.Size = new System.Drawing.Size(533, 650);
+            this.splitContainer1.SplitterDistance = 577;
             this.splitContainer1.TabIndex = 0;
             // 
             // buttonAddConnectionToItems
@@ -121,10 +120,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.Controls.Add(this.splitContainer1);
-            this.MaximumSize = new System.Drawing.Size(550, 600);
-            this.MinimumSize = new System.Drawing.Size(550, 600);
+            this.MaximumSize = new System.Drawing.Size(550, 650);
+            this.MinimumSize = new System.Drawing.Size(550, 650);
             this.Name = "DatabaseRelationsCreator";
-            this.Size = new System.Drawing.Size(550, 600);
+            this.Size = new System.Drawing.Size(550, 650);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

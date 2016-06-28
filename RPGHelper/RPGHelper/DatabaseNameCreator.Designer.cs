@@ -37,7 +37,7 @@
             // textBoxDatabaseName
             // 
             this.textBoxDatabaseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxDatabaseName.Location = new System.Drawing.Point(91, 263);
+            this.textBoxDatabaseName.Location = new System.Drawing.Point(87, 303);
             this.textBoxDatabaseName.Name = "textBoxDatabaseName";
             this.textBoxDatabaseName.Size = new System.Drawing.Size(331, 26);
             this.textBoxDatabaseName.TabIndex = 0;
@@ -47,7 +47,7 @@
             // 
             this.labelGiveDatabaseName.AutoSize = true;
             this.labelGiveDatabaseName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.labelGiveDatabaseName.Location = new System.Drawing.Point(178, 181);
+            this.labelGiveDatabaseName.Location = new System.Drawing.Point(195, 206);
             this.labelGiveDatabaseName.Name = "labelGiveDatabaseName";
             this.labelGiveDatabaseName.Size = new System.Drawing.Size(113, 20);
             this.labelGiveDatabaseName.TabIndex = 1;
@@ -56,7 +56,7 @@
             // buttonStopCreation
             // 
             this.buttonStopCreation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonStopCreation.Location = new System.Drawing.Point(175, 427);
+            this.buttonStopCreation.Location = new System.Drawing.Point(166, 549);
             this.buttonStopCreation.Name = "buttonStopCreation";
             this.buttonStopCreation.Size = new System.Drawing.Size(142, 35);
             this.buttonStopCreation.TabIndex = 1;
@@ -67,7 +67,7 @@
             // buttonNextStep
             // 
             this.buttonNextStep.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonNextStep.Location = new System.Drawing.Point(338, 427);
+            this.buttonNextStep.Location = new System.Drawing.Point(329, 549);
             this.buttonNextStep.Name = "buttonNextStep";
             this.buttonNextStep.Size = new System.Drawing.Size(142, 35);
             this.buttonNextStep.TabIndex = 2;
@@ -83,10 +83,10 @@
             this.Controls.Add(this.buttonStopCreation);
             this.Controls.Add(this.labelGiveDatabaseName);
             this.Controls.Add(this.textBoxDatabaseName);
-            this.MaximumSize = new System.Drawing.Size(500, 600);
-            this.MinimumSize = new System.Drawing.Size(500, 600);
+            this.MaximumSize = new System.Drawing.Size(500, 700);
+            this.MinimumSize = new System.Drawing.Size(500, 700);
             this.Name = "DatabaseNameCreator";
-            this.Size = new System.Drawing.Size(500, 600);
+            this.Size = new System.Drawing.Size(500, 700);
             this.ResumeLayout(false);
             this.PerformLayout();
 

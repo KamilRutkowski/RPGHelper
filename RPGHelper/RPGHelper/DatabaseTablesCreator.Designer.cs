@@ -61,17 +61,16 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
-            this.splitContainer1.Panel1.AutoScrollMinSize = new System.Drawing.Size(10, 0);
             this.splitContainer1.Panel1.Controls.Add(this.buttonAddColumn);
-            this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(10);
+            this.splitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.buttonReturnToNameCreation);
             this.splitContainer1.Panel2.Controls.Add(this.buttonNextStep);
             this.splitContainer1.Panel2.Controls.Add(this.buttonStopCreation);
-            this.splitContainer1.Size = new System.Drawing.Size(550, 600);
-            this.splitContainer1.SplitterDistance = 536;
+            this.splitContainer1.Size = new System.Drawing.Size(529, 650);
+            this.splitContainer1.SplitterDistance = 579;
             this.splitContainer1.TabIndex = 9;
             // 
             // buttonAddColumn
@@ -208,10 +207,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.splitContainer1);
-            this.MaximumSize = new System.Drawing.Size(550, 600);
-            this.MinimumSize = new System.Drawing.Size(550, 600);
+            this.MaximumSize = new System.Drawing.Size(550, 650);
+            this.MinimumSize = new System.Drawing.Size(550, 650);
             this.Name = "DatabaseTablesCreator";
-            this.Size = new System.Drawing.Size(550, 600);
+            this.Size = new System.Drawing.Size(550, 650);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

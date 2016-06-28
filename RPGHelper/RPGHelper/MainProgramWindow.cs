@@ -40,18 +40,18 @@ namespace RPGHelper
         /// </summary>
         private void CreateSession()
         {
-            var response = MessageBox.Show("Czy chcesz skorzystać z szablonu sesji?", "Użyć szablonu?", MessageBoxButtons.YesNoCancel);
-            if (response == DialogResult.Yes)
-            {
-                //Use preset
-            }
-            else if (response == DialogResult.No)
-            {
+            //var response = MessageBox.Show("Czy chcesz skorzystać z szablonu sesji?", "Użyć szablonu?", MessageBoxButtons.YesNoCancel);
+            //if (response == DialogResult.Yes)
+            //{
+            //    //Use preset
+            //}
+            //else if (response == DialogResult.No)
+            //{
                 //Database creation
                 activeControl.Dispose();
                 activeControl = new SessionCreator(databaseWasCreated);
                 Controls.Add(activeControl);
-            }
+            //}
         }
 
         /// <summary>
