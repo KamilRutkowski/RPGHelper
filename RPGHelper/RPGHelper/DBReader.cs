@@ -260,5 +260,22 @@ namespace RPGHelper
 
             return itemsTableName;
         }
+
+        public static List<string> procedureStatus(MySqlConnection connection, string entityName)
+        {
+            List<string> status = new List<string>();
+            string commandText = "show procedure status where name like 'getitemsfor" + entityName + "';";
+
+            MySqlCommand selectProcedureStatus = new MySqlCommand(commandText, connection);
+            MySqlDataReader reader = selectProcedureStatus.ExecuteReader();
+
+            while (reader.Read())
+            {
+                status.Add(reader[0].ToString());
+            }
+            reader.Close();
+
+            return status;
+        }
     }
 }

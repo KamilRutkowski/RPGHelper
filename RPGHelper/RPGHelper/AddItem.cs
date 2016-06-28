@@ -20,15 +20,17 @@ namespace RPGHelper
         private string DBName;
         private string tableName;
         private string playerName;
+        private string itemsTableName;
 
         #endregion
 
-        public AddItem(string dataBaseName, string entityName, string forName)
+        public AddItem(string dataBaseName, string entityName, string forName, string itemsName)
         {
             InitializeComponent();
             DBName = dataBaseName;
             tableName = entityName;
             playerName = forName;
+            itemsTableName = itemsName;
         }
 
         private void AddItem_Load(object sender, EventArgs e)
@@ -132,6 +134,8 @@ namespace RPGHelper
             {
                 DBReader.connectionEnd(connection);
             }
+
+
         }
     }
 }

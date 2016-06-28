@@ -18,6 +18,7 @@ namespace RPGHelper
         private string DBName;
         private string tableName;
         private string playerName;
+        private string itemsTableName;
 
         MySqlConnection connection;
         MySqlDataAdapter adapter;
@@ -25,17 +26,18 @@ namespace RPGHelper
 
         #endregion
 
-        public ItemShow(string dataBaseName, string entityName, string forName)
+        public ItemShow(string dataBaseName, string entityName, string forName, string itemsName)
         {
             InitializeComponent();
             DBName = dataBaseName;
             tableName = entityName;
             playerName = forName;
+            itemsTableName = itemsName;
         }
 
         private void ItemShow_Load(object sender, EventArgs e)
         {
-            textBoxTableName.Text = tableName;
+            textBoxTableName.Text = itemsTableName;
             textBoxFor.Text = playerName;
             newConnection(DBName);
             refreshTable();
@@ -64,7 +66,7 @@ namespace RPGHelper
             {
                 DBReader.connectionOpen(connection);
                 adapter = new MySqlDataAdapter();
-                adapter.SelectCommand = DBReader.commandForTheWholeTable(connection, tableName);
+                adapter.SelectCommand = DBReader.commandForTheWholeTable(connection, itemsTableName);
 
                 dataSet = new DataTable();
                 adapter.Fill(dataSet);
@@ -86,8 +88,7 @@ namespace RPGHelper
 
         private void dataGridViewItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //MessageBox.Show("DZIAŁA!", "New database", MessageBoxButtons.OK);
-            AddItem addItemForm = new AddItem(DBName, tableName, playerName);
+            AddItem addItemForm = new AddItem(DBName, tableName, playerName, itemsTableName);
             addItemForm.Show();
         }
     }
