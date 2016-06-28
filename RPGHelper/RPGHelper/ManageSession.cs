@@ -109,7 +109,7 @@ namespace RPGHelper
                 {
                     playersID = DBReader.selectAllPlayersID(connection, DBName);
                     int ID = playersID.IndexOf(Int32.Parse(textBoxSelectedPlayer.Text.Substring(7, textBoxSelectedPlayer.Text.Length - 7)));
-                    adapter.SelectCommand = DBReader.commandForSelectedPlayer(connection, "PlayersMainPlayers", ID);
+                    adapter.SelectCommand = DBReader.commandForSelectedPlayer(connection, entityName, ID);
                 }
                 
                 dataSet = new DataTable();
@@ -149,7 +149,7 @@ namespace RPGHelper
                 {
                     playersID = DBReader.selectAllPlayersID(connection, DBName);
                     int ID = playersID.IndexOf(Int32.Parse(textBoxSelectedPlayer.Text.Substring(10, textBoxSelectedPlayer.Text.Length - 10)));
-                    adapter.SelectCommand = DBReader.commandForSelectedPlayer(connection, "PlayersMainPlayers", ID);
+                    adapter.SelectCommand = DBReader.commandForSelectedPlayer(connection, entityName, ID);
                 }
                 dataSet = new DataTable();
                 adapter.Fill(dataSet);
