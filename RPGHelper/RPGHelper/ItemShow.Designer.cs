@@ -91,6 +91,8 @@
             this.Controls.Add(this.labelTableName);
             this.Controls.Add(this.textBoxTableName);
             this.Controls.Add(this.dataGridViewItems);
+            this.MaximumSize = new System.Drawing.Size(465, 363);
+            this.MinimumSize = new System.Drawing.Size(465, 363);
             this.Name = "ItemShow";
             this.Text = "ItemShow";
             this.Load += new System.EventHandler(this.ItemShow_Load);

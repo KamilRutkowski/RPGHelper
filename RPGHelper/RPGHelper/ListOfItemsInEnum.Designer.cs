@@ -102,6 +102,8 @@
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.textBoxInput);
             this.Controls.Add(this.listBoxOptions);
+            this.MaximumSize = new System.Drawing.Size(354, 378);
+            this.MinimumSize = new System.Drawing.Size(354, 378);
             this.Name = "ListOfItemsInEnum";
             this.Text = "Enum options";
             this.ResumeLayout(false);

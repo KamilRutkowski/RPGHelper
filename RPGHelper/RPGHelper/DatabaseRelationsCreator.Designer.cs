@@ -120,10 +120,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.Controls.Add(this.splitContainer1);
-            this.MaximumSize = new System.Drawing.Size(550, 650);
-            this.MinimumSize = new System.Drawing.Size(550, 650);
+            this.MaximumSize = new System.Drawing.Size(550, 700);
+            this.MinimumSize = new System.Drawing.Size(550, 700);
             this.Name = "DatabaseRelationsCreator";
-            this.Size = new System.Drawing.Size(550, 650);
+            this.Size = new System.Drawing.Size(550, 700);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
