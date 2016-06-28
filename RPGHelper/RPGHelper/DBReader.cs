@@ -243,5 +243,22 @@ namespace RPGHelper
 
             return playersID;
         }
+
+        public static string selectItems(MySqlConnection connection, string entityName)
+        {
+            string itemsTableName = "";
+            string commandText = "call GetItemsFor" + entityName + ";";
+
+            MySqlCommand selectItems = new MySqlCommand(commandText, connection);
+            MySqlDataReader reader = selectItems.ExecuteReader();
+
+            while (reader.Read())
+            {
+                itemsTableName = reader[0].ToString();
+            }
+            reader.Close();
+
+            return itemsTableName;
+        }
     }
 }

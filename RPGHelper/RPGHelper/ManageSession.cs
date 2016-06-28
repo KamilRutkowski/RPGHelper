@@ -242,6 +242,10 @@ namespace RPGHelper
             }
             refreshTable();
             enableButtons();
+            if (textBoxSelectedPlayer.Text.StartsWith("Player "))
+            {
+                buttonInsUp.Enabled = false;
+            }
         }
 
         /// <summary>
@@ -258,6 +262,10 @@ namespace RPGHelper
             entityName = "items" + clickedItem.Text;
             refreshTable();
             enableButtons();
+            if(textBoxSelectedPlayer.Text.StartsWith("Player "))
+            {
+                buttonInsUp.Enabled = false;
+            }
         }
 
         /// <summary>
@@ -274,6 +282,10 @@ namespace RPGHelper
             entityName = "connector" + clickedItem.Text;
             refreshTable();
             enableButtons();
+            if (textBoxSelectedPlayer.Text.StartsWith("Player "))
+            {
+                buttonInsUp.Enabled = false;
+            }
         }
 
         /// <summary>

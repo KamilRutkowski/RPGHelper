@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddItem.Designer.cs">
+      <DependentUpon>AddItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddTableName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,12 @@
     </Compile>
     <Compile Include="EntityManager.Designer.cs">
       <DependentUpon>EntityManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemShow.Designer.cs">
+      <DependentUpon>ItemShow.cs</DependentUpon>
     </Compile>
     <Compile Include="ListOfItemsInEnum.cs">
       <SubType>Form</SubType>
@@ -156,6 +168,9 @@
       <DependentUpon>ConnectionBetweenPlayerTables.cs</DependentUpon>
     </Compile>
     <Compile Include="TreeOfConnections.cs" />
+    <EmbeddedResource Include="AddItem.resx">
+      <DependentUpon>AddItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddTableName.resx">
       <DependentUpon>AddTableName.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EntityManager.resx">
       <DependentUpon>EntityManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemShow.resx">
+      <DependentUpon>ItemShow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListOfItemsInEnum.resx">
       <DependentUpon>ListOfItemsInEnum.cs</DependentUpon>

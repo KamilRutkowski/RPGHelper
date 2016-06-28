@@ -20,6 +20,7 @@ namespace RPGHelper
         private string DBName;
         private string tableName;
         private string playerName;
+        private string items;
 
         #endregion
 
@@ -60,6 +61,13 @@ namespace RPGHelper
             {
                 DBReader.connectionEnd(connection);
             }
+
+            if (doTheItemsExist())
+            {
+                buttonShowItems.Enabled = true;
+            }
+            else
+                buttonShowItems.Enabled = false;
         }
 
         /// <summary>
@@ -314,6 +322,33 @@ namespace RPGHelper
         private void buttonFinish_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void buttonShowItems_Click(object sender, EventArgs e)
+        {
+            ItemShow itemForm = new ItemShow(DBName, tableName, textBoxFor.Text);
+            itemForm.Show();
+        }
+
+        private bool doTheItemsExist()
+        {
+            connection = DBReader.connectionCreator(DBName);
+            try
+            {
+                DBReader.connectionOpen(connection);
+                items = DBReader.selectItems(connection, tableName);
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            finally
+            {
+                DBReader.connectionEnd(connection);
+            }
+            
         }
     }
 }

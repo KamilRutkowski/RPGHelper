@@ -39,6 +39,7 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonInsert = new System.Windows.Forms.Button();
+            this.buttonShowItems = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -54,6 +55,7 @@
             // 
             // splitContainer.Panel1
             // 
+            this.splitContainer.Panel1.Controls.Add(this.buttonShowItems);
             this.splitContainer.Panel1.Controls.Add(this.textBoxFor);
             this.splitContainer.Panel1.Controls.Add(this.labelFor);
             this.splitContainer.Panel1.Controls.Add(this.buttonFinish);
@@ -68,7 +70,7 @@
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.AutoScroll = true;
-            this.splitContainer.Size = new System.Drawing.Size(407, 338);
+            this.splitContainer.Size = new System.Drawing.Size(423, 338);
             this.splitContainer.SplitterDistance = 72;
             this.splitContainer.TabIndex = 13;
             // 
@@ -91,7 +93,7 @@
             // 
             // buttonFinish
             // 
-            this.buttonFinish.Location = new System.Drawing.Point(290, 40);
+            this.buttonFinish.Location = new System.Drawing.Point(255, 40);
             this.buttonFinish.Name = "buttonFinish";
             this.buttonFinish.Size = new System.Drawing.Size(75, 23);
             this.buttonFinish.TabIndex = 20;
@@ -135,7 +137,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(194, 40);
+            this.buttonDelete.Location = new System.Drawing.Point(174, 40);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 15;
@@ -145,7 +147,7 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(103, 40);
+            this.buttonUpdate.Location = new System.Drawing.Point(93, 40);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
             this.buttonUpdate.TabIndex = 14;
@@ -163,11 +165,22 @@
             this.buttonInsert.UseVisualStyleBackColor = true;
             this.buttonInsert.Click += new System.EventHandler(this.buttonInsert_Click);
             // 
+            // buttonShowItems
+            // 
+            this.buttonShowItems.Enabled = false;
+            this.buttonShowItems.Location = new System.Drawing.Point(337, 39);
+            this.buttonShowItems.Name = "buttonShowItems";
+            this.buttonShowItems.Size = new System.Drawing.Size(75, 23);
+            this.buttonShowItems.TabIndex = 23;
+            this.buttonShowItems.Text = "Items";
+            this.buttonShowItems.UseVisualStyleBackColor = true;
+            this.buttonShowItems.Click += new System.EventHandler(this.buttonShowItems_Click);
+            // 
             // EntityManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 350);
+            this.ClientSize = new System.Drawing.Size(428, 350);
             this.Controls.Add(this.splitContainer);
             this.Name = "EntityManager";
             this.Text = "EntityManager";
@@ -193,6 +206,7 @@
         private System.Windows.Forms.Button buttonInsert;
         private System.Windows.Forms.TextBox textBoxFor;
         private System.Windows.Forms.Label labelFor;
+        private System.Windows.Forms.Button buttonShowItems;
 
     }
 }
