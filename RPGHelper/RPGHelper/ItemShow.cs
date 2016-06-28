@@ -20,6 +20,9 @@ namespace RPGHelper
         private string playerName;
         private string itemsTableName;
 
+        private List<string> columnsInNormalTable;
+        private List<string> columnsInItemsTable;
+
         MySqlConnection connection;
         MySqlDataAdapter adapter;
         DataTable dataSet;
@@ -88,8 +91,45 @@ namespace RPGHelper
 
         private void dataGridViewItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            AddItem addItemForm = new AddItem(DBName, tableName, playerName, itemsTableName);
+            List<string> listOfLabelNames = new List<string>();
+            List<string> listOfTextBoxNames = new List<string>();
+            listOfLabelNames = getColumnsInBothTables(tableName, itemsTableName);
+            if(e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dataGridViewItems.Rows[e.RowIndex];
+                foreach (string value in listOfLabelNames)
+                {
+                    string newRowValue = "";
+                    newRowValue = row.Cells[value].Value.ToString();
+                    listOfTextBoxNames.Add(newRowValue);
+                }
+            }
+            AddItem addItemForm = new AddItem(DBName, tableName, playerName, itemsTableName, listOfLabelNames, listOfTextBoxNames);
             addItemForm.Show();
         }
+
+        private List<string> getColumnsInBothTables(string normalName, string itemsName)
+        {
+            List<string> columnsInBothTables = new List<string>();
+            columnsInNormalTable = new List<string>();
+            columnsInItemsTable = new List<string>();
+
+            columnsInNormalTable = DBReader.selectAllColumnNames(connection, normalName);
+            columnsInItemsTable = DBReader.selectAllColumnNames(connection, itemsName);
+
+            foreach (string value in columnsInNormalTable)
+            {
+                for (int i = 0; i < columnsInItemsTable.Count(); i++)
+                {
+                    if (value == columnsInItemsTable[i])
+                    {
+                        columnsInBothTables.Add(value);
+                    }
+                }
+            }
+            return columnsInBothTables;
+        }
+
+
     }
 }
