@@ -46,7 +46,7 @@ namespace RPGHelper
 
         #region Callbacks
 
-        private myDelegate deleteMe { get; set; }
+        private event myDelegate deleteMe;
 
         #endregion
 

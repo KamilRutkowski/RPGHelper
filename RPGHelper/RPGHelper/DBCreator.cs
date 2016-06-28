@@ -15,7 +15,9 @@ namespace RPGHelper
         private List<Table> AdditionalTablesToCreate { get; set; }
 
         private MySqlConnection connectionWithDB { get; set; }
-        
+
+        private List<string> additionalForeignKeys { get; set; }
+
         #endregion
 
 
@@ -23,6 +25,7 @@ namespace RPGHelper
         {
             List<Query> queriesToDatabase = new List<Query>();
             AdditionalTablesToCreate = new List<Table>();
+            additionalForeignKeys = new List<string>();
             dataName = "RPGH" + dataName;
             createDatabase(dataName);
             setPrefixes(connectionsInTables);
@@ -32,10 +35,20 @@ namespace RPGHelper
             createTables(connectionsInTables);
             createAdditionalTables();
             createProcedures(queriesToDatabase);
+            addForeignKeys();
             connectionWithDB.Close();
         }
 
-        private void addIDs(TreeOfConnections connectionsInTables)
+        private void addForeignKeys()
+        {
+            foreach (string command in additionalForeignKeys)
+            {
+                MySqlCommand com = new MySqlCommand(command, connectionWithDB);
+                com.ExecuteNonQuery();
+            }
+        }
+
+private void addIDs(TreeOfConnections connectionsInTables)
         {
             Column col = new Column();
             col.columnName = "id_";
@@ -85,7 +98,10 @@ namespace RPGHelper
                 foreach (Column col in tab.columnsInTable)
                 {
                     command += col.columnName;
-                    switch(col.type)
+                    string que = "Alter table " + tab.tableName + " add constraint fk_" + col.columnName + " foreign key (" + col.columnName
+                    +") References " + col.columnName.Substring(6) + "(id_);";
+                    additionalForeignKeys.Add(que);
+                    switch (col.type)
                     {
                         case Column.ColumnType.Enum:
                             {
@@ -132,6 +148,12 @@ namespace RPGHelper
             foreach (Column col in tab.columnsInTable)
             {
                 command += col.columnName;
+                if (col.columnName.StartsWith("id_") && (col.columnName != "id_"))
+                {
+                    string que = "Alter table " + tab.tableName + " add constraint fk_" + col.columnName + " foreign key (" + col.columnName
+                    + ") References " + col.columnName.Substring(6) + "(id_);";
+                    additionalForeignKeys.Add(que);
+                }
                 switch (col.type)
                 {
                     case Column.ColumnType.Enum:

@@ -12,9 +12,6 @@ namespace RPGHelper
 {
     public partial class RPGHelperMainWindow : Form
     {
-        #region Properties
-
-        #endregion
 
         private Control activeControl;
 

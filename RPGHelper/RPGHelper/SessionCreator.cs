@@ -12,15 +12,12 @@ namespace RPGHelper
 {
     public partial class SessionCreator : UserControl
     {
-        #region Properties
+        #region Callbacks
 
         /// <summary>
         /// Register a callback delegate for an event when process of database creation has ended
         /// </summary>
-        private myActionDelegate registerdatabaseCreated
-        {
-            get; set;
-        }
+        private event myActionDelegate registerdatabaseCreated;
 
         #endregion
 

@@ -17,18 +17,12 @@ namespace RPGHelper
         /// <summary>
         /// Register a callback delegate for buttonBack.Click event 
         /// </summary>
-        private myActionDelegate registerBackToMenu
-        {
-            get; set;
-        }
+        private event myActionDelegate registerBackToMenu;
 
         /// <summary>
         /// Register a callback delegate for next step of creation button
         /// </summary>
-        private myActionDelegateWithDatabaseName registerNextStepToManage
-        {
-            get; set;
-        }
+        private event myActionDelegateWithDatabaseName registerNextStepToManage;
         #endregion
 
         public delegate void myActionDelegate();
