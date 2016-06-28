@@ -19,6 +19,7 @@ namespace RPGHelper
 
         private string DBName;
         private string tableName;
+        private string playerName;
 
         #endregion
 
@@ -27,11 +28,12 @@ namespace RPGHelper
         /// </summary>
         /// <param name="dataBaseName">Selected column name</param>
         /// <param name="entityName">Selected column name</param>
-        public EntityManager(string dataBaseName, string entityName)
+        public EntityManager(string dataBaseName, string entityName, string forName)
         {
             InitializeComponent();
             DBName = dataBaseName;
             tableName = entityName;
+            playerName = forName;
         }
 
         /// <summary>
@@ -82,6 +84,7 @@ namespace RPGHelper
             {
                 textBoxEntity.Text = tableName.Substring(9, tableName.Length - 9);
             }
+            textBoxFor.Text = playerName;
         }
 
         /// <summary>
@@ -92,7 +95,7 @@ namespace RPGHelper
             List<string> allColumns = DBReader.selectAllColumnNames(connection, tableName);
             for (int i = 0; i < allColumns.Count(); i++)
             {
-                RowEditor editor = new RowEditor(allColumns[i]);
+                RowEditor editor = new RowEditor(allColumns[i], textBoxFor.Text);
                 splitContainer.Panel2.Controls.Add(editor);
             }
         }

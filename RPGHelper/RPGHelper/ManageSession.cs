@@ -28,7 +28,7 @@ namespace RPGHelper
         private string DBName;
         private string entityName;
         private ToolStripMenuItem menuItem;
-        private List<string> playersID;
+        private List<int> playersID;
         private int currentID;
 
         MySqlConnection connection;
@@ -307,6 +307,8 @@ namespace RPGHelper
                                 MessageBox.Show("Session was dropped!");
                                 textBoxSelectedDatabase.Text = "";
                                 textBoxSelectedItem.Text = "";
+                                tableEntity.DataSource = null;
+                                tableEntity.Refresh();
                                 while (reader.Read())
                                 {
 
@@ -357,7 +359,7 @@ namespace RPGHelper
         /// <param name="e"></param>
         private void buttonManageRows_Click(object sender, EventArgs e)
         {
-            EntityManager entityForm = new EntityManager(DBName, entityName);
+            EntityManager entityForm = new EntityManager(DBName, entityName, textBoxSelectedPlayer.Text);
             entityForm.Show();
         }
 
@@ -377,32 +379,33 @@ namespace RPGHelper
         /// <param name="e"></param>
         private void buttonLeftArrow_Click(object sender, EventArgs e)
         {
+            playersID = new List<int>();
             try
             {
                 DBReader.connectionOpen(connection);
-                if(textBoxSelectedPlayer.Text == "For all")
+                playersID = DBReader.selectAllPlayersID(connection, DBName);
+                if (textBoxSelectedPlayer.Text == "For all")
                 {
                     buttonInsUp.Enabled = false;
-                    currentID = DBReader.selectAllPlayersID(connection, DBName).Count();
-                    textBoxSelectedPlayer.Text = "Player " + currentID;
+                    currentID = playersID.Count() - 1;
+                    textBoxSelectedPlayer.Text = "Player " + playersID[currentID];
                 }
-                else if (textBoxSelectedPlayer.Text == "Player " + 1)
+                else if (textBoxSelectedPlayer.Text == "Player " + playersID[0])
                 {
-                    if(textBoxSelectedItem.Text != "")
+                    if (textBoxSelectedItem.Text != "")
                     {
                         buttonInsUp.Enabled = true;
                     }
                     else
                         buttonInsUp.Enabled = false;
-                    
-                    currentID = 0;
+                    currentID = -1;
                     textBoxSelectedPlayer.Text = "For all";
                 }
                 else if (textBoxSelectedPlayer.Text.StartsWith("Player "))
                 {
                     buttonInsUp.Enabled = false;
                     currentID--;
-                    textBoxSelectedPlayer.Text = "Player " + currentID;
+                    textBoxSelectedPlayer.Text = "Player " + playersID[currentID];
                 }
             }
             catch (MySqlException ex)
@@ -422,16 +425,18 @@ namespace RPGHelper
         /// <param name="e"></param>
         private void buttonRightArrow_Click(object sender, EventArgs e)
         {
+            playersID = new List<int>();
             try
             {
                 DBReader.connectionOpen(connection);
+                playersID = DBReader.selectAllPlayersID(connection, DBName);
                 if (textBoxSelectedPlayer.Text == "For all")
                 {
                     buttonInsUp.Enabled = false;
-                    currentID = 1;
-                    textBoxSelectedPlayer.Text = "Player " + currentID;
+                    currentID = 0;
+                    textBoxSelectedPlayer.Text = "Player " + playersID[0];
                 }
-                else if (textBoxSelectedPlayer.Text == "Player " + DBReader.selectAllPlayersID(connection, DBName).Count())
+                else if (textBoxSelectedPlayer.Text == "Player " + playersID[playersID.Count() - 1])
                 {
                     if (textBoxSelectedItem.Text != "")
                     {
@@ -439,14 +444,15 @@ namespace RPGHelper
                     }
                     else
                         buttonInsUp.Enabled = false;
-                    currentID = 0;
+                    currentID = -1;
                     textBoxSelectedPlayer.Text = "For all";
                 }
                 else if (textBoxSelectedPlayer.Text.StartsWith("Player "))
                 {
                     buttonInsUp.Enabled = false;
                     currentID++;
-                    textBoxSelectedPlayer.Text = "Player " + currentID;
+                    textBoxSelectedPlayer.Text = "Player " + playersID[currentID];
+                        
                 }
             }
             catch (MySqlException ex)

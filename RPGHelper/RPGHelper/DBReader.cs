@@ -220,9 +220,9 @@ namespace RPGHelper
             return tables;
         }
 
-        public static List<string> selectAllPlayersID(MySqlConnection connection, string databaseName)
+        public static List<int> selectAllPlayersID(MySqlConnection connection, string databaseName)
         {
-            List<string> playersID = new List<string>();
+            List<int> playersID = new List<int>();
             string commandText = "select id_ from PlayersMainPlayers from" + databaseName +";";
 
             MySqlCommand selectPlayersID = new MySqlCommand(commandText, connection);
@@ -230,7 +230,7 @@ namespace RPGHelper
 
             while (reader.Read())
             {
-                playersID.Add(reader[0].ToString());
+                playersID.Add(Int32.Parse(reader[0].ToString()));
             }
             reader.Close();
 

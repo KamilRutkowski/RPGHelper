@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.textBoxFor = new System.Windows.Forms.TextBox();
+            this.labelFor = new System.Windows.Forms.Label();
             this.buttonFinish = new System.Windows.Forms.Button();
             this.textBoxEntity = new System.Windows.Forms.TextBox();
             this.labelEntity = new System.Windows.Forms.Label();
@@ -52,6 +54,8 @@
             // 
             // splitContainer.Panel1
             // 
+            this.splitContainer.Panel1.Controls.Add(this.textBoxFor);
+            this.splitContainer.Panel1.Controls.Add(this.labelFor);
             this.splitContainer.Panel1.Controls.Add(this.buttonFinish);
             this.splitContainer.Panel1.Controls.Add(this.textBoxEntity);
             this.splitContainer.Panel1.Controls.Add(this.labelEntity);
@@ -64,13 +68,30 @@
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.AutoScroll = true;
-            this.splitContainer.Size = new System.Drawing.Size(339, 338);
+            this.splitContainer.Size = new System.Drawing.Size(407, 338);
             this.splitContainer.SplitterDistance = 72;
             this.splitContainer.TabIndex = 13;
             // 
+            // textBoxFor
+            // 
+            this.textBoxFor.Enabled = false;
+            this.textBoxFor.Location = new System.Drawing.Point(309, 4);
+            this.textBoxFor.Name = "textBoxFor";
+            this.textBoxFor.Size = new System.Drawing.Size(70, 20);
+            this.textBoxFor.TabIndex = 22;
+            // 
+            // labelFor
+            // 
+            this.labelFor.AutoSize = true;
+            this.labelFor.Location = new System.Drawing.Point(278, 7);
+            this.labelFor.Name = "labelFor";
+            this.labelFor.Size = new System.Drawing.Size(25, 13);
+            this.labelFor.TabIndex = 21;
+            this.labelFor.Text = "For:";
+            // 
             // buttonFinish
             // 
-            this.buttonFinish.Location = new System.Drawing.Point(255, 40);
+            this.buttonFinish.Location = new System.Drawing.Point(290, 40);
             this.buttonFinish.Name = "buttonFinish";
             this.buttonFinish.Size = new System.Drawing.Size(75, 23);
             this.buttonFinish.TabIndex = 20;
@@ -81,7 +102,7 @@
             // textBoxEntity
             // 
             this.textBoxEntity.Enabled = false;
-            this.textBoxEntity.Location = new System.Drawing.Point(238, 4);
+            this.textBoxEntity.Location = new System.Drawing.Point(194, 4);
             this.textBoxEntity.Name = "textBoxEntity";
             this.textBoxEntity.Size = new System.Drawing.Size(70, 20);
             this.textBoxEntity.TabIndex = 19;
@@ -89,7 +110,7 @@
             // labelEntity
             // 
             this.labelEntity.AutoSize = true;
-            this.labelEntity.Location = new System.Drawing.Point(196, 7);
+            this.labelEntity.Location = new System.Drawing.Point(152, 7);
             this.labelEntity.Name = "labelEntity";
             this.labelEntity.Size = new System.Drawing.Size(36, 13);
             this.labelEntity.TabIndex = 18;
@@ -114,7 +135,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(174, 40);
+            this.buttonDelete.Location = new System.Drawing.Point(194, 40);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 15;
@@ -124,7 +145,7 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(93, 40);
+            this.buttonUpdate.Location = new System.Drawing.Point(103, 40);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
             this.buttonUpdate.TabIndex = 14;
@@ -146,7 +167,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(346, 348);
+            this.ClientSize = new System.Drawing.Size(414, 350);
             this.Controls.Add(this.splitContainer);
             this.Name = "EntityManager";
             this.Text = "EntityManager";
@@ -170,6 +191,8 @@
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonInsert;
+        private System.Windows.Forms.TextBox textBoxFor;
+        private System.Windows.Forms.Label labelFor;
 
     }
 }
