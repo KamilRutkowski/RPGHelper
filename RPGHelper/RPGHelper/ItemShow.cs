@@ -22,6 +22,7 @@ namespace RPGHelper
 
         private List<string> columnsInNormalTable;
         private List<string> columnsInItemsTable;
+        private List<string> columnsInBothTables;
 
         MySqlConnection connection;
         MySqlDataAdapter adapter;
@@ -110,24 +111,38 @@ namespace RPGHelper
 
         private List<string> getColumnsInBothTables(string normalName, string itemsName)
         {
-            List<string> columnsInBothTables = new List<string>();
-            columnsInNormalTable = new List<string>();
-            columnsInItemsTable = new List<string>();
-
-            columnsInNormalTable = DBReader.selectAllColumnNames(connection, normalName);
-            columnsInItemsTable = DBReader.selectAllColumnNames(connection, itemsName);
-
-            foreach (string value in columnsInNormalTable)
+            connection = DBReader.connectionCreator(DBName);
+            try
             {
-                for (int i = 0; i < columnsInItemsTable.Count(); i++)
+                DBReader.connectionOpen(connection);
+                columnsInBothTables = new List<string>();
+                columnsInNormalTable = new List<string>();
+                columnsInItemsTable = new List<string>();
+
+                columnsInNormalTable = DBReader.selectAllColumnNames(connection, normalName);
+                columnsInItemsTable = DBReader.selectAllColumnNames(connection, itemsName);
+
+                foreach (string value in columnsInNormalTable)
                 {
-                    if (value == columnsInItemsTable[i])
+                    for (int i = 0; i < columnsInItemsTable.Count(); i++)
                     {
-                        columnsInBothTables.Add(value);
+                        if (value == columnsInItemsTable[i])
+                        {
+                            columnsInBothTables.Add(value);
+                        }
                     }
                 }
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                DBReader.connectionEnd(connection);
+            }
             return columnsInBothTables;
+            
         }
 
 
