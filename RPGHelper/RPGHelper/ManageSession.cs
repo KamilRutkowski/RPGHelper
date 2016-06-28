@@ -108,7 +108,7 @@ namespace RPGHelper
                 else if (textBoxSelectedPlayer.Text.StartsWith("Player "))
                 {
                     playersID = DBReader.selectAllPlayersID(connection, DBName);
-                    int ID = playersID.IndexOf(Int32.Parse(textBoxSelectedPlayer.Text.Substring(7, textBoxSelectedPlayer.Text.Length - 7)));
+                    int ID = playersID[Int32.Parse(textBoxSelectedPlayer.Text.Substring(7))-1];
                     adapter.SelectCommand = DBReader.commandForSelectedPlayer(connection, entityName, ID);
                 }
                 
@@ -148,7 +148,7 @@ namespace RPGHelper
                 else if (textBoxSelectedPlayer.Text.StartsWith("Player "))
                 {
                     playersID = DBReader.selectAllPlayersID(connection, DBName);
-                    int ID = playersID.IndexOf(Int32.Parse(textBoxSelectedPlayer.Text.Substring(7)));
+                    int ID = playersID[Int32.Parse(textBoxSelectedPlayer.Text.Substring(7)) - 1];
                     adapter.SelectCommand = DBReader.commandForSelectedPlayer(connection, entityName, ID);
                 }
                 dataSet = new DataTable();

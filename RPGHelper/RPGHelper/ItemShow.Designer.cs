@@ -45,7 +45,7 @@
             this.dataGridViewItems.ReadOnly = true;
             this.dataGridViewItems.Size = new System.Drawing.Size(425, 221);
             this.dataGridViewItems.TabIndex = 0;
-            this.dataGridViewItems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItems_CellDoubleClick);
+            this.dataGridViewItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItems_CellContentClick);
             // 
             // textBoxTableName
             // 

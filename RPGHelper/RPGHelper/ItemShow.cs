@@ -86,7 +86,7 @@ namespace RPGHelper
             }
         }
 
-        private void dataGridViewItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             AddItem addItemForm = new AddItem(DBName, tableName, playerName, itemsTableName);
             addItemForm.Show();
