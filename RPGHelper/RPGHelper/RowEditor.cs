@@ -26,14 +26,30 @@ namespace RPGHelper
         }
         #endregion
 
+        string currentPlayer;
+
         /// <summary>
         /// Control for inserting/updating/deleting each column in table
         /// </summary>
         /// <param name="columnName">Selected column name</param>
-        public RowEditor(string columnName)
+        public RowEditor(string columnName, string playerName)
         {
             InitializeComponent();
             labelColumnName.Text = columnName;
+            currentPlayer = playerName;
+            ifPlayer();
+        }
+
+        private void ifPlayer()
+        {
+            if(currentPlayer.StartsWith("Player "))
+            {
+                if(labelColumnName.Text == "id_")
+                {
+                    textBoxValueInRow.Text = currentPlayer.Substring(7, currentPlayer.Length - 7);
+                    textBoxValueInRow.Enabled = false;
+                }
+            }
         }
     }
 }
