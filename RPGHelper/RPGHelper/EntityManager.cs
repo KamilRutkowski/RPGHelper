@@ -61,13 +61,7 @@ namespace RPGHelper
             {
                 DBReader.connectionEnd(connection);
             }
-
-            if (doTheItemsExist())
-            {
-                buttonShowItems.Enabled = true;
-            }
-            else
-                buttonShowItems.Enabled = false;
+            doTheItemsExist();
         }
 
         /// <summary>
@@ -326,23 +320,28 @@ namespace RPGHelper
 
         private void buttonShowItems_Click(object sender, EventArgs e)
         {
-            ItemShow itemForm = new ItemShow(DBName, tableName, textBoxFor.Text);
+            ItemShow itemForm = new ItemShow(DBName, tableName, textBoxFor.Text, items);
             itemForm.Show();
         }
 
-        private bool doTheItemsExist()
+        private void doTheItemsExist()
         {
             connection = DBReader.connectionCreator(DBName);
             try
             {
                 DBReader.connectionOpen(connection);
-                items = DBReader.selectItems(connection, tableName);
-                return true;
+                
+                if(DBReader.procedureStatus(connection, tableName).Count() > 0)
+                {
+                    buttonShowItems.Enabled = true;
+                    items = DBReader.selectItems(connection, tableName);
+                }
+                else
+                    buttonShowItems.Enabled = false;
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message);
-                return false;
             }
             finally
             {
