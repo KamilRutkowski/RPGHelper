@@ -22,11 +22,17 @@ namespace RPGHelper
         private string playerName;
         private string itemsTableName;
 
+        private List<string> valuesInLabels;
+        private List<string> valuesInTextBoxes;
+
         #endregion
 
-        public AddItem(string dataBaseName, string entityName, string forName, string itemsName)
+        public AddItem(string dataBaseName, string entityName, string forName, string itemsName,
+            List<string> labelItems, List<string> textBoxItems)
         {
             InitializeComponent();
+            valuesInLabels = labelItems;
+            valuesInTextBoxes = textBoxItems;
             DBName = dataBaseName;
             tableName = entityName;
             playerName = forName;
@@ -62,10 +68,10 @@ namespace RPGHelper
 
         private void addNewRowEditor()
         {
-            List<string> allColumns = DBReader.selectAllColumnNames(connection, tableName);
-            for (int i = 0; i < allColumns.Count(); i++)
+            for (int i = 0; i < valuesInLabels.Count(); i++)
             {
-                RowEditor editor = new RowEditor(allColumns[i], textBoxFor.Text);
+                RowEditor editor = new RowEditor(valuesInLabels[i], "");
+                editor.valueName = valuesInTextBoxes[i];
                 splitContainer1.Panel2.Controls.Add(editor);
             }
         }
@@ -134,10 +140,7 @@ namespace RPGHelper
             {
                 DBReader.connectionEnd(connection);
             }
-
-
         }
-
 
     }
 }
