@@ -99,8 +99,19 @@ namespace RPGHelper
         {
             try
             {
+                DBReader.connectionOpen(connection);
                 adapter = new MySqlDataAdapter();
-                adapter.SelectCommand = DBReader.commandForTheWholeTable(connection, entityName);
+                if(textBoxSelectedPlayer.Text == "For all")
+                {
+                    adapter.SelectCommand = DBReader.commandForTheWholeTable(connection, entityName);
+                }
+                else if (textBoxSelectedPlayer.Text.StartsWith("Player "))
+                {
+                    playersID = DBReader.selectAllPlayersID(connection, DBName);
+                    int ID = playersID.IndexOf(Int32.Parse(textBoxSelectedPlayer.Text.Substring(7, textBoxSelectedPlayer.Text.Length - 7)));
+                    adapter.SelectCommand = DBReader.commandForSelectedPlayer(connection, "PlayersMainPlayers", ID);
+                }
+                
                 dataSet = new DataTable();
                 adapter.Fill(dataSet);
                 BindingSource source = new BindingSource();
@@ -128,8 +139,18 @@ namespace RPGHelper
         {
             try
             {
+                DBReader.connectionOpen(connection);
                 adapter = new MySqlDataAdapter();
-                adapter.SelectCommand = DBReader.commandForTheWholeTable(connection, entityName);
+                if (textBoxSelectedPlayer.Text == "For all")
+                {
+                    adapter.SelectCommand = DBReader.commandForTheWholeTable(connection, entityName);
+                }
+                else if (textBoxSelectedPlayer.Text.StartsWith("Player "))
+                {
+                    playersID = DBReader.selectAllPlayersID(connection, DBName);
+                    int ID = playersID.IndexOf(Int32.Parse(textBoxSelectedPlayer.Text.Substring(10, textBoxSelectedPlayer.Text.Length - 10)));
+                    adapter.SelectCommand = DBReader.commandForSelectedPlayer(connection, "PlayersMainPlayers", ID);
+                }
                 dataSet = new DataTable();
                 adapter.Fill(dataSet);
                 BindingSource source = new BindingSource();
