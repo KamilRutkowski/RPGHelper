@@ -89,7 +89,7 @@ namespace RPGHelper
 
         public static MySqlCommand commandForSelectedPlayer(MySqlConnection connection, string selectedTable, int playerID)
         {
-            string commandText = "call ShowForPlayer" + selectedTable +"(" + playerID + ")";
+            string commandText = "call ShowForPlayer" + selectedTable +"(" + playerID + ");";
             MySqlCommand selectDataBase = new MySqlCommand(commandText, connection);
             return selectDataBase;
         }
