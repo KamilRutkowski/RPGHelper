@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.buttonInsert = new System.Windows.Forms.Button();
-            this.textBoxFor = new System.Windows.Forms.TextBox();
             this.textBoxEntity = new System.Windows.Forms.TextBox();
+            this.textBoxFor = new System.Windows.Forms.TextBox();
+            this.buttonInsert = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -53,9 +53,25 @@
             this.splitContainer1.SplitterDistance = 66;
             this.splitContainer1.TabIndex = 0;
             // 
+            // textBoxEntity
+            // 
+            this.textBoxEntity.Enabled = false;
+            this.textBoxEntity.Location = new System.Drawing.Point(118, 11);
+            this.textBoxEntity.Name = "textBoxEntity";
+            this.textBoxEntity.Size = new System.Drawing.Size(100, 20);
+            this.textBoxEntity.TabIndex = 2;
+            // 
+            // textBoxFor
+            // 
+            this.textBoxFor.Enabled = false;
+            this.textBoxFor.Location = new System.Drawing.Point(12, 11);
+            this.textBoxFor.Name = "textBoxFor";
+            this.textBoxFor.Size = new System.Drawing.Size(100, 20);
+            this.textBoxFor.TabIndex = 1;
+            // 
             // buttonInsert
             // 
-            this.buttonInsert.Location = new System.Drawing.Point(12, 12);
+            this.buttonInsert.Location = new System.Drawing.Point(12, 37);
             this.buttonInsert.Name = "buttonInsert";
             this.buttonInsert.Size = new System.Drawing.Size(75, 23);
             this.buttonInsert.TabIndex = 0;
@@ -63,28 +79,14 @@
             this.buttonInsert.UseVisualStyleBackColor = true;
             this.buttonInsert.Click += new System.EventHandler(this.buttonInsert_Click);
             // 
-            // textBoxFor
-            // 
-            this.textBoxFor.Enabled = false;
-            this.textBoxFor.Location = new System.Drawing.Point(68, 40);
-            this.textBoxFor.Name = "textBoxFor";
-            this.textBoxFor.Size = new System.Drawing.Size(100, 20);
-            this.textBoxFor.TabIndex = 1;
-            // 
-            // textBoxEntity
-            // 
-            this.textBoxEntity.Enabled = false;
-            this.textBoxEntity.Location = new System.Drawing.Point(174, 40);
-            this.textBoxEntity.Name = "textBoxEntity";
-            this.textBoxEntity.Size = new System.Drawing.Size(100, 20);
-            this.textBoxEntity.TabIndex = 2;
-            // 
             // AddItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(298, 321);
             this.Controls.Add(this.splitContainer1);
+            this.MaximumSize = new System.Drawing.Size(314, 360);
+            this.MinimumSize = new System.Drawing.Size(314, 360);
             this.Name = "AddItem";
             this.Text = "AddItem";
             this.Load += new System.EventHandler(this.AddItem_Load);

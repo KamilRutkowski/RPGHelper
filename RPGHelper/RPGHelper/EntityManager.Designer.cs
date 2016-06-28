@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.buttonShowItems = new System.Windows.Forms.Button();
             this.textBoxFor = new System.Windows.Forms.TextBox();
             this.labelFor = new System.Windows.Forms.Label();
             this.buttonFinish = new System.Windows.Forms.Button();
@@ -39,7 +40,6 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonInsert = new System.Windows.Forms.Button();
-            this.buttonShowItems = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -73,6 +73,17 @@
             this.splitContainer.Size = new System.Drawing.Size(423, 338);
             this.splitContainer.SplitterDistance = 72;
             this.splitContainer.TabIndex = 13;
+            // 
+            // buttonShowItems
+            // 
+            this.buttonShowItems.Enabled = false;
+            this.buttonShowItems.Location = new System.Drawing.Point(337, 39);
+            this.buttonShowItems.Name = "buttonShowItems";
+            this.buttonShowItems.Size = new System.Drawing.Size(75, 23);
+            this.buttonShowItems.TabIndex = 23;
+            this.buttonShowItems.Text = "Items";
+            this.buttonShowItems.UseVisualStyleBackColor = true;
+            this.buttonShowItems.Click += new System.EventHandler(this.buttonShowItems_Click);
             // 
             // textBoxFor
             // 
@@ -165,23 +176,14 @@
             this.buttonInsert.UseVisualStyleBackColor = true;
             this.buttonInsert.Click += new System.EventHandler(this.buttonInsert_Click);
             // 
-            // buttonShowItems
-            // 
-            this.buttonShowItems.Enabled = false;
-            this.buttonShowItems.Location = new System.Drawing.Point(337, 39);
-            this.buttonShowItems.Name = "buttonShowItems";
-            this.buttonShowItems.Size = new System.Drawing.Size(75, 23);
-            this.buttonShowItems.TabIndex = 23;
-            this.buttonShowItems.Text = "Items";
-            this.buttonShowItems.UseVisualStyleBackColor = true;
-            this.buttonShowItems.Click += new System.EventHandler(this.buttonShowItems_Click);
-            // 
             // EntityManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(428, 350);
             this.Controls.Add(this.splitContainer);
+            this.MaximumSize = new System.Drawing.Size(444, 389);
+            this.MinimumSize = new System.Drawing.Size(444, 389);
             this.Name = "EntityManager";
             this.Text = "EntityManager";
             this.Load += new System.EventHandler(this.EntityManager_Load);

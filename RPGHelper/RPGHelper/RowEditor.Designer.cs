@@ -54,6 +54,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.textBoxValueInRow);
             this.Controls.Add(this.labelColumnName);
+            this.MaximumSize = new System.Drawing.Size(238, 31);
+            this.MinimumSize = new System.Drawing.Size(238, 31);
             this.Name = "RowEditor";
             this.Size = new System.Drawing.Size(238, 31);
             this.ResumeLayout(false);
