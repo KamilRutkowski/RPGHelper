@@ -83,10 +83,10 @@
             this.Controls.Add(this.buttonStopCreation);
             this.Controls.Add(this.labelGiveDatabaseName);
             this.Controls.Add(this.textBoxDatabaseName);
-            this.MaximumSize = new System.Drawing.Size(500, 700);
-            this.MinimumSize = new System.Drawing.Size(500, 700);
+            this.MaximumSize = new System.Drawing.Size(550, 700);
+            this.MinimumSize = new System.Drawing.Size(550, 700);
             this.Name = "DatabaseNameCreator";
-            this.Size = new System.Drawing.Size(500, 700);
+            this.Size = new System.Drawing.Size(550, 700);
             this.ResumeLayout(false);
             this.PerformLayout();
 

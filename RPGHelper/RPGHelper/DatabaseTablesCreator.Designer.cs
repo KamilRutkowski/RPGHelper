@@ -147,7 +147,7 @@
             this.createTableToolStripMenuItem,
             this.removeTableToolStripMenuItem});
             this.tablesToolStripMenuItem.Name = "tablesToolStripMenuItem";
-            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(52, 23);
+            this.tablesToolStripMenuItem.Size = new System.Drawing.Size(53, 23);
             this.tablesToolStripMenuItem.Text = "Tables";
             // 
             // createTableToolStripMenuItem
@@ -207,10 +207,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.splitContainer1);
-            this.MaximumSize = new System.Drawing.Size(550, 650);
-            this.MinimumSize = new System.Drawing.Size(550, 650);
+            this.MaximumSize = new System.Drawing.Size(550, 700);
+            this.MinimumSize = new System.Drawing.Size(550, 700);
             this.Name = "DatabaseTablesCreator";
-            this.Size = new System.Drawing.Size(550, 650);
+            this.Size = new System.Drawing.Size(550, 700);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

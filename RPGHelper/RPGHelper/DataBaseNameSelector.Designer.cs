@@ -101,10 +101,10 @@
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.comboBoxSelectDatabase);
             this.Controls.Add(this.labelSelectDatabase);
-            this.MaximumSize = new System.Drawing.Size(500, 600);
-            this.MinimumSize = new System.Drawing.Size(500, 600);
+            this.MaximumSize = new System.Drawing.Size(550, 700);
+            this.MinimumSize = new System.Drawing.Size(550, 700);
             this.Name = "DataBaseNameSelector";
-            this.Size = new System.Drawing.Size(500, 600);
+            this.Size = new System.Drawing.Size(550, 700);
             this.Load += new System.EventHandler(this.DataBaseNameSelector_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

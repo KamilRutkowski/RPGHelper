@@ -87,10 +87,10 @@
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonLoadSession);
             this.Controls.Add(this.ButtonStartNewSession);
-            this.MaximumSize = new System.Drawing.Size(500, 600);
-            this.MinimumSize = new System.Drawing.Size(500, 600);
+            this.MaximumSize = new System.Drawing.Size(550, 700);
+            this.MinimumSize = new System.Drawing.Size(550, 700);
             this.Name = "MainMenuControl";
-            this.Size = new System.Drawing.Size(500, 600);
+            this.Size = new System.Drawing.Size(550, 700);
             this.Load += new System.EventHandler(this.MainMenuControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);

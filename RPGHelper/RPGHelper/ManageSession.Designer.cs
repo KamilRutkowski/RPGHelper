@@ -69,7 +69,7 @@
             this.connectorToolStripMenuItem});
             this.menuStripManage.Location = new System.Drawing.Point(0, 0);
             this.menuStripManage.Name = "menuStripManage";
-            this.menuStripManage.Size = new System.Drawing.Size(500, 28);
+            this.menuStripManage.Size = new System.Drawing.Size(550, 28);
             this.menuStripManage.TabIndex = 6;
             this.menuStripManage.Text = "menuStrip1";
             // 
@@ -249,10 +249,10 @@
             this.Controls.Add(this.textBoxSelectedPlayer);
             this.Controls.Add(this.labelSelectedEntity);
             this.Controls.Add(this.menuStripManage);
-            this.MaximumSize = new System.Drawing.Size(500, 600);
-            this.MinimumSize = new System.Drawing.Size(500, 600);
+            this.MaximumSize = new System.Drawing.Size(550, 700);
+            this.MinimumSize = new System.Drawing.Size(550, 700);
             this.Name = "ManageSession";
-            this.Size = new System.Drawing.Size(500, 600);
+            this.Size = new System.Drawing.Size(550, 700);
             this.Load += new System.EventHandler(this.ManageSession_Load);
             this.menuStripManage.ResumeLayout(false);
             this.menuStripManage.PerformLayout();
