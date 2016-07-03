@@ -22,6 +22,8 @@ namespace RPGHelper
         private string playerName;
         private string items;
 
+        public List<string> labelListValues { get; set; }
+        public List<string> textBoxListValues { get; set; }
         #endregion
 
         /// <summary>
@@ -35,6 +37,9 @@ namespace RPGHelper
             DBName = dataBaseName;
             tableName = entityName;
             playerName = forName;
+            
+            labelListValues = new List<string>();
+            textBoxListValues = new List<string>();
         }
 
         /// <summary>
@@ -320,8 +325,26 @@ namespace RPGHelper
 
         private void buttonShowItems_Click(object sender, EventArgs e)
         {
-            ItemShow itemForm = new ItemShow(DBName, tableName, textBoxFor.Text, items);
+            ItemShow itemForm = new ItemShow(labelTextboxListCallback, DBName, tableName, textBoxFor.Text, items);
             itemForm.Show();
+        }
+
+        private void labelTextboxListCallback(List<string> labelList, List<string> textBoxList)
+        {
+            labelListValues = labelList;
+            textBoxListValues = textBoxList;
+
+            foreach (RowEditor rowEditor in splitContainer.Panel2.Controls)
+            {
+                for (int i = 0; i < labelListValues.Count(); i++)
+                {
+                    if(rowEditor.labelName == labelListValues[i])
+                    {
+                        rowEditor.valueName = textBoxListValues[i];
+                    }
+                }
+                
+            }
         }
 
         private void doTheItemsExist()

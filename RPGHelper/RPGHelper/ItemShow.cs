@@ -30,13 +30,22 @@ namespace RPGHelper
 
         #endregion
 
-        public ItemShow(string dataBaseName, string entityName, string forName, string itemsName)
+        #region Callbacks
+
+        private event myDelegate registerLabelTextBoxListCallback;
+
+        #endregion
+
+        public delegate void myDelegate(List<string> labelList, List<string> textBoxList);
+
+        public ItemShow(myDelegate labelTextBoxListCallback, string dataBaseName, string entityName, string forName, string itemsName)
         {
             InitializeComponent();
             DBName = dataBaseName;
             tableName = entityName;
             playerName = forName;
             itemsTableName = itemsName;
+            registerLabelTextBoxListCallback = labelTextBoxListCallback;
         }
 
         private void ItemShow_Load(object sender, EventArgs e)
@@ -95,6 +104,15 @@ namespace RPGHelper
             List<string> listOfLabelNames = new List<string>();
             List<string> listOfTextBoxNames = new List<string>();
             listOfLabelNames = getColumnsInBothTables(tableName, itemsTableName);
+
+            for (int i = 0; i < listOfLabelNames.Count(); i++)
+            {
+                if(listOfLabelNames[i] == "id_")
+                {
+                    listOfLabelNames.RemoveAt(i);
+                }
+            }
+
             if(e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dataGridViewItems.Rows[e.RowIndex];
@@ -105,8 +123,8 @@ namespace RPGHelper
                     listOfTextBoxNames.Add(newRowValue);
                 }
             }
-            AddItem addItemForm = new AddItem(DBName, tableName, playerName, itemsTableName, listOfLabelNames, listOfTextBoxNames);
-            addItemForm.Show();
+            registerLabelTextBoxListCallback(listOfLabelNames, listOfTextBoxNames);
+            Close();
         }
 
         private List<string> getColumnsInBothTables(string normalName, string itemsName)
