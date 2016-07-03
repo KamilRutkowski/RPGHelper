@@ -299,7 +299,6 @@ List&lt;string&gt; possibleEnumOptions
     </node>
     <node id="n13">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="119.0" width="213.0" x="1317.25" y="139.0"/>
@@ -323,7 +322,6 @@ ConnectionsInTables getConnection()
     </node>
     <node id="n14">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="187.0" width="272.0" x="1025.25" y="71.0"/>
@@ -353,7 +351,6 @@ string relationOne, string relationTwo)</y:MethodLabel>
     </node>
     <node id="n15">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="134.0" width="272.0" x="1241.25" y="288.0"/>
@@ -381,7 +378,6 @@ Void setTables(Table player, Table item)
     </node>
     <node id="n16">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="29.0" width="151.0" x="966.5" y="512.5"/>
@@ -403,7 +399,6 @@ Void setTables(Table player, Table item)
     </node>
     <node id="n17">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="119.0" width="131.0" x="822.25" y="-125.5"/>
@@ -429,7 +424,6 @@ Bool isPlayerType</y:AttributeLabel>
     </node>
     <node id="n18">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="174.0" width="389.0" x="1003.0" y="-132.5"/>
@@ -457,7 +451,6 @@ TreeOfConnection getConnection(Table searchedTable)</y:MethodLabel>
     </node>
     <node id="n19">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="75.0" width="109.0" x="415.0" y="361.5"/>
@@ -480,7 +473,6 @@ String labelName</y:AttributeLabel>
     </node>
     <node id="n20">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="28.0" width="100.0" x="293.75" y="385.0"/>
@@ -502,7 +494,6 @@ String labelName</y:AttributeLabel>
     </node>
     <node id="n21">
       <data key="d4"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="371.0" width="297.0" x="214.0" y="-122.5"/>
@@ -538,6 +529,72 @@ static List&lt;string&gt;selectAllItemsTableNames(
 MySqlConnection connection, string databaseName)
 static List&lt;string&gt;selectAllConnectorTableNames(
 MySqlConnection connection, string databaseName)</y:MethodLabel>
+          </y:UML>
+        </y:UMLClassNode>
+      </data>
+    </node>
+    <node id="n22">
+      <data key="d4"/>
+      <data key="d5"/>
+      <data key="d6">
+        <y:UMLClassNode>
+          <y:Geometry height="28.0" width="100.0" x="183.0" y="291.5"/>
+          <y:Fill color="#99CC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="65.39453125" x="17.302734375" y="3.0">ItemShow<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="-0.03703090122767855" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:UML clipContent="true" constraint="" omitDetails="false" stereotype="" use3DEffect="true">
+            <y:AttributeLabel/>
+            <y:MethodLabel/>
+          </y:UML>
+        </y:UMLClassNode>
+      </data>
+    </node>
+    <node id="n23">
+      <data key="d4"/>
+      <data key="d5"/>
+      <data key="d6">
+        <y:UMLClassNode>
+          <y:Geometry height="28.0" width="151.0" x="285.0" y="484.5"/>
+          <y:Fill color="#00CCFF" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="107.314453125" x="21.8427734375" y="3.0">SessionManager<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="-0.03703090122767855" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:UML clipContent="true" constraint="" omitDetails="false" stereotype="" use3DEffect="true">
+            <y:AttributeLabel/>
+            <y:MethodLabel/>
+          </y:UML>
+        </y:UMLClassNode>
+      </data>
+    </node>
+    <node id="n24">
+      <data key="d4"/>
+      <data key="d5"/>
+      <data key="d6">
+        <y:UMLClassNode>
+          <y:Geometry height="28.0" width="173.0" x="351.0" y="524.0"/>
+          <y:Fill color="#00CCFF" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="149.96435546875" x="11.517822265625" y="3.0">DataBaseNameSelector<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="-0.03703090122767855" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:UML clipContent="true" constraint="" omitDetails="false" stereotype="" use3DEffect="true">
+            <y:AttributeLabel/>
+            <y:MethodLabel/>
           </y:UML>
         </y:UMLClassNode>
       </data>
@@ -773,7 +830,6 @@ MySqlConnection connection, string databaseName)</y:MethodLabel>
       </data>
     </edge>
     <edge id="e23" source="n9" target="n12">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -784,7 +840,6 @@ MySqlConnection connection, string databaseName)</y:MethodLabel>
       </data>
     </edge>
     <edge id="e24" source="n14" target="n6">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -795,7 +850,6 @@ MySqlConnection connection, string databaseName)</y:MethodLabel>
       </data>
     </edge>
     <edge id="e25" source="n15" target="n6">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -806,7 +860,6 @@ MySqlConnection connection, string databaseName)</y:MethodLabel>
       </data>
     </edge>
     <edge id="e26" source="n15" target="n13">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -817,7 +870,6 @@ MySqlConnection connection, string databaseName)</y:MethodLabel>
       </data>
     </edge>
     <edge id="e27" source="n14" target="n13">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -828,7 +880,6 @@ MySqlConnection connection, string databaseName)</y:MethodLabel>
       </data>
     </edge>
     <edge id="e28" source="n16" target="n5">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -843,7 +894,6 @@ MySqlConnection connection, string databaseName)</y:MethodLabel>
       </data>
     </edge>
     <edge id="e29" source="n16" target="n9">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -854,7 +904,6 @@ MySqlConnection connection, string databaseName)</y:MethodLabel>
       </data>
     </edge>
     <edge id="e30" source="n11" target="n17">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -865,7 +914,6 @@ MySqlConnection connection, string databaseName)</y:MethodLabel>
       </data>
     </edge>
     <edge id="e31" source="n18" target="n2">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -879,7 +927,6 @@ MySqlConnection connection, string databaseName)</y:MethodLabel>
       </data>
     </edge>
     <edge id="e32" source="n11" target="n18">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -890,7 +937,6 @@ MySqlConnection connection, string databaseName)</y:MethodLabel>
       </data>
     </edge>
     <edge id="e33" source="n3" target="n19">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -901,7 +947,6 @@ MySqlConnection connection, string databaseName)</y:MethodLabel>
       </data>
     </edge>
     <edge id="e34" source="n3" target="n20">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -912,6 +957,16 @@ MySqlConnection connection, string databaseName)</y:MethodLabel>
       </data>
     </edge>
     <edge id="e35" source="n3" target="n21">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e36" source="n3" target="n22">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
