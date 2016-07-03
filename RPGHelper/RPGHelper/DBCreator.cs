@@ -48,7 +48,7 @@ namespace RPGHelper
             }
         }
 
-private void addIDs(TreeOfConnections connectionsInTables)
+        private void addIDs(TreeOfConnections connectionsInTables)
         {
             Column col = new Column();
             col.columnName = "id_";
@@ -98,7 +98,7 @@ private void addIDs(TreeOfConnections connectionsInTables)
                 foreach (Column col in tab.columnsInTable)
                 {
                     command += col.columnName;
-                    string que = "Alter table " + tab.tableName + " add constraint fk_" + col.columnName + " foreign key (" + col.columnName
+                    string que = "Alter table " + tab.tableName + " add foreign key (" + col.columnName
                     +") References " + col.columnName.Substring(6) + "(id_);";
                     additionalForeignKeys.Add(que);
                     switch (col.type)
@@ -150,7 +150,7 @@ private void addIDs(TreeOfConnections connectionsInTables)
                 command += col.columnName;
                 if (col.columnName.StartsWith("id_") && (col.columnName != "id_"))
                 {
-                    string que = "Alter table " + tab.tableName + " add constraint fk_" + col.columnName + " foreign key (" + col.columnName
+                    string que = "Alter table " + tab.tableName + " add foreign key (" + col.columnName
                     + ") References " + col.columnName.Substring(6) + "(id_);";
                     additionalForeignKeys.Add(que);
                 }
